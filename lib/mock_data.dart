@@ -190,6 +190,19 @@ class PaymentMethod {
   const PaymentMethod({required this.id, required this.brand, required this.last4});
 }
 
+class WeatherSnapshot {
+  final String city;
+  final int tempC;
+  final String condition;
+  final int windKmh;
+  const WeatherSnapshot({
+    required this.city,
+    required this.tempC,
+    required this.condition,
+    required this.windKmh,
+  });
+}
+
 class UserProfile {
   final String firstName;
   final String lastName;
@@ -249,6 +262,8 @@ const sortOptions = <String>[
 // ---------------------------------------------------------------------------
 // Seed data
 // ---------------------------------------------------------------------------
+
+const currentWeather = WeatherSnapshot(city: 'Hurghada', tempC: 29, condition: 'Good visibility', windKmh: 12);
 
 const currentUser = UserProfile(
   firstName: 'Ahmed',
