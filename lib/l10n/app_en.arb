@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appName": "Rihla",
+  "navHome": "Home",
+  "navExplore": "Explore",
+  "navBookings": "Bookings",
+  "navProfile": "Profile",
+  "language": "Language",
+  "getStarted": "Get Started",
+  "signIn": "Sign In"
+}

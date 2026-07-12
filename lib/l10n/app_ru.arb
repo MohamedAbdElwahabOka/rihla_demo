@@ -1,0 +1,11 @@
+{
+  "@@locale": "ru",
+  "appName": "Rihla",
+  "navHome": "Главная",
+  "navExplore": "Обзор",
+  "navBookings": "Брони",
+  "navProfile": "Профиль",
+  "language": "Язык",
+  "getStarted": "Начать",
+  "signIn": "Войти"
+}
