@@ -31,5 +31,9 @@
   "readMore": "Mehr lesen",
   "readLess": "Weniger anzeigen",
   "book": "Buchen",
-  "linkCopied": "Link in die Zwischenablage kopiert"
+  "linkCopied": "Link in die Zwischenablage kopiert",
+  "photoIndicator": "Foto {current} von {total}",
+  "hotelPickup": "Hotelabholung",
+  "freeCancellation": "Kostenlose Stornierung",
+  "subscriberBadge": "Abonnent"
 }

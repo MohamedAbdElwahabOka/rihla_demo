@@ -31,5 +31,9 @@
   "readMore": "Читать далее",
   "readLess": "Свернуть",
   "book": "Забронировать",
-  "linkCopied": "Ссылка скопирована"
+  "linkCopied": "Ссылка скопирована",
+  "photoIndicator": "Фото {current} из {total}",
+  "hotelPickup": "Трансфер из отеля",
+  "freeCancellation": "Бесплатная отмена",
+  "subscriberBadge": "Подписчик"
 }

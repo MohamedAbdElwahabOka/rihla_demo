@@ -105,4 +105,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get linkCopied => 'Ссылка скопирована';
+
+  @override
+  String photoIndicator(int current, int total) {
+    return 'Фото $current из $total';
+  }
+
+  @override
+  String get hotelPickup => 'Трансфер из отеля';
+
+  @override
+  String get freeCancellation => 'Бесплатная отмена';
+
+  @override
+  String get subscriberBadge => 'Подписчик';
 }

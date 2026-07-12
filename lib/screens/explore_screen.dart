@@ -3,6 +3,7 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
+import '../utils/format.dart';
 import '../widgets/gradient_image.dart';
 import '../widgets/price_tag.dart';
 
@@ -160,7 +161,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               min: 0,
               max: 500,
               divisions: 50,
-              labels: RangeLabels('€${_priceRange.start.round()}', '€${_priceRange.end.round()}'),
+              labels: RangeLabels(formatEur(_priceRange.start.round()), formatEur(_priceRange.end.round())),
               values: _priceRange,
               onChanged: (v) => setState(() => _priceRange = v),
             ),

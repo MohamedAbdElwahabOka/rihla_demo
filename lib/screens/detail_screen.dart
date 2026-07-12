@@ -34,7 +34,7 @@ class _DetailScreenState extends State<DetailScreen> {
           SliverToBoxAdapter(
             child: Stack(
               children: [
-                GradientImage(icon: experience.icon, label: 'Photo ${_heroIndex + 1}/4', height: 320),
+                GradientImage(icon: experience.icon, label: l10n.photoIndicator(_heroIndex + 1, 4), height: 320),
                 Positioned(
                   top: 40,
                   left: 12,
@@ -125,9 +125,9 @@ class _DetailScreenState extends State<DetailScreen> {
                   children: [
                     _InfoPill(icon: Icons.schedule, label: experience.duration),
                     _InfoPill(icon: Icons.terrain, label: experience.difficulty),
-                    if (experience.hotelPickup) _InfoPill(icon: Icons.directions_car, label: 'Hotel pickup'),
+                    if (experience.hotelPickup) _InfoPill(icon: Icons.directions_car, label: l10n.hotelPickup),
                     _InfoPill(icon: Icons.language, label: experience.languages),
-                    if (experience.freeCancellation) _InfoPill(icon: Icons.event_available, label: 'Free cancellation'),
+                    if (experience.freeCancellation) _InfoPill(icon: Icons.event_available, label: l10n.freeCancellation),
                   ],
                 ),
                 const Divider(height: 32),
@@ -281,6 +281,7 @@ class _ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
@@ -296,7 +297,7 @@ class _ReviewCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(color: RihlaColors.gold.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(4)),
-                  child: const Text('Subscriber', style: TextStyle(fontSize: 10, color: RihlaColors.seaBlueDark)),
+                  child: Text(l10n.subscriberBadge, style: const TextStyle(fontSize: 10, color: RihlaColors.seaBlueDark)),
                 ),
               ],
               const Spacer(),

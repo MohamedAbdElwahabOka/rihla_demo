@@ -105,4 +105,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get linkCopied => 'Link copied to clipboard';
+
+  @override
+  String photoIndicator(int current, int total) {
+    return 'Photo $current of $total';
+  }
+
+  @override
+  String get hotelPickup => 'Hotel pickup';
+
+  @override
+  String get freeCancellation => 'Free cancellation';
+
+  @override
+  String get subscriberBadge => 'Subscriber';
 }

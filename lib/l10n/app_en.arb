@@ -38,5 +38,19 @@
   "readMore": "Read more",
   "readLess": "Read less",
   "book": "Book",
-  "linkCopied": "Link copied to clipboard"
+  "linkCopied": "Link copied to clipboard",
+  "photoIndicator": "Photo {current} of {total}",
+  "@photoIndicator": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "hotelPickup": "Hotel pickup",
+  "freeCancellation": "Free cancellation",
+  "subscriberBadge": "Subscriber"
 }

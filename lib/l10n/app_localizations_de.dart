@@ -105,4 +105,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get linkCopied => 'Link in die Zwischenablage kopiert';
+
+  @override
+  String photoIndicator(int current, int total) {
+    return 'Foto $current von $total';
+  }
+
+  @override
+  String get hotelPickup => 'Hotelabholung';
+
+  @override
+  String get freeCancellation => 'Kostenlose Stornierung';
+
+  @override
+  String get subscriberBadge => 'Abonnent';
 }

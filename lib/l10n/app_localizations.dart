@@ -291,6 +291,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Link copied to clipboard'**
   String get linkCopied;
+
+  /// No description provided for @photoIndicator.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo {current} of {total}'**
+  String photoIndicator(int current, int total);
+
+  /// No description provided for @hotelPickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Hotel pickup'**
+  String get hotelPickup;
+
+  /// No description provided for @freeCancellation.
+  ///
+  /// In en, this message translates to:
+  /// **'Free cancellation'**
+  String get freeCancellation;
+
+  /// No description provided for @subscriberBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriber'**
+  String get subscriberBadge;
 }
 
 class _AppLocalizationsDelegate
