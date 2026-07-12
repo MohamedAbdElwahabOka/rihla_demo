@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main_shell.dart';
+import 'screens/detail_screen.dart';
 import 'screens/splash_screen.dart';
 
 /// Named route constants. Screens not yet built in the current phase point
@@ -25,6 +26,7 @@ class Routes {
 final appRoutes = <String, WidgetBuilder>{
   Routes.shell: (_) => const MainShell(),
   Routes.splash: (_) => const SplashScreen(),
+  Routes.detail: (_) => const DetailScreen(),
   // Wired in later phases:
   Routes.auth: (_) => const Placeholder(),
   Routes.otp: (_) => const Placeholder(),
