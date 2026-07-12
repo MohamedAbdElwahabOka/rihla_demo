@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'l10n/app_localizations.dart';
 import 'main.dart';
+import 'screens/explore_screen.dart';
 import 'screens/home_screen.dart';
 
 /// Hosts the 4-tab bottom navigation (Home, Explore, Bookings, Profile —
@@ -30,7 +31,7 @@ class _MainShellState extends State<MainShell> {
 
     final tabs = [
       HomeScreen(onSearchTap: () => setState(() => _tab = 1)),
-      Center(child: Text(l10n.navExplore)),
+      const ExploreScreen(),
       Center(child: Text(l10n.navBookings)),
       Center(child: Text(l10n.navProfile)),
     ];
