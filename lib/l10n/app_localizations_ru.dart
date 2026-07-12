@@ -31,4 +31,78 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get signIn => 'Войти';
+
+  @override
+  String get tagline => 'Ваши ворота в Красное море';
+
+  @override
+  String get greetingMorning => 'Доброе утро';
+
+  @override
+  String get greetingAfternoon => 'Добрый день';
+
+  @override
+  String get greetingEvening => 'Добрый вечер';
+
+  @override
+  String get featured => 'Рекомендуем';
+
+  @override
+  String get popular => 'Популярное';
+
+  @override
+  String get restaurants => 'Лучшие рестораны';
+
+  @override
+  String get searchHint => 'Поиск впечатлений...';
+
+  @override
+  String get sortBy => 'Сортировать по';
+
+  @override
+  String get sortRelevance => 'Актуальность';
+
+  @override
+  String get sortTopRated => 'Высокий рейтинг';
+
+  @override
+  String get sortPriceLow => 'Цена: по возрастанию';
+
+  @override
+  String get sortPriceHigh => 'Цена: по убыванию';
+
+  @override
+  String get sortNewest => 'Новинки';
+
+  @override
+  String get noResults => 'Впечатления не найдены';
+
+  @override
+  String resultsCount(int count) {
+    return '$count впечатлений в Хургаде.';
+  }
+
+  @override
+  String get about => 'О туре';
+
+  @override
+  String get included => 'Что включено';
+
+  @override
+  String get itinerary => 'Маршрут';
+
+  @override
+  String get reviews => 'Отзывы';
+
+  @override
+  String get readMore => 'Читать далее';
+
+  @override
+  String get readLess => 'Свернуть';
+
+  @override
+  String get book => 'Забронировать';
+
+  @override
+  String get linkCopied => 'Ссылка скопирована';
 }

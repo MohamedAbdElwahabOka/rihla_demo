@@ -7,5 +7,36 @@
   "navProfile": "Profile",
   "language": "Language",
   "getStarted": "Get Started",
-  "signIn": "Sign In"
+  "signIn": "Sign In",
+  "tagline": "Your gateway to the Red Sea",
+  "greetingMorning": "Good morning",
+  "greetingAfternoon": "Good afternoon",
+  "greetingEvening": "Good evening",
+  "featured": "Featured",
+  "popular": "Popular",
+  "restaurants": "Top Restaurants",
+  "searchHint": "Search experiences...",
+  "sortBy": "Sort by",
+  "sortRelevance": "Relevance",
+  "sortTopRated": "Top Rated",
+  "sortPriceLow": "Price: Low to High",
+  "sortPriceHigh": "Price: High to Low",
+  "sortNewest": "Newest",
+  "noResults": "No experiences found",
+  "resultsCount": "{count} experiences in Hurghada.",
+  "@resultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "about": "About",
+  "included": "What's Included",
+  "itinerary": "Itinerary",
+  "reviews": "Reviews",
+  "readMore": "Read more",
+  "readLess": "Read less",
+  "book": "Book",
+  "linkCopied": "Link copied to clipboard"
 }
