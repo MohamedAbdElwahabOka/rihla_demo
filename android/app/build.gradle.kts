@@ -32,6 +32,14 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    lint {
+        // lintVitalRelease otherwise downloads extra lint tooling from
+        // dl.google.com on every release build; this demo has no CI/Play
+        // Store gate depending on it, and flutter analyze already covers
+        // Dart-level checks.
+        checkReleaseBuilds = false
+    }
 }
 
 kotlin {
