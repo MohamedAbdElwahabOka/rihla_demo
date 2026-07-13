@@ -789,6 +789,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Phone Number'**
   String get phoneNumber;
+
+  /// No description provided for @otpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter verification code'**
+  String get otpTitle;
+
+  /// No description provided for @otpHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo code: 123456 (try 000000 to see an expired code)'**
+  String get otpHint;
+
+  /// No description provided for @otpExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'This code has expired — please resend'**
+  String get otpExpired;
+
+  /// No description provided for @otpRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'You have {count} OTP requests remaining today'**
+  String otpRemaining(Object count);
+
+  /// No description provided for @otpLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily OTP limit reached. Try again tomorrow.'**
+  String get otpLimitReached;
+
+  /// No description provided for @resendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend Code'**
+  String get resendCode;
+
+  /// No description provided for @numberNotRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'This number isn\'t registered. Please register first.'**
+  String get numberNotRegistered;
 }
 
 class _AppLocalizationsDelegate

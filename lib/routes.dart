@@ -3,6 +3,7 @@ import 'main_shell.dart';
 import 'screens/auth_screen.dart';
 import 'screens/booking_step1_screen.dart';
 import 'screens/my_bookings_screen.dart';
+import 'screens/otp_screen.dart';
 import 'screens/payments_screen.dart';
 import 'screens/plans_screen.dart';
 import 'screens/refund_screen.dart';
@@ -47,7 +48,7 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.payments: (_) => const PaymentsScreen(),
   Routes.refund: (_) => const RefundScreen(),
   Routes.auth: (_) => const AuthScreen(),
+  Routes.otp: (_) => const OtpScreen(),
   // Wired in later tasks this phase:
-  Routes.otp: (_) => const Placeholder(),
   Routes.notifications: (_) => const Placeholder(),
 };

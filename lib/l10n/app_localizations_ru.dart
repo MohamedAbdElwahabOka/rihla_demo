@@ -376,4 +376,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get phoneNumber => 'Номер телефона';
+
+  @override
+  String get otpTitle => 'Введите код подтверждения';
+
+  @override
+  String get otpHint =>
+      'Демо-код: 123456 (попробуйте 000000, чтобы увидеть просроченный код)';
+
+  @override
+  String get otpExpired =>
+      'Срок действия этого кода истёк — отправьте повторно';
+
+  @override
+  String otpRemaining(Object count) {
+    return 'Осталось запросов кода сегодня: $count';
+  }
+
+  @override
+  String get otpLimitReached =>
+      'Достигнут дневной лимит кодов. Попробуйте завтра.';
+
+  @override
+  String get resendCode => 'Отправить код повторно';
+
+  @override
+  String get numberNotRegistered =>
+      'Этот номер не зарегистрирован. Пожалуйста, сначала зарегистрируйтесь.';
 }

@@ -114,5 +114,12 @@
   "register": "Registrieren",
   "login": "Anmelden",
   "sendCode": "Code senden",
-  "phoneNumber": "Telefonnummer"
+  "phoneNumber": "Telefonnummer",
+  "otpTitle": "Bestätigungscode eingeben",
+  "otpHint": "Demo-Code: 123456 (versuchen Sie 000000 für einen abgelaufenen Code)",
+  "otpExpired": "Dieser Code ist abgelaufen — bitte erneut senden",
+  "otpRemaining": "Sie haben heute noch {count} OTP-Anfragen übrig",
+  "otpLimitReached": "Tägliches OTP-Limit erreicht. Versuchen Sie es morgen erneut.",
+  "resendCode": "Code erneut senden",
+  "numberNotRegistered": "Diese Nummer ist nicht registriert. Bitte zuerst registrieren."
 }

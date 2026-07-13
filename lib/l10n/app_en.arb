@@ -196,5 +196,12 @@
   "register": "Register",
   "login": "Login",
   "sendCode": "Send Code",
-  "phoneNumber": "Phone Number"
+  "phoneNumber": "Phone Number",
+  "otpTitle": "Enter verification code",
+  "otpHint": "Demo code: 123456 (try 000000 to see an expired code)",
+  "otpExpired": "This code has expired — please resend",
+  "otpRemaining": "You have {count} OTP requests remaining today",
+  "otpLimitReached": "Daily OTP limit reached. Try again tomorrow.",
+  "resendCode": "Resend Code",
+  "numberNotRegistered": "This number isn't registered. Please register first."
 }

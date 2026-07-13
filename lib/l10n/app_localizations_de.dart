@@ -375,4 +375,30 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get phoneNumber => 'Telefonnummer';
+
+  @override
+  String get otpTitle => 'Bestätigungscode eingeben';
+
+  @override
+  String get otpHint =>
+      'Demo-Code: 123456 (versuchen Sie 000000 für einen abgelaufenen Code)';
+
+  @override
+  String get otpExpired => 'Dieser Code ist abgelaufen — bitte erneut senden';
+
+  @override
+  String otpRemaining(Object count) {
+    return 'Sie haben heute noch $count OTP-Anfragen übrig';
+  }
+
+  @override
+  String get otpLimitReached =>
+      'Tägliches OTP-Limit erreicht. Versuchen Sie es morgen erneut.';
+
+  @override
+  String get resendCode => 'Code erneut senden';
+
+  @override
+  String get numberNotRegistered =>
+      'Diese Nummer ist nicht registriert. Bitte zuerst registrieren.';
 }

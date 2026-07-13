@@ -374,4 +374,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get phoneNumber => 'Phone Number';
+
+  @override
+  String get otpTitle => 'Enter verification code';
+
+  @override
+  String get otpHint => 'Demo code: 123456 (try 000000 to see an expired code)';
+
+  @override
+  String get otpExpired => 'This code has expired — please resend';
+
+  @override
+  String otpRemaining(Object count) {
+    return 'You have $count OTP requests remaining today';
+  }
+
+  @override
+  String get otpLimitReached => 'Daily OTP limit reached. Try again tomorrow.';
+
+  @override
+  String get resendCode => 'Resend Code';
+
+  @override
+  String get numberNotRegistered =>
+      'This number isn\'t registered. Please register first.';
 }
