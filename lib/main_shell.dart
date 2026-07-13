@@ -3,6 +3,8 @@ import 'l10n/app_localizations.dart';
 import 'main.dart';
 import 'screens/explore_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/my_bookings_screen.dart';
+import 'screens/profile_screen.dart';
 
 /// Hosts the 4-tab bottom navigation (Home, Explore, Bookings, Profile —
 /// FR-025). Detail/booking/auth screens push on top of this shell.
@@ -32,8 +34,8 @@ class _MainShellState extends State<MainShell> {
     final tabs = [
       HomeScreen(onSearchTap: () => setState(() => _tab = 1)),
       const ExploreScreen(),
-      Center(child: Text(l10n.navBookings)),
-      Center(child: Text(l10n.navProfile)),
+      const MyBookingsScreen(),
+      const ProfileScreen(),
     ];
 
     return Scaffold(

@@ -209,4 +209,149 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get paymentDueNotice =>
       'Оплата производится напрямую поставщику услуг по прибытии.';
+
+  @override
+  String get totalTrips => 'Всего поездок';
+
+  @override
+  String get reviewsWritten => 'Написано отзывов';
+
+  @override
+  String get activeSubscription => 'Активная подписка';
+
+  @override
+  String get settings => 'Настройки';
+
+  @override
+  String get signOut => 'Выйти';
+
+  @override
+  String get cancel => 'Отмена';
+
+  @override
+  String get signOutConfirm => 'Вы действительно хотите выйти?';
+
+  @override
+  String get myBookings => 'Мои бронирования';
+
+  @override
+  String get mySubscription => 'Моя подписка';
+
+  @override
+  String get subscriptionPlans => 'Тарифные планы';
+
+  @override
+  String get paymentMethods => 'Сохранённые способы оплаты';
+
+  @override
+  String get notifications => 'Уведомления';
+
+  @override
+  String daysLeft(int days) {
+    return 'Осталось $days дн.';
+  }
+
+  @override
+  String get cancelBooking => 'Отменить бронирование';
+
+  @override
+  String get cancelConfirm =>
+      'Вы действительно хотите отменить это бронирование?';
+
+  @override
+  String discountApplied(int pct) {
+    return 'Скидка по подписке: -$pct%';
+  }
+
+  @override
+  String get statusCancelled => 'Отменено';
+
+  @override
+  String get statusCompleted => 'Завершено';
+
+  @override
+  String get active => 'Активна';
+
+  @override
+  String get purchaseDate => 'Дата покупки';
+
+  @override
+  String get expiryDate => 'Дата окончания';
+
+  @override
+  String get creditsRemainingHeader => 'Остаток кредитов';
+
+  @override
+  String creditRemaining(int count) {
+    return 'Осталось $count';
+  }
+
+  @override
+  String get creditUsed => '0 — использовано';
+
+  @override
+  String get refundRequest => 'Запрос на возврат';
+
+  @override
+  String purchaseConfirm(String plan, String price) {
+    return 'Купить «$plan» за $price?';
+  }
+
+  @override
+  String get purchaseSuccess => 'Подписка оформлена!';
+
+  @override
+  String validity(int days) {
+    return 'Срок действия $days дн.';
+  }
+
+  @override
+  String get confirm => 'Подтвердить';
+
+  @override
+  String get addCard => 'Добавить карту';
+
+  @override
+  String cardEndingIn(String brand, String last4) {
+    return '$brand, оканчивающаяся на $last4';
+  }
+
+  @override
+  String get cardNumber => 'Номер карты';
+
+  @override
+  String get expiry => 'Срок действия';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get add => 'Добавить';
+
+  @override
+  String get refundReasonLabel => 'Причина отмены';
+
+  @override
+  String get explanation => 'Подробное объяснение';
+
+  @override
+  String get submit => 'Отправить';
+
+  @override
+  String get refundReceived => 'Запрос на возврат получен';
+
+  @override
+  String get reasonNotSatisfied => 'Не удовлетворён сервисом';
+
+  @override
+  String get reasonChangedPlans => 'Изменились планы поездки';
+
+  @override
+  String get reasonFinancial => 'Финансовые причины';
+
+  @override
+  String get reasonTechnical => 'Техническая проблема';
+
+  @override
+  String get reasonOther => 'Другое';
 }

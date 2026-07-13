@@ -483,6 +483,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Payment due directly to vendor upon arrival.'**
   String get paymentDueNotice;
+
+  /// No description provided for @totalTrips.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Trips'**
+  String get totalTrips;
+
+  /// No description provided for @reviewsWritten.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews Written'**
+  String get reviewsWritten;
+
+  /// No description provided for @activeSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Subscription'**
+  String get activeSubscription;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @signOutConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to sign out?'**
+  String get signOutConfirm;
+
+  /// No description provided for @myBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'My Bookings'**
+  String get myBookings;
+
+  /// No description provided for @mySubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'My Subscription'**
+  String get mySubscription;
+
+  /// No description provided for @subscriptionPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription Plans'**
+  String get subscriptionPlans;
+
+  /// No description provided for @paymentMethods.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Payment Methods'**
+  String get paymentMethods;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @daysLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days left'**
+  String daysLeft(int days);
+
+  /// No description provided for @cancelBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Booking'**
+  String get cancelBooking;
+
+  /// No description provided for @cancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to cancel this booking?'**
+  String get cancelConfirm;
+
+  /// No description provided for @discountApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription discount applied: -{pct}%'**
+  String discountApplied(int pct);
+
+  /// No description provided for @statusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get statusCancelled;
+
+  /// No description provided for @statusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get statusCompleted;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @purchaseDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase Date'**
+  String get purchaseDate;
+
+  /// No description provided for @expiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry Date'**
+  String get expiryDate;
+
+  /// No description provided for @creditsRemainingHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Credits Remaining'**
+  String get creditsRemainingHeader;
+
+  /// No description provided for @creditRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} remaining'**
+  String creditRemaining(int count);
+
+  /// No description provided for @creditUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'0 — used'**
+  String get creditUsed;
+
+  /// No description provided for @refundRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund Request'**
+  String get refundRequest;
+
+  /// No description provided for @purchaseConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase {plan} for {price}?'**
+  String purchaseConfirm(String plan, String price);
+
+  /// No description provided for @purchaseSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription purchased!'**
+  String get purchaseSuccess;
+
+  /// No description provided for @validity.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days validity'**
+  String validity(int days);
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @addCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Card'**
+  String get addCard;
+
+  /// No description provided for @cardEndingIn.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} ending in {last4}'**
+  String cardEndingIn(String brand, String last4);
+
+  /// No description provided for @cardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Number'**
+  String get cardNumber;
+
+  /// No description provided for @expiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry'**
+  String get expiry;
+
+  /// No description provided for @cvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV'**
+  String get cvv;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @refundReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation Reason'**
+  String get refundReasonLabel;
+
+  /// No description provided for @explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed Explanation'**
+  String get explanation;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @refundReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund request received'**
+  String get refundReceived;
+
+  /// No description provided for @reasonNotSatisfied.
+  ///
+  /// In en, this message translates to:
+  /// **'Not satisfied with service'**
+  String get reasonNotSatisfied;
+
+  /// No description provided for @reasonChangedPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed travel plans'**
+  String get reasonChangedPlans;
+
+  /// No description provided for @reasonFinancial.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial reasons'**
+  String get reasonFinancial;
+
+  /// No description provided for @reasonTechnical.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical issue'**
+  String get reasonTechnical;
+
+  /// No description provided for @reasonOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get reasonOther;
 }
 
 class _AppLocalizationsDelegate

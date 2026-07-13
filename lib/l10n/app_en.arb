@@ -97,5 +97,97 @@
   "statusConfirmed": "Confirmed",
   "referenceLabel": "Booking Reference",
   "ticketNumberLabel": "Ticket Number",
-  "paymentDueNotice": "Payment due directly to vendor upon arrival."
+  "paymentDueNotice": "Payment due directly to vendor upon arrival.",
+  "totalTrips": "Total Trips",
+  "reviewsWritten": "Reviews Written",
+  "activeSubscription": "Active Subscription",
+  "settings": "Settings",
+  "signOut": "Sign Out",
+  "cancel": "Cancel",
+  "signOutConfirm": "Are you sure you want to sign out?",
+  "myBookings": "My Bookings",
+  "mySubscription": "My Subscription",
+  "subscriptionPlans": "Subscription Plans",
+  "paymentMethods": "Saved Payment Methods",
+  "notifications": "Notifications",
+  "daysLeft": "{days} days left",
+  "@daysLeft": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "cancelBooking": "Cancel Booking",
+  "cancelConfirm": "Are you sure you want to cancel this booking?",
+  "discountApplied": "Subscription discount applied: -{pct}%",
+  "@discountApplied": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "statusCancelled": "Cancelled",
+  "statusCompleted": "Completed",
+  "active": "Active",
+  "purchaseDate": "Purchase Date",
+  "expiryDate": "Expiry Date",
+  "creditsRemainingHeader": "Credits Remaining",
+  "creditRemaining": "{count} remaining",
+  "@creditRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creditUsed": "0 — used",
+  "refundRequest": "Refund Request",
+  "purchaseConfirm": "Purchase {plan} for {price}?",
+  "@purchaseConfirm": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "purchaseSuccess": "Subscription purchased!",
+  "validity": "{days} days validity",
+  "@validity": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "confirm": "Confirm",
+  "addCard": "Add Card",
+  "cardEndingIn": "{brand} ending in {last4}",
+  "@cardEndingIn": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      },
+      "last4": {
+        "type": "String"
+      }
+    }
+  },
+  "cardNumber": "Card Number",
+  "expiry": "Expiry",
+  "cvv": "CVV",
+  "add": "Add",
+  "refundReasonLabel": "Cancellation Reason",
+  "explanation": "Detailed Explanation",
+  "submit": "Submit",
+  "refundReceived": "Refund request received",
+  "reasonNotSatisfied": "Not satisfied with service",
+  "reasonChangedPlans": "Changed travel plans",
+  "reasonFinancial": "Financial reasons",
+  "reasonTechnical": "Technical issue",
+  "reasonOther": "Other"
 }

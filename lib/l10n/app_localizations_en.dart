@@ -208,4 +208,148 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paymentDueNotice => 'Payment due directly to vendor upon arrival.';
+
+  @override
+  String get totalTrips => 'Total Trips';
+
+  @override
+  String get reviewsWritten => 'Reviews Written';
+
+  @override
+  String get activeSubscription => 'Active Subscription';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get signOutConfirm => 'Are you sure you want to sign out?';
+
+  @override
+  String get myBookings => 'My Bookings';
+
+  @override
+  String get mySubscription => 'My Subscription';
+
+  @override
+  String get subscriptionPlans => 'Subscription Plans';
+
+  @override
+  String get paymentMethods => 'Saved Payment Methods';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String daysLeft(int days) {
+    return '$days days left';
+  }
+
+  @override
+  String get cancelBooking => 'Cancel Booking';
+
+  @override
+  String get cancelConfirm => 'Are you sure you want to cancel this booking?';
+
+  @override
+  String discountApplied(int pct) {
+    return 'Subscription discount applied: -$pct%';
+  }
+
+  @override
+  String get statusCancelled => 'Cancelled';
+
+  @override
+  String get statusCompleted => 'Completed';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get purchaseDate => 'Purchase Date';
+
+  @override
+  String get expiryDate => 'Expiry Date';
+
+  @override
+  String get creditsRemainingHeader => 'Credits Remaining';
+
+  @override
+  String creditRemaining(int count) {
+    return '$count remaining';
+  }
+
+  @override
+  String get creditUsed => '0 — used';
+
+  @override
+  String get refundRequest => 'Refund Request';
+
+  @override
+  String purchaseConfirm(String plan, String price) {
+    return 'Purchase $plan for $price?';
+  }
+
+  @override
+  String get purchaseSuccess => 'Subscription purchased!';
+
+  @override
+  String validity(int days) {
+    return '$days days validity';
+  }
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get addCard => 'Add Card';
+
+  @override
+  String cardEndingIn(String brand, String last4) {
+    return '$brand ending in $last4';
+  }
+
+  @override
+  String get cardNumber => 'Card Number';
+
+  @override
+  String get expiry => 'Expiry';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get refundReasonLabel => 'Cancellation Reason';
+
+  @override
+  String get explanation => 'Detailed Explanation';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get refundReceived => 'Refund request received';
+
+  @override
+  String get reasonNotSatisfied => 'Not satisfied with service';
+
+  @override
+  String get reasonChangedPlans => 'Changed travel plans';
+
+  @override
+  String get reasonFinancial => 'Financial reasons';
+
+  @override
+  String get reasonTechnical => 'Technical issue';
+
+  @override
+  String get reasonOther => 'Other';
 }

@@ -209,4 +209,148 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get paymentDueNotice =>
       'Zahlung bei Ankunft direkt an den Anbieter fällig.';
+
+  @override
+  String get totalTrips => 'Gesamtreisen';
+
+  @override
+  String get reviewsWritten => 'Verfasste Bewertungen';
+
+  @override
+  String get activeSubscription => 'Aktives Abonnement';
+
+  @override
+  String get settings => 'Einstellungen';
+
+  @override
+  String get signOut => 'Abmelden';
+
+  @override
+  String get cancel => 'Abbrechen';
+
+  @override
+  String get signOutConfirm => 'Möchten Sie sich wirklich abmelden?';
+
+  @override
+  String get myBookings => 'Meine Buchungen';
+
+  @override
+  String get mySubscription => 'Mein Abonnement';
+
+  @override
+  String get subscriptionPlans => 'Abo-Pläne';
+
+  @override
+  String get paymentMethods => 'Gespeicherte Zahlungsmethoden';
+
+  @override
+  String get notifications => 'Benachrichtigungen';
+
+  @override
+  String daysLeft(int days) {
+    return '$days Tage verbleibend';
+  }
+
+  @override
+  String get cancelBooking => 'Buchung stornieren';
+
+  @override
+  String get cancelConfirm => 'Möchten Sie diese Buchung wirklich stornieren?';
+
+  @override
+  String discountApplied(int pct) {
+    return 'Abo-Rabatt angewendet: -$pct%';
+  }
+
+  @override
+  String get statusCancelled => 'Storniert';
+
+  @override
+  String get statusCompleted => 'Abgeschlossen';
+
+  @override
+  String get active => 'Aktiv';
+
+  @override
+  String get purchaseDate => 'Kaufdatum';
+
+  @override
+  String get expiryDate => 'Ablaufdatum';
+
+  @override
+  String get creditsRemainingHeader => 'Verbleibende Guthaben';
+
+  @override
+  String creditRemaining(int count) {
+    return '$count verbleibend';
+  }
+
+  @override
+  String get creditUsed => '0 — verbraucht';
+
+  @override
+  String get refundRequest => 'Rückerstattungsantrag';
+
+  @override
+  String purchaseConfirm(String plan, String price) {
+    return '$plan für $price kaufen?';
+  }
+
+  @override
+  String get purchaseSuccess => 'Abonnement gekauft!';
+
+  @override
+  String validity(int days) {
+    return '$days Tage Gültigkeit';
+  }
+
+  @override
+  String get confirm => 'Bestätigen';
+
+  @override
+  String get addCard => 'Karte hinzufügen';
+
+  @override
+  String cardEndingIn(String brand, String last4) {
+    return '$brand endet auf $last4';
+  }
+
+  @override
+  String get cardNumber => 'Kartennummer';
+
+  @override
+  String get expiry => 'Ablaufdatum';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get add => 'Hinzufügen';
+
+  @override
+  String get refundReasonLabel => 'Stornierungsgrund';
+
+  @override
+  String get explanation => 'Ausführliche Erklärung';
+
+  @override
+  String get submit => 'Absenden';
+
+  @override
+  String get refundReceived => 'Rückerstattungsantrag eingegangen';
+
+  @override
+  String get reasonNotSatisfied => 'Nicht zufrieden mit dem Service';
+
+  @override
+  String get reasonChangedPlans => 'Reisepläne geändert';
+
+  @override
+  String get reasonFinancial => 'Finanzielle Gründe';
+
+  @override
+  String get reasonTechnical => 'Technisches Problem';
+
+  @override
+  String get reasonOther => 'Sonstiges';
 }
