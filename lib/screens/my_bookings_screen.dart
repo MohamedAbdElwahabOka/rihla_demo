@@ -5,9 +5,12 @@ import '../theme.dart';
 import '../utils/format.dart';
 
 /// S6e — My Bookings History (FR-072). Hosted as the Bookings tab body
-/// and reachable from Profile via Routes.myBookings.
+/// (no own Scaffold -- relies on MainShell's) and also reachable
+/// standalone from Profile via Routes.myBookings (needs its own Scaffold
+/// there, since MainShell isn't an ancestor of a pushed route).
 class MyBookingsScreen extends StatefulWidget {
-  const MyBookingsScreen({super.key});
+  final bool standalone;
+  const MyBookingsScreen({super.key, this.standalone = false});
 
   @override
   State<MyBookingsScreen> createState() => _MyBookingsScreenState();
@@ -41,18 +44,25 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return SafeArea(
+    final content = SafeArea(
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text(l10n.myBookings, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
+          if (!widget.standalone) ...[
+            Text(l10n.myBookings, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+          ],
           ...bookings.reversed.map((b) => _BookingCard(
                 booking: b,
                 onCancel: () => _confirmCancel(b),
               )),
         ],
       ),
+    );
+    if (!widget.standalone) return content;
+    return Scaffold(
+      appBar: AppBar(title: Text(l10n.myBookings)),
+      body: content,
     );
   }
 }
