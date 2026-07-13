@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 20),
           _SectionHeader(title: l10n.restaurants),
           SizedBox(
-            height: 170,
+            height: 185,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               scrollDirection: Axis.horizontal,

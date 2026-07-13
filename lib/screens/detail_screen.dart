@@ -81,7 +81,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 56,
+              height: 96,
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 scrollDirection: Axis.horizontal,
@@ -97,7 +97,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
-                      child: GradientImage(icon: experience.icon, label: '${i + 1}'),
+                      child: GradientImage(icon: experience.icon, label: '${i + 1}', height: 76),
                     ),
                   ),
                 ),
@@ -184,9 +184,12 @@ class _DetailScreenState extends State<DetailScreen> {
             children: [
               PriceTag(original: experience.priceOriginal, discounted: experience.priceDiscounted, discountedFontSize: 20),
               const Spacer(),
-              FilledButton(
-                onPressed: () => Navigator.of(context).pushNamed(Routes.booking1, arguments: experience),
-                child: Text(l10n.book),
+              SizedBox(
+                width: 140,
+                child: FilledButton(
+                  onPressed: () => Navigator.of(context).pushNamed(Routes.booking1, arguments: experience),
+                  child: Text(l10n.book),
+                ),
               ),
             ],
           ),
