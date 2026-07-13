@@ -280,15 +280,49 @@ const timeSlots = <TimeSlot>[
   TimeSlot('18:00', 0),
 ];
 
-const currentUser = UserProfile(
+// ---------------------------------------------------------------------------
+// Session / auth state (Phase 5) — two demo personas, selected at login
+// ---------------------------------------------------------------------------
+
+/// Country code + phone that logs in as the existing subscriber persona
+/// (Ahmed Youssef, active "Red Sea Explorer" subscription).
+const registeredPhoneCountryCode = '+20';
+const registeredPhoneNumber = '100 123 4567';
+
+/// A phone number that has never registered — used to demo the
+/// registration flow and the FR-037 "subscription required to book" gate.
+const newPhoneCountryCode = '+20';
+const newPhoneNumber = '100 999 0000';
+
+/// Demo OTP codes. Any other 6 digits are also accepted as valid (per the
+/// design's "any 6-digit code works" simplification); this one code is
+/// special-cased to demonstrate the expired-code error path.
+const demoExpiredOtp = '000000';
+
+const registeredUserProfile = UserProfile(
   firstName: 'Ahmed',
   lastName: 'Youssef',
-  countryCode: '+20',
-  phone: '100 123 4567',
+  countryCode: registeredPhoneCountryCode,
+  phone: registeredPhoneNumber,
   email: 'ahmed.youssef@example.com',
   totalTrips: 4,
   reviewsWritten: 2,
 );
+
+const _guestProfile = UserProfile(
+  firstName: 'Guest',
+  lastName: '',
+  countryCode: '',
+  phone: '',
+  totalTrips: 0,
+  reviewsWritten: 0,
+);
+
+/// The currently signed-in traveler. Resets to [_guestProfile] on every
+/// fresh app launch (no persistence, by design); Auth/OTP completion
+/// reassigns this to either [registeredUserProfile] or a freshly
+/// registered profile built from the name entered at registration.
+UserProfile currentUser = _guestProfile;
 
 const experiences = <Experience>[
   Experience(
@@ -530,14 +564,19 @@ const subscriptionPlans = <SubscriptionPlan>[
   ),
 ];
 
-/// The mock signed-in traveler holds an active subscription so the booking
-/// flow (which requires a subscription per FR-037/BR-006) is demonstrable.
-final userSubscription = UserSubscription(
+/// The registered persona's subscription, assigned to [userSubscription]
+/// on login with [registeredPhoneNumber].
+final registeredUserSubscription = UserSubscription(
   plan: subscriptionPlans[0],
   purchaseDate: DateTime(2026, 6, 20),
   expiryDate: DateTime(2026, 7, 20),
   creditsRemaining: {'Snorkeling': 1, 'Desert Safari': 0, 'Shopping': 1},
 );
+
+/// The current traveler's subscription, or null if they don't have one —
+/// required to book, per FR-037/BR-006 (the gate the Detail screen's Book
+/// button checks). A freshly-registered persona starts with none.
+UserSubscription? userSubscription;
 
 final bookings = <Booking>[
   Booking(

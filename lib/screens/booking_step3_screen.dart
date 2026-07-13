@@ -46,7 +46,9 @@ class BookingStep3Screen extends StatelessWidget {
     );
     bookings.add(booking);
     if (creditType != null) {
-      userSubscription.creditsRemaining[creditType] = (userSubscription.creditsRemaining[creditType] ?? 1) - 1;
+      // Safe: reaching Step 3 requires an active subscription (Detail's
+      // Book button gates on it per FR-037/BR-006).
+      userSubscription!.creditsRemaining[creditType] = (userSubscription!.creditsRemaining[creditType] ?? 1) - 1;
     }
 
     Navigator.of(context).pushReplacementNamed(Routes.ticket, arguments: booking);
@@ -62,7 +64,7 @@ class BookingStep3Screen extends StatelessWidget {
     final childPrice = (experience.priceDiscounted * 0.5).round();
     final finalTotal = adultPrice * data.adults + childPrice * data.children;
 
-    final remainingCredit = userSubscription.creditsRemaining[experience.category];
+    final remainingCredit = userSubscription?.creditsRemaining[experience.category];
     final creditType = (remainingCredit != null && remainingCredit > 0) ? experience.category : null;
 
     return Scaffold(

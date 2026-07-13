@@ -20,6 +20,18 @@ class _DetailScreenState extends State<DetailScreen> {
   bool _isFavorite = false;
   bool _aboutExpanded = false;
 
+  /// FR-037/BR-006: booking requires an active subscription. Without one,
+  /// redirect to Subscription Plans instead of the booking flow.
+  void _onBookPressed(BuildContext context, AppLocalizations l10n, Experience experience) {
+    final sub = userSubscription;
+    if (sub == null || !sub.active) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.subscriptionRequired)));
+      Navigator.of(context).pushNamed(Routes.plans);
+      return;
+    }
+    Navigator.of(context).pushNamed(Routes.booking1, arguments: experience);
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -187,7 +199,7 @@ class _DetailScreenState extends State<DetailScreen> {
               SizedBox(
                 width: 140,
                 child: FilledButton(
-                  onPressed: () => Navigator.of(context).pushNamed(Routes.booking1, arguments: experience),
+                  onPressed: () => _onBookPressed(context, l10n, experience),
                   child: Text(l10n.book),
                 ),
               ),

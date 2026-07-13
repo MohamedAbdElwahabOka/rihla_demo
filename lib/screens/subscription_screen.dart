@@ -12,8 +12,35 @@ class SubscriptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final plan = userSubscription.plan;
+    final sub = userSubscription;
 
+    if (sub == null) {
+      return Scaffold(
+        appBar: AppBar(title: Text(l10n.mySubscription)),
+        body: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.card_membership_outlined, size: 56, color: Colors.grey),
+                  const SizedBox(height: 12),
+                  Text(l10n.noActivePlan, style: const TextStyle(fontSize: 16, color: Colors.grey), textAlign: TextAlign.center),
+                  const SizedBox(height: 20),
+                  FilledButton(
+                    onPressed: () => Navigator.of(context).pushNamed(Routes.plans),
+                    child: Text(l10n.subscriptionPlans),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    final plan = sub.plan;
     return Scaffold(
       appBar: AppBar(title: Text(l10n.mySubscription)),
       body: SafeArea(
@@ -32,12 +59,12 @@ class SubscriptionScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: (userSubscription.active ? Colors.green : Colors.grey).withValues(alpha: 0.15),
+                            color: (sub.active ? Colors.green : Colors.grey).withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
-                            userSubscription.active ? l10n.active : l10n.statusCancelled,
-                            style: TextStyle(color: userSubscription.active ? Colors.green : Colors.grey, fontWeight: FontWeight.bold, fontSize: 11),
+                            sub.active ? l10n.active : l10n.statusCancelled,
+                            style: TextStyle(color: sub.active ? Colors.green : Colors.grey, fontWeight: FontWeight.bold, fontSize: 11),
                           ),
                         ),
                       ],
@@ -45,8 +72,8 @@ class SubscriptionScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(plan.description, style: const TextStyle(color: Colors.grey)),
                     const Divider(height: 24),
-                    _InfoRow(label: l10n.purchaseDate, value: formatDate(userSubscription.purchaseDate)),
-                    _InfoRow(label: l10n.expiryDate, value: formatDate(userSubscription.expiryDate)),
+                    _InfoRow(label: l10n.purchaseDate, value: formatDate(sub.purchaseDate)),
+                    _InfoRow(label: l10n.expiryDate, value: formatDate(sub.expiryDate)),
                   ],
                 ),
               ),
@@ -54,7 +81,7 @@ class SubscriptionScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Text(l10n.creditsRemainingHeader, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            ...userSubscription.creditsRemaining.entries.map((entry) => Card(
+            ...sub.creditsRemaining.entries.map((entry) => Card(
                   margin: const EdgeInsets.only(bottom: 8),
                   child: ListTile(
                     leading: const Icon(Icons.confirmation_number_outlined, color: RihlaColors.seaBlue),

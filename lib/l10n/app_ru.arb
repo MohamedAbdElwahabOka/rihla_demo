@@ -107,5 +107,8 @@
   "reasonChangedPlans": "Изменились планы поездки",
   "reasonFinancial": "Финансовые причины",
   "reasonTechnical": "Техническая проблема",
-  "reasonOther": "Другое"
+  "reasonOther": "Другое",
+  "noActivePlan": "Нет активной подписки",
+  "subscriptionRequired": "Для бронирования нужна активная подписка. Выберите тариф, чтобы продолжить.",
+  "processingPayment": "Обработка платежа..."
 }

@@ -747,6 +747,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Other'**
   String get reasonOther;
+
+  /// No description provided for @noActivePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'No active plan'**
+  String get noActivePlan;
+
+  /// No description provided for @subscriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'You need an active subscription to book. Choose a plan to continue.'**
+  String get subscriptionRequired;
+
+  /// No description provided for @processingPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing payment...'**
+  String get processingPayment;
 }
 
 class _AppLocalizationsDelegate

@@ -49,7 +49,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final daysLeft = userSubscription.expiryDate.difference(DateTime.now()).inDays;
+    final sub = userSubscription;
+    final daysLeft = sub?.expiryDate.difference(DateTime.now()).inDays;
 
     return SafeArea(
       child: ListView(
@@ -69,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 Text('${currentUser.firstName} ${currentUser.lastName}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                if (userSubscription.active) ...[
+                if (sub != null && sub.active) ...[
                   const SizedBox(height: 4),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -85,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               _StatTile(value: '${currentUser.totalTrips}', label: l10n.totalTrips),
               _StatTile(value: '${currentUser.reviewsWritten}', label: l10n.reviewsWritten),
-              _StatTile(value: l10n.daysLeft(daysLeft), label: l10n.activeSubscription),
+              _StatTile(value: daysLeft != null ? l10n.daysLeft(daysLeft) : l10n.noActivePlan, label: l10n.activeSubscription),
             ],
           ),
           const SizedBox(height: 16),

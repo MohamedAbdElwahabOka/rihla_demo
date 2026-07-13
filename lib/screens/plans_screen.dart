@@ -20,7 +20,33 @@ class PlansScreen extends StatelessWidget {
         ],
       ),
     );
-    if (confirmed == true && context.mounted) {
+    if (confirmed != true || !context.mounted) return;
+
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => AlertDialog(
+        content: Row(
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(width: 16),
+            Expanded(child: Text(l10n.processingPayment)),
+          ],
+        ),
+      ),
+    );
+    await Future.delayed(const Duration(milliseconds: 1400));
+    if (!context.mounted) return;
+    Navigator.of(context, rootNavigator: true).pop();
+
+    userSubscription = UserSubscription(
+      plan: plan,
+      purchaseDate: DateTime.now(),
+      expiryDate: DateTime.now().add(Duration(days: plan.validityDays)),
+      creditsRemaining: Map<String, int>.from(plan.credits),
+    );
+
+    if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.purchaseSuccess)));
     }
   }

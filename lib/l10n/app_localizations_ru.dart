@@ -354,4 +354,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get reasonOther => 'Другое';
+
+  @override
+  String get noActivePlan => 'Нет активной подписки';
+
+  @override
+  String get subscriptionRequired =>
+      'Для бронирования нужна активная подписка. Выберите тариф, чтобы продолжить.';
+
+  @override
+  String get processingPayment => 'Обработка платежа...';
 }

@@ -189,5 +189,8 @@
   "reasonChangedPlans": "Changed travel plans",
   "reasonFinancial": "Financial reasons",
   "reasonTechnical": "Technical issue",
-  "reasonOther": "Other"
+  "reasonOther": "Other",
+  "noActivePlan": "No active plan",
+  "subscriptionRequired": "You need an active subscription to book. Choose a plan to continue.",
+  "processingPayment": "Processing payment..."
 }

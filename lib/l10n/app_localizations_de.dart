@@ -353,4 +353,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get reasonOther => 'Sonstiges';
+
+  @override
+  String get noActivePlan => 'Kein aktives Abo';
+
+  @override
+  String get subscriptionRequired =>
+      'Sie benötigen ein aktives Abonnement, um zu buchen. Wählen Sie einen Plan, um fortzufahren.';
+
+  @override
+  String get processingPayment => 'Zahlung wird verarbeitet...';
 }

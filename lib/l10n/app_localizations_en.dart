@@ -352,4 +352,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reasonOther => 'Other';
+
+  @override
+  String get noActivePlan => 'No active plan';
+
+  @override
+  String get subscriptionRequired =>
+      'You need an active subscription to book. Choose a plan to continue.';
+
+  @override
+  String get processingPayment => 'Processing payment...';
 }

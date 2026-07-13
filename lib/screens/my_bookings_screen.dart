@@ -30,8 +30,9 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
       setState(() {
         booking.status = BookingStatus.cancelled;
         final creditType = booking.creditTypeConsumed;
-        if (creditType != null) {
-          userSubscription.creditsRemaining[creditType] = (userSubscription.creditsRemaining[creditType] ?? 0) + 1;
+        final sub = userSubscription;
+        if (creditType != null && sub != null) {
+          sub.creditsRemaining[creditType] = (sub.creditsRemaining[creditType] ?? 0) + 1;
         }
       });
     }
