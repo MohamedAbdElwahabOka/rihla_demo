@@ -12,6 +12,9 @@ class ProfileScreen extends StatelessWidget {
   Future<void> _pickLanguage(BuildContext context) async {
     final locale = await showModalBottomSheet<Locale>(
       context: context,
+      // Each language name is an endonym (shown in itself, not translated —
+      // "Deutsch" must never become "German" just because the UI is in
+      // English), so these are intentionally not ARB keys.
       builder: (context) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
