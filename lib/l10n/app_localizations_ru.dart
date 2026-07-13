@@ -364,4 +364,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get processingPayment => 'Обработка платежа...';
+
+  @override
+  String get register => 'Регистрация';
+
+  @override
+  String get login => 'Вход';
+
+  @override
+  String get sendCode => 'Отправить код';
+
+  @override
+  String get phoneNumber => 'Номер телефона';
 }

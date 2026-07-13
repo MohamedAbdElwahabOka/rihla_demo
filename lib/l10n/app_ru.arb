@@ -110,5 +110,9 @@
   "reasonOther": "Другое",
   "noActivePlan": "Нет активной подписки",
   "subscriptionRequired": "Для бронирования нужна активная подписка. Выберите тариф, чтобы продолжить.",
-  "processingPayment": "Обработка платежа..."
+  "processingPayment": "Обработка платежа...",
+  "register": "Регистрация",
+  "login": "Вход",
+  "sendCode": "Отправить код",
+  "phoneNumber": "Номер телефона"
 }

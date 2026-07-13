@@ -5,12 +5,8 @@ import '../theme.dart';
 import '../widgets/gradient_image.dart';
 
 /// S0 — Splash / Onboarding (FR-001-002). Waits for an explicit Get
-/// Started / Sign In choice — no auto-advance timer.
-///
-/// TEMPORARY (until Phase 5 builds real Auth/OTP/Registration): "Get
-/// Started" routes straight to the shell so Home/Profile stay reachable
-/// for testing later phases. "Sign In" still points at the Phase-5
-/// placeholder.
+/// Started / Sign In choice — no auto-advance timer. Both buttons open
+/// the Auth screen, defaulting to Register vs. Login respectively.
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
@@ -40,12 +36,12 @@ class SplashScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   FilledButton(
-                    onPressed: () => Navigator.of(context).pushReplacementNamed(Routes.shell),
+                    onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: true),
                     child: Text(l10n.getStarted),
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton(
-                    onPressed: () => Navigator.of(context).pushNamed(Routes.otp),
+                    onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: false),
                     child: Text(l10n.signIn),
                   ),
                 ],

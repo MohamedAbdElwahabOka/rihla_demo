@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main_shell.dart';
+import 'screens/auth_screen.dart';
 import 'screens/booking_step1_screen.dart';
 import 'screens/my_bookings_screen.dart';
 import 'screens/payments_screen.dart';
@@ -45,8 +46,8 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.plans: (_) => const PlansScreen(),
   Routes.payments: (_) => const PaymentsScreen(),
   Routes.refund: (_) => const RefundScreen(),
-  // Wired in later phases:
-  Routes.auth: (_) => const Placeholder(),
+  Routes.auth: (_) => const AuthScreen(),
+  // Wired in later tasks this phase:
   Routes.otp: (_) => const Placeholder(),
   Routes.notifications: (_) => const Placeholder(),
 };

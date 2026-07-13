@@ -362,4 +362,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get processingPayment => 'Processing payment...';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get sendCode => 'Send Code';
+
+  @override
+  String get phoneNumber => 'Phone Number';
 }

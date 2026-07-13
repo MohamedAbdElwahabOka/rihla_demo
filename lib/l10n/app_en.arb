@@ -192,5 +192,9 @@
   "reasonOther": "Other",
   "noActivePlan": "No active plan",
   "subscriptionRequired": "You need an active subscription to book. Choose a plan to continue.",
-  "processingPayment": "Processing payment..."
+  "processingPayment": "Processing payment...",
+  "register": "Register",
+  "login": "Login",
+  "sendCode": "Send Code",
+  "phoneNumber": "Phone Number"
 }

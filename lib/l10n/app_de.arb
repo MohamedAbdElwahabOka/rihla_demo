@@ -110,5 +110,9 @@
   "reasonOther": "Sonstiges",
   "noActivePlan": "Kein aktives Abo",
   "subscriptionRequired": "Sie benötigen ein aktives Abonnement, um zu buchen. Wählen Sie einen Plan, um fortzufahren.",
-  "processingPayment": "Zahlung wird verarbeitet..."
+  "processingPayment": "Zahlung wird verarbeitet...",
+  "register": "Registrieren",
+  "login": "Anmelden",
+  "sendCode": "Code senden",
+  "phoneNumber": "Telefonnummer"
 }

@@ -363,4 +363,16 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get processingPayment => 'Zahlung wird verarbeitet...';
+
+  @override
+  String get register => 'Registrieren';
+
+  @override
+  String get login => 'Anmelden';
+
+  @override
+  String get sendCode => 'Code senden';
+
+  @override
+  String get phoneNumber => 'Telefonnummer';
 }
