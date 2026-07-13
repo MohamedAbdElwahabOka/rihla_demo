@@ -1,35 +1,18 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../widgets/gradient_image.dart';
 
-/// S0 — Splash / Onboarding (FR-001-003). Auto-advances to the shell after
-/// 3 seconds, simulating an already-authenticated returning traveler.
-class SplashScreen extends StatefulWidget {
+/// S0 — Splash / Onboarding (FR-001-002). Waits for an explicit Get
+/// Started / Sign In choice — no auto-advance timer.
+///
+/// TEMPORARY (until Phase 5 builds real Auth/OTP/Registration): "Get
+/// Started" routes straight to the shell so Home/Profile stay reachable
+/// for testing later phases. "Sign In" still points at the Phase-5
+/// placeholder.
+class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  Timer? _autoAdvance;
-
-  @override
-  void initState() {
-    super.initState();
-    _autoAdvance = Timer(const Duration(seconds: 3), () {
-      if (mounted) Navigator.of(context).pushReplacementNamed(Routes.shell);
-    });
-  }
-
-  @override
-  void dispose() {
-    _autoAdvance?.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                   const SizedBox(height: 24),
                   FilledButton(
-                    onPressed: () => Navigator.of(context).pushNamed(Routes.auth),
+                    onPressed: () => Navigator.of(context).pushReplacementNamed(Routes.shell),
                     child: Text(l10n.getStarted),
                   ),
                   const SizedBox(height: 12),
