@@ -31,11 +31,16 @@ class _MainShellState extends State<MainShell> {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode.toUpperCase();
 
+    // Not const: each of these reads mutable global state (userSubscription,
+    // currentUser, bookings) that can change on a different pushed screen
+    // (e.g. purchasing a plan). A const instance here would be identical
+    // across rebuilds, so Flutter would skip re-visiting it entirely and
+    // this tab would keep showing stale data after switching back to it.
     final tabs = [
       HomeScreen(onSearchTap: () => setState(() => _tab = 1)),
-      const ExploreScreen(),
-      const MyBookingsScreen(),
-      const ProfileScreen(),
+      ExploreScreen(),
+      MyBookingsScreen(),
+      ProfileScreen(),
     ];
 
     return Scaffold(
