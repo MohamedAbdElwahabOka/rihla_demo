@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: GradientImage(icon: Icons.sailing, label: 'Hurghada, Red Sea'),
+              child: GradientImage(icon: Icons.sailing, label: l10n.splashLocation),
             ),
             Padding(
               padding: const EdgeInsets.all(24),

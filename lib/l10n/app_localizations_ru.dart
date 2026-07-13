@@ -412,4 +412,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get countryRussia => 'Россия';
+
+  @override
+  String get splashLocation => 'Хургада, Красное море';
 }

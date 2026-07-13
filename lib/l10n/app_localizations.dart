@@ -849,6 +849,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Russia'**
   String get countryRussia;
+
+  /// No description provided for @splashLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Hurghada, Red Sea'**
+  String get splashLocation;
 }
 
 class _AppLocalizationsDelegate

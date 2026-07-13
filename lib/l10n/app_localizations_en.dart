@@ -407,4 +407,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get countryRussia => 'Russia';
+
+  @override
+  String get splashLocation => 'Hurghada, Red Sea';
 }

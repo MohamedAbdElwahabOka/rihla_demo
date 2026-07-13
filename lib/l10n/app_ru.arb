@@ -124,5 +124,6 @@
   "numberNotRegistered": "Этот номер не зарегистрирован. Пожалуйста, сначала зарегистрируйтесь.",
   "countryEgypt": "Египет",
   "countryGermany": "Германия",
-  "countryRussia": "Россия"
+  "countryRussia": "Россия",
+  "splashLocation": "Хургада, Красное море"
 }

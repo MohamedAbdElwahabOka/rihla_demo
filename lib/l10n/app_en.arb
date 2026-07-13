@@ -206,5 +206,6 @@
   "numberNotRegistered": "This number isn't registered. Please register first.",
   "countryEgypt": "Egypt",
   "countryGermany": "Germany",
-  "countryRussia": "Russia"
+  "countryRussia": "Russia",
+  "splashLocation": "Hurghada, Red Sea"
 }
