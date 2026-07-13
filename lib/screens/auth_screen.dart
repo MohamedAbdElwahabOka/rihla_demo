@@ -3,11 +3,7 @@ import '../auth_request.dart';
 import '../l10n/app_localizations.dart';
 import '../routes.dart';
 
-const _countryCodes = <String, String>{
-  '+20': '+20 Egypt',
-  '+49': '+49 Germany',
-  '+7': '+7 Russia',
-};
+const _countryCodeOrder = ['+20', '+49', '+7'];
 
 /// S9 — Authentication: Registration + Login (FR-004-007).
 class AuthScreen extends StatefulWidget {
@@ -55,6 +51,13 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
+  String _countryLabel(AppLocalizations l10n, String code) => switch (code) {
+        '+20' => '+20 ${l10n.countryEgypt}',
+        '+49' => '+49 ${l10n.countryGermany}',
+        '+7' => '+7 ${l10n.countryRussia}',
+        _ => code,
+      };
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -91,7 +94,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: DropdownButtonFormField<String>(
                       initialValue: _countryCode,
                       decoration: const InputDecoration(border: OutlineInputBorder()),
-                      items: _countryCodes.entries.map((e) => DropdownMenuItem(value: e.key, child: Text(e.value, overflow: TextOverflow.ellipsis))).toList(),
+                      items: _countryCodeOrder.map((code) => DropdownMenuItem(value: code, child: Text(_countryLabel(l10n, code), overflow: TextOverflow.ellipsis))).toList(),
                       onChanged: (v) => setState(() => _countryCode = v ?? _countryCode),
                     ),
                   ),

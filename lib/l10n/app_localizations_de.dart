@@ -401,4 +401,13 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get numberNotRegistered =>
       'Diese Nummer ist nicht registriert. Bitte zuerst registrieren.';
+
+  @override
+  String get countryEgypt => 'Ägypten';
+
+  @override
+  String get countryGermany => 'Deutschland';
+
+  @override
+  String get countryRussia => 'Russland';
 }

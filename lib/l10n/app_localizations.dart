@@ -831,6 +831,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This number isn\'t registered. Please register first.'**
   String get numberNotRegistered;
+
+  /// No description provided for @countryEgypt.
+  ///
+  /// In en, this message translates to:
+  /// **'Egypt'**
+  String get countryEgypt;
+
+  /// No description provided for @countryGermany.
+  ///
+  /// In en, this message translates to:
+  /// **'Germany'**
+  String get countryGermany;
+
+  /// No description provided for @countryRussia.
+  ///
+  /// In en, this message translates to:
+  /// **'Russia'**
+  String get countryRussia;
 }
 
 class _AppLocalizationsDelegate

@@ -398,4 +398,13 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get numberNotRegistered =>
       'This number isn\'t registered. Please register first.';
+
+  @override
+  String get countryEgypt => 'Egypt';
+
+  @override
+  String get countryGermany => 'Germany';
+
+  @override
+  String get countryRussia => 'Russia';
 }

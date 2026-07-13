@@ -203,5 +203,8 @@
   "otpRemaining": "You have {count} OTP requests remaining today",
   "otpLimitReached": "Daily OTP limit reached. Try again tomorrow.",
   "resendCode": "Resend Code",
-  "numberNotRegistered": "This number isn't registered. Please register first."
+  "numberNotRegistered": "This number isn't registered. Please register first.",
+  "countryEgypt": "Egypt",
+  "countryGermany": "Germany",
+  "countryRussia": "Russia"
 }

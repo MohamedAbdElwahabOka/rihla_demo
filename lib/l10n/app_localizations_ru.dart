@@ -403,4 +403,13 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get numberNotRegistered =>
       'Этот номер не зарегистрирован. Пожалуйста, сначала зарегистрируйтесь.';
+
+  @override
+  String get countryEgypt => 'Египет';
+
+  @override
+  String get countryGermany => 'Германия';
+
+  @override
+  String get countryRussia => 'Россия';
 }

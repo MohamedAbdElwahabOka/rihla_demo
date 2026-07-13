@@ -121,5 +121,8 @@
   "otpRemaining": "Sie haben heute noch {count} OTP-Anfragen übrig",
   "otpLimitReached": "Tägliches OTP-Limit erreicht. Versuchen Sie es morgen erneut.",
   "resendCode": "Code erneut senden",
-  "numberNotRegistered": "Diese Nummer ist nicht registriert. Bitte zuerst registrieren."
+  "numberNotRegistered": "Diese Nummer ist nicht registriert. Bitte zuerst registrieren.",
+  "countryEgypt": "Ägypten",
+  "countryGermany": "Deutschland",
+  "countryRussia": "Russland"
 }
