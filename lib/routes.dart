@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'main_shell.dart';
 import 'screens/booking_step1_screen.dart';
+import 'screens/my_bookings_screen.dart';
+import 'screens/payments_screen.dart';
+import 'screens/plans_screen.dart';
+import 'screens/refund_screen.dart';
+import 'screens/subscription_screen.dart';
 import 'screens/booking_step2_screen.dart';
 import 'screens/booking_step3_screen.dart';
 import 'screens/detail_screen.dart';
@@ -35,6 +40,11 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.booking2: (_) => const BookingStep2Screen(),
   Routes.booking3: (_) => const BookingStep3Screen(),
   Routes.ticket: (_) => const TicketScreen(),
+  Routes.myBookings: (_) => const MyBookingsScreen(),
+  Routes.subscription: (_) => const SubscriptionScreen(),
+  Routes.plans: (_) => const PlansScreen(),
+  Routes.payments: (_) => const PaymentsScreen(),
+  Routes.refund: (_) => const RefundScreen(),
   // Wired in later phases:
   Routes.auth: (_) => const Placeholder(),
   Routes.otp: (_) => const Placeholder(),
