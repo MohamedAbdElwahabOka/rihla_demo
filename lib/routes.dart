@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'main_shell.dart';
+import 'screens/booking_step1_screen.dart';
+import 'screens/booking_step2_screen.dart';
+import 'screens/booking_step3_screen.dart';
 import 'screens/detail_screen.dart';
 import 'screens/splash_screen.dart';
+import 'screens/ticket_screen.dart';
 
 /// Named route constants. Screens not yet built in the current phase point
 /// at [MainShell] as a placeholder and are rewired as later phases land.
@@ -27,9 +31,12 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.shell: (_) => const MainShell(),
   Routes.splash: (_) => const SplashScreen(),
   Routes.detail: (_) => const DetailScreen(),
+  Routes.booking1: (_) => const BookingStep1Screen(),
+  Routes.booking2: (_) => const BookingStep2Screen(),
+  Routes.booking3: (_) => const BookingStep3Screen(),
+  Routes.ticket: (_) => const TicketScreen(),
   // Wired in later phases:
   Routes.auth: (_) => const Placeholder(),
   Routes.otp: (_) => const Placeholder(),
-  Routes.booking1: (_) => const Placeholder(),
   Routes.notifications: (_) => const Placeholder(),
 };

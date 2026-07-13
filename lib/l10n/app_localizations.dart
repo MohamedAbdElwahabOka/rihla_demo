@@ -315,6 +315,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Subscriber'**
   String get subscriberBadge;
+
+  /// No description provided for @chooseDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a date and time'**
+  String get chooseDateTime;
+
+  /// No description provided for @adults.
+  ///
+  /// In en, this message translates to:
+  /// **'Adults'**
+  String get adults;
+
+  /// No description provided for @children.
+  ///
+  /// In en, this message translates to:
+  /// **'Children'**
+  String get children;
+
+  /// No description provided for @spotsLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} spots left'**
+  String spotsLeft(int count);
+
+  /// No description provided for @soldOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold out'**
+  String get soldOut;
+
+  /// No description provided for @continueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueLabel;
+
+  /// No description provided for @contactDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Details'**
+  String get contactDetails;
+
+  /// No description provided for @fullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get fullName;
+
+  /// No description provided for @primaryPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary Phone'**
+  String get primaryPhone;
+
+  /// No description provided for @backupPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup Phone'**
+  String get backupPhone;
+
+  /// No description provided for @hotel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hotel Name'**
+  String get hotel;
+
+  /// No description provided for @specialRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Requests'**
+  String get specialRequests;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @fieldRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get fieldRequired;
+
+  /// No description provided for @orderSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Summary'**
+  String get orderSummary;
+
+  /// No description provided for @payVendorNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'No payment is processed through Rihla. Total price is due directly to the vendor in cash or via their payment system upon arrival.'**
+  String get payVendorNotice;
+
+  /// No description provided for @confirmBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Booking'**
+  String get confirmBooking;
+
+  /// No description provided for @creditNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Using your {type} credit — {remaining} remaining after this booking'**
+  String creditNote(String type, int remaining);
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @bookingSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Submitted!'**
+  String get bookingSubmitted;
+
+  /// No description provided for @download.
+  ///
+  /// In en, this message translates to:
+  /// **'Download Ticket'**
+  String get download;
+
+  /// No description provided for @shareWhatsapp.
+  ///
+  /// In en, this message translates to:
+  /// **'Share via WhatsApp'**
+  String get shareWhatsapp;
+
+  /// No description provided for @addCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Calendar'**
+  String get addCalendar;
+
+  /// No description provided for @bookAnother.
+  ///
+  /// In en, this message translates to:
+  /// **'Book Another Experience'**
+  String get bookAnother;
+
+  /// No description provided for @statusConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get statusConfirmed;
+
+  /// No description provided for @referenceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Reference'**
+  String get referenceLabel;
+
+  /// No description provided for @ticketNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Number'**
+  String get ticketNumberLabel;
+
+  /// No description provided for @paymentDueNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment due directly to vendor upon arrival.'**
+  String get paymentDueNotice;
 }
 
 class _AppLocalizationsDelegate

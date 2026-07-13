@@ -52,5 +52,50 @@
   },
   "hotelPickup": "Hotel pickup",
   "freeCancellation": "Free cancellation",
-  "subscriberBadge": "Subscriber"
+  "subscriberBadge": "Subscriber",
+  "chooseDateTime": "Choose a date and time",
+  "adults": "Adults",
+  "children": "Children",
+  "spotsLeft": "{count} spots left",
+  "@spotsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "soldOut": "Sold out",
+  "continueLabel": "Continue",
+  "contactDetails": "Contact Details",
+  "fullName": "Full Name",
+  "primaryPhone": "Primary Phone",
+  "backupPhone": "Backup Phone",
+  "hotel": "Hotel Name",
+  "specialRequests": "Special Requests",
+  "email": "Email",
+  "fieldRequired": "This field is required",
+  "orderSummary": "Order Summary",
+  "payVendorNotice": "No payment is processed through Rihla. Total price is due directly to the vendor in cash or via their payment system upon arrival.",
+  "confirmBooking": "Confirm Booking",
+  "creditNote": "Using your {type} credit — {remaining} remaining after this booking",
+  "@creditNote": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
+  "total": "Total",
+  "bookingSubmitted": "Booking Submitted!",
+  "download": "Download Ticket",
+  "shareWhatsapp": "Share via WhatsApp",
+  "addCalendar": "Add to Calendar",
+  "bookAnother": "Book Another Experience",
+  "statusConfirmed": "Confirmed",
+  "referenceLabel": "Booking Reference",
+  "ticketNumberLabel": "Ticket Number",
+  "paymentDueNotice": "Payment due directly to vendor upon arrival."
 }

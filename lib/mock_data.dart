@@ -190,6 +190,12 @@ class PaymentMethod {
   const PaymentMethod({required this.id, required this.brand, required this.last4});
 }
 
+class TimeSlot {
+  final String time;
+  final int spotsLeft; // 0 = sold out
+  const TimeSlot(this.time, this.spotsLeft);
+}
+
 class WeatherSnapshot {
   final String city;
   final int tempC;
@@ -264,6 +270,15 @@ const sortOptions = <String>[
 // ---------------------------------------------------------------------------
 
 const currentWeather = WeatherSnapshot(city: 'Hurghada', tempC: 29, condition: 'Good visibility', windKmh: 12);
+
+const timeSlots = <TimeSlot>[
+  TimeSlot('08:00', 5),
+  TimeSlot('10:00', 3),
+  TimeSlot('12:00', 0),
+  TimeSlot('14:00', 8),
+  TimeSlot('16:00', 2),
+  TimeSlot('18:00', 0),
+];
 
 const currentUser = UserProfile(
   firstName: 'Ahmed',

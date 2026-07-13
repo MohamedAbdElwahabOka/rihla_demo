@@ -119,4 +119,94 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get subscriberBadge => 'Подписчик';
+
+  @override
+  String get chooseDateTime => 'Выберите дату и время';
+
+  @override
+  String get adults => 'Взрослые';
+
+  @override
+  String get children => 'Дети';
+
+  @override
+  String spotsLeft(int count) {
+    return '$count мест осталось';
+  }
+
+  @override
+  String get soldOut => 'Мест нет';
+
+  @override
+  String get continueLabel => 'Продолжить';
+
+  @override
+  String get contactDetails => 'Контактные данные';
+
+  @override
+  String get fullName => 'Полное имя';
+
+  @override
+  String get primaryPhone => 'Основной телефон';
+
+  @override
+  String get backupPhone => 'Запасной телефон';
+
+  @override
+  String get hotel => 'Название отеля';
+
+  @override
+  String get specialRequests => 'Особые пожелания';
+
+  @override
+  String get email => 'Эл. почта';
+
+  @override
+  String get fieldRequired => 'Это поле обязательно';
+
+  @override
+  String get orderSummary => 'Сводка заказа';
+
+  @override
+  String get payVendorNotice =>
+      'Rihla не обрабатывает платежи. Полная стоимость оплачивается напрямую поставщику услуг наличными или через его платёжную систему по прибытии.';
+
+  @override
+  String get confirmBooking => 'Подтвердить бронирование';
+
+  @override
+  String creditNote(String type, int remaining) {
+    return 'Используется ваш кредит «$type» — $remaining остаётся после этого бронирования';
+  }
+
+  @override
+  String get total => 'Итого';
+
+  @override
+  String get bookingSubmitted => 'Бронирование отправлено!';
+
+  @override
+  String get download => 'Скачать билет';
+
+  @override
+  String get shareWhatsapp => 'Поделиться через WhatsApp';
+
+  @override
+  String get addCalendar => 'Добавить в календарь';
+
+  @override
+  String get bookAnother => 'Забронировать ещё одно впечатление';
+
+  @override
+  String get statusConfirmed => 'Подтверждено';
+
+  @override
+  String get referenceLabel => 'Номер бронирования';
+
+  @override
+  String get ticketNumberLabel => 'Номер билета';
+
+  @override
+  String get paymentDueNotice =>
+      'Оплата производится напрямую поставщику услуг по прибытии.';
 }

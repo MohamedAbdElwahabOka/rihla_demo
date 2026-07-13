@@ -119,4 +119,93 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get subscriberBadge => 'Subscriber';
+
+  @override
+  String get chooseDateTime => 'Choose a date and time';
+
+  @override
+  String get adults => 'Adults';
+
+  @override
+  String get children => 'Children';
+
+  @override
+  String spotsLeft(int count) {
+    return '$count spots left';
+  }
+
+  @override
+  String get soldOut => 'Sold out';
+
+  @override
+  String get continueLabel => 'Continue';
+
+  @override
+  String get contactDetails => 'Contact Details';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get primaryPhone => 'Primary Phone';
+
+  @override
+  String get backupPhone => 'Backup Phone';
+
+  @override
+  String get hotel => 'Hotel Name';
+
+  @override
+  String get specialRequests => 'Special Requests';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get fieldRequired => 'This field is required';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String get payVendorNotice =>
+      'No payment is processed through Rihla. Total price is due directly to the vendor in cash or via their payment system upon arrival.';
+
+  @override
+  String get confirmBooking => 'Confirm Booking';
+
+  @override
+  String creditNote(String type, int remaining) {
+    return 'Using your $type credit — $remaining remaining after this booking';
+  }
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get bookingSubmitted => 'Booking Submitted!';
+
+  @override
+  String get download => 'Download Ticket';
+
+  @override
+  String get shareWhatsapp => 'Share via WhatsApp';
+
+  @override
+  String get addCalendar => 'Add to Calendar';
+
+  @override
+  String get bookAnother => 'Book Another Experience';
+
+  @override
+  String get statusConfirmed => 'Confirmed';
+
+  @override
+  String get referenceLabel => 'Booking Reference';
+
+  @override
+  String get ticketNumberLabel => 'Ticket Number';
+
+  @override
+  String get paymentDueNotice => 'Payment due directly to vendor upon arrival.';
 }
