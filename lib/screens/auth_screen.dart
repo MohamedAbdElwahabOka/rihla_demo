@@ -90,10 +90,11 @@ class _AuthScreenState extends State<AuthScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 130,
+                    width: 140,
                     child: DropdownButtonFormField<String>(
                       initialValue: _countryCode,
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
+                      isExpanded: true,
+                      decoration: const InputDecoration(border: OutlineInputBorder(), contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 12)),
                       items: _countryCodeOrder.map((code) => DropdownMenuItem(value: code, child: Text(_countryLabel(l10n, code), overflow: TextOverflow.ellipsis))).toList(),
                       onChanged: (v) => setState(() => _countryCode = v ?? _countryCode),
                     ),

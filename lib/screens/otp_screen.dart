@@ -55,7 +55,10 @@ class _OtpScreenState extends State<OtpScreen> {
       return;
     }
 
-    final matchesRegistered = request.phone == registeredPhoneNumber;
+    // Compare digits only -- users type phone numbers without the exact
+    // spacing the demo constant happens to use (e.g. via a numeric keypad
+    // with no convenient space key).
+    final matchesRegistered = request.phone.replaceAll(RegExp(r'\s'), '') == registeredPhoneNumber.replaceAll(RegExp(r'\s'), '');
     if (matchesRegistered) {
       currentUser = registeredUserProfile;
       userSubscription = registeredUserSubscription;
