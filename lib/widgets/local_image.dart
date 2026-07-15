@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'gradient_image.dart';
 
-/// A network photo that uses [GradientImage] as both its loading placeholder
-/// and its error fallback. If there is no connectivity (e.g. during an
-/// offline demo) it silently degrades to the gradient look — never a broken
-/// image glyph. Drop-in replacement for [GradientImage] plus a [url].
-class RemoteImage extends StatelessWidget {
-  final String url;
+/// A bundled asset photo that uses [GradientImage] as its fallback whenever the
+/// asset is missing — an empty [path], or a category whose photos haven't been
+/// added yet (e.g. spa). It never shows a broken-image glyph, so an offline
+/// demo always looks intentional. Drop-in replacement for [GradientImage] plus
+/// an asset [path].
+class LocalImage extends StatelessWidget {
+  final String path;
   final IconData icon;
   final String label;
   final double? height;
   final double borderRadius;
 
-  const RemoteImage({
+  const LocalImage({
     super.key,
-    required this.url,
+    required this.path,
     required this.icon,
     required this.label,
     this.height,
@@ -24,17 +25,17 @@ class RemoteImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fallback = GradientImage(icon: icon, label: label, height: height, borderRadius: borderRadius);
+    if (path.isEmpty) return fallback;
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
       child: SizedBox(
         height: height,
         width: double.infinity,
-        child: Image.network(
-          url,
+        child: Image.asset(
+          path,
           fit: BoxFit.cover,
           height: height,
           width: double.infinity,
-          loadingBuilder: (context, child, progress) => progress == null ? child : fallback,
           errorBuilder: (context, error, stack) => fallback,
         ),
       ),
