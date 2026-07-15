@@ -3,7 +3,7 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
-import '../widgets/gradient_image.dart';
+import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
 
 /// S1 — Home (FR-010-024). Hosted as the Home tab body in [MainShell].
@@ -206,7 +206,7 @@ class _FeaturedCard extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  GradientImage(icon: experience.icon, label: experience.category, height: 110),
+                  LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category, height: 110),
                   if (experience.badge != null)
                     Positioned(
                       top: 8,
@@ -266,7 +266,7 @@ class _PopularCard extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  GradientImage(icon: experience.icon, label: experience.category, height: 100),
+                  LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category, height: 100),
                   Positioned(
                     top: 6,
                     right: 6,
@@ -319,7 +319,7 @@ class _RestaurantCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            GradientImage(icon: restaurant.icon, label: restaurant.cuisine, height: 90),
+            LocalImage(path: restaurant.primaryImage, icon: restaurant.icon, label: restaurant.cuisine, height: 90),
             Padding(
               padding: const EdgeInsets.all(8),
               child: Column(

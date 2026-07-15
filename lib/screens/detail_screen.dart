@@ -3,7 +3,7 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
-import '../widgets/gradient_image.dart';
+import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
 
 /// S2 — Experience Detail (FR-027-037). Reads the [Experience] passed via
@@ -36,6 +36,9 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final experience = ModalRoute.of(context)!.settings.arguments as Experience;
+    final photos = experience.images;
+    final photoCount = photos.isEmpty ? 1 : photos.length;
+    final heroIndex = _heroIndex.clamp(0, photoCount - 1);
     final avgRating = experience.reviewsList.isEmpty
         ? experience.rating
         : experience.reviewsList.map((r) => r.rating).reduce((a, b) => a + b) / experience.reviewsList.length;
@@ -46,7 +49,12 @@ class _DetailScreenState extends State<DetailScreen> {
           SliverToBoxAdapter(
             child: Stack(
               children: [
-                GradientImage(icon: experience.icon, label: l10n.photoIndicator(_heroIndex + 1, 4), height: 320),
+                LocalImage(
+                  path: photos.isEmpty ? '' : photos[heroIndex],
+                  icon: experience.icon,
+                  label: l10n.photoIndicator(heroIndex + 1, photoCount),
+                  height: 320,
+                ),
                 Positioned(
                   top: 40,
                   left: 12,
@@ -97,7 +105,7 @@ class _DetailScreenState extends State<DetailScreen> {
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 scrollDirection: Axis.horizontal,
-                itemCount: 4,
+                itemCount: photoCount,
                 separatorBuilder: (_, _) => const SizedBox(width: 8),
                 itemBuilder: (context, i) => GestureDetector(
                   onTap: () => setState(() => _heroIndex = i),
@@ -105,11 +113,11 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: 64,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: _heroIndex == i ? RihlaColors.seaBlue : Colors.transparent, width: 2),
+                      border: Border.all(color: heroIndex == i ? RihlaColors.seaBlue : Colors.transparent, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
-                      child: GradientImage(icon: experience.icon, label: '${i + 1}', height: 76),
+                      child: LocalImage(path: photos.isEmpty ? '' : photos[i], icon: experience.icon, label: '${i + 1}', height: 76),
                     ),
                   ),
                 ),

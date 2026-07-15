@@ -4,7 +4,7 @@ import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
-import '../widgets/gradient_image.dart';
+import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
 
 enum _SortOption { relevance, topRated, priceLowHigh, priceHighLow, newest }
@@ -217,7 +217,7 @@ class _ResultCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: SizedBox(width: 100, height: 100, child: GradientImage(icon: experience.icon, label: experience.category)),
+                child: SizedBox(width: 100, height: 100, child: LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category)),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -259,7 +259,7 @@ class _RestaurantResultCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: SizedBox(width: 100, height: 100, child: GradientImage(icon: restaurant.icon, label: restaurant.cuisine)),
+              child: SizedBox(width: 100, height: 100, child: LocalImage(path: restaurant.primaryImage, icon: restaurant.icon, label: restaurant.cuisine)),
             ),
             const SizedBox(width: 12),
             Expanded(
