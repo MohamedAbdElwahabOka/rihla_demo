@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'routes.dart';
 
 // ---------------------------------------------------------------------------
 // Models (plain Dart — no fromJson; all content authored directly below).
@@ -19,6 +20,7 @@ class Review {
   final String text;
   final String date;
   final bool isSubscriber;
+  final String? vendorReply;
   const Review(
     this.reviewerName,
     this.countryFlag,
@@ -26,6 +28,7 @@ class Review {
     this.text,
     this.date, {
     this.isSubscriber = false,
+    this.vendorReply,
   });
 }
 
@@ -41,6 +44,8 @@ class Experience {
   final int priceOriginal;
   final int priceDiscounted;
   final IconData icon;
+  final List<String> images;
+  final String vendorName;
   final List<String> included;
   final List<String> excluded;
   final List<ItineraryStop> itinerary;
@@ -62,6 +67,8 @@ class Experience {
     required this.priceOriginal,
     required this.priceDiscounted,
     required this.icon,
+    required this.images,
+    required this.vendorName,
     required this.included,
     required this.excluded,
     required this.itinerary,
@@ -71,6 +78,10 @@ class Experience {
     this.hotelPickup = true,
     this.languages = 'English, German, Russian',
   });
+
+  /// First bundled photo, or '' when this experience has no photos yet
+  /// (LocalImage renders the gradient placeholder for an empty path).
+  String get primaryImage => images.isEmpty ? '' : images.first;
 }
 
 class Restaurant {
@@ -81,6 +92,7 @@ class Restaurant {
   final int reviewCount;
   final List<String> badges; // HALAL, VEGETARIAN, OPEN NOW
   final IconData icon;
+  final List<String> images;
   final String priceRange; // €, €€, €€€
 
   const Restaurant({
@@ -91,8 +103,12 @@ class Restaurant {
     required this.reviewCount,
     required this.badges,
     required this.icon,
+    required this.images,
     required this.priceRange,
   });
+
+  /// First bundled photo, or '' when this restaurant has no photos yet.
+  String get primaryImage => images.isEmpty ? '' : images.first;
 }
 
 class SubscriptionPlan {
@@ -132,6 +148,7 @@ class UserSubscription {
 class Booking {
   final String id;
   final String experienceTitle;
+  final String vendorName;
   final IconData icon;
   final DateTime date;
   final String time;
@@ -149,6 +166,7 @@ class Booking {
   Booking({
     required this.id,
     required this.experienceTitle,
+    required this.vendorName,
     required this.icon,
     required this.date,
     required this.time,
@@ -171,6 +189,7 @@ class AppNotification {
   final String title;
   final String body;
   final String relativeTime;
+  final String? route;
   bool unread;
 
   AppNotification({
@@ -179,6 +198,7 @@ class AppNotification {
     required this.title,
     required this.body,
     required this.relativeTime,
+    this.route,
     this.unread = true,
   });
 }
@@ -340,6 +360,13 @@ const experiences = <Experience>[
     priceOriginal: 45,
     priceDiscounted: 32,
     icon: Icons.scuba_diving,
+    images: [
+      'assets/giftun/giftun (1).jpg',
+      'assets/giftun/giftun (2).jpg',
+      'assets/giftun/giftun (3).jpg',
+      'assets/giftun/giftun (4).jpg',
+    ],
+    vendorName: 'Red Sea Marine Tours',
     badge: 'BESTSELLER',
     included: ['Hotel pickup', 'Lunch aboard', 'Snorkel gear', 'Marine park fee'],
     excluded: ['Drinks', 'Tips'],
@@ -351,7 +378,8 @@ const experiences = <Experience>[
       ItineraryStop('16:30', 'Return to hotel'),
     ],
     reviewsList: [
-      Review('Lena K.', '🇩🇪', 5, 'Crystal clear water and the crew was fantastic with our kids.', '02/06/2026'),
+      Review('Lena K.', '🇩🇪', 5, 'Crystal clear water and the crew was fantastic with our kids.', '02/06/2026',
+          vendorReply: 'Thank you Lena! We loved having your family aboard.'),
       Review('Oleg P.', '🇷🇺', 4, 'Great trip, lunch could be better.', '18/05/2026', isSubscriber: true),
     ],
   ),
@@ -369,6 +397,13 @@ const experiences = <Experience>[
     priceOriginal: 90,
     priceDiscounted: 68,
     icon: Icons.water,
+    images: [
+      'assets/diving/diving (1).jpg',
+      'assets/diving/diving (2).jpg',
+      'assets/diving/diving (3).jpg',
+      'assets/diving/diving (4).jpg',
+    ],
+    vendorName: 'Blue Depth Divers',
     badge: 'DEAL',
     included: ['Hotel pickup', 'Full dive gear', 'Dive guide', 'Lunch'],
     excluded: ['Dive certification fees', 'Underwater camera rental'],
@@ -398,6 +433,14 @@ const experiences = <Experience>[
     priceOriginal: 38,
     priceDiscounted: 27,
     icon: Icons.terrain,
+    images: [
+      'assets/safari/safari (1).jpg',
+      'assets/safari/safari (2).jpg',
+      'assets/safari/safari (3).jpg',
+      'assets/safari/safari (4).jpg',
+      'assets/safari/safari (5).jpg',
+    ],
+    vendorName: 'Sahara Adventures',
     badge: 'BESTSELLER',
     included: ['Hotel pickup', 'Safety briefing', 'Bedouin dinner', 'Tea ceremony'],
     excluded: ['Alcoholic drinks', 'Tips for guides'],
@@ -427,6 +470,14 @@ const experiences = <Experience>[
     priceOriginal: 42,
     priceDiscounted: 30,
     icon: Icons.sailing,
+    images: [
+      'assets/snorkeling/snorkeling (1).jpg',
+      'assets/snorkeling/snorkeling (2).jpg',
+      'assets/snorkeling/snorkeling (3).jpg',
+      'assets/snorkeling/snorkeling (4).jpg',
+      'assets/snorkeling/snorkeling (5).jpg',
+    ],
+    vendorName: 'Dolphin Bay Cruises',
     badge: 'NEW',
     included: ['Hotel pickup', 'Lunch aboard', 'Snorkel gear'],
     excluded: ['Drinks', 'Wetsuit rental'],
@@ -455,6 +506,14 @@ const experiences = <Experience>[
     priceOriginal: 30,
     priceDiscounted: 22,
     icon: Icons.two_wheeler,
+    images: [
+      'assets/safari/safari (1).jpg',
+      'assets/safari/safari (2).jpg',
+      'assets/safari/safari (3).jpg',
+      'assets/safari/safari (4).jpg',
+      'assets/safari/safari (5).jpg',
+    ],
+    vendorName: 'Desert Wheels',
     included: ['Hotel pickup', 'Quad bike & fuel', 'Safety gear', 'Tea at camp'],
     excluded: ['Photos/videos', 'Tips'],
     itinerary: [
@@ -482,6 +541,8 @@ const experiences = <Experience>[
     priceOriginal: 55,
     priceDiscounted: 40,
     icon: Icons.spa,
+    images: [], // no assets/spa/ folder yet — falls back to gradient placeholder
+    vendorName: 'Oasis Spa Retreat',
     badge: 'DEAL',
     included: ['Salt scrub', 'Massage (60 min)', 'Pool & lounge access', 'Herbal tea'],
     excluded: ['Additional treatments', 'Transport'],
@@ -507,6 +568,10 @@ const restaurants = <Restaurant>[
     reviewCount: 340,
     badges: ['HALAL', 'OPEN NOW'],
     icon: Icons.set_meal,
+    images: [
+      'assets/restaurant/restaurant (1).jpg',
+      'assets/restaurant/restaurant (2).jpg',
+    ],
     priceRange: '€€',
   ),
   Restaurant(
@@ -517,6 +582,10 @@ const restaurants = <Restaurant>[
     reviewCount: 210,
     badges: ['HALAL', 'VEGETARIAN'],
     icon: Icons.restaurant,
+    images: [
+      'assets/restaurant/restaurant (3).jpg',
+      'assets/restaurant/restaurant (4).jpg',
+    ],
     priceRange: '€€€',
   ),
   Restaurant(
@@ -527,6 +596,10 @@ const restaurants = <Restaurant>[
     reviewCount: 98,
     badges: ['VEGETARIAN', 'OPEN NOW'],
     icon: Icons.eco,
+    images: [
+      'assets/restaurant/restaurant (2).jpg',
+      'assets/restaurant/restaurant (3).jpg',
+    ],
     priceRange: '€',
   ),
 ];
@@ -582,6 +655,7 @@ final bookings = <Booking>[
   Booking(
     id: 'b1',
     experienceTitle: 'Giftun Island Snorkeling',
+    vendorName: 'Red Sea Marine Tours',
     icon: Icons.scuba_diving,
     date: DateTime(2026, 7, 20),
     time: '09:00',
@@ -598,6 +672,7 @@ final bookings = <Booking>[
   Booking(
     id: 'b2',
     experienceTitle: 'Desert Safari & Bedouin Dinner',
+    vendorName: 'Sahara Adventures',
     icon: Icons.terrain,
     date: DateTime(2026, 6, 25),
     time: '16:00',
@@ -615,6 +690,7 @@ final bookings = <Booking>[
   Booking(
     id: 'b3',
     experienceTitle: 'Quad Biking Desert Adventure',
+    vendorName: 'Desert Wheels',
     icon: Icons.two_wheeler,
     date: DateTime(2026, 6, 10),
     time: '08:00',
@@ -636,6 +712,7 @@ final notifications = <AppNotification>[
     title: 'Booking Confirmed',
     body: 'Your Giftun Island Snorkeling booking is confirmed for 20/07/2026.',
     relativeTime: '2h ago',
+    route: Routes.myBookings,
   ),
   AppNotification(
     id: 'n2',
@@ -643,6 +720,7 @@ final notifications = <AppNotification>[
     title: 'New Plan Available',
     body: 'Check out the new Ultimate Explorer subscription plan.',
     relativeTime: '1d ago',
+    route: Routes.plans,
   ),
   AppNotification(
     id: 'n3',
@@ -650,6 +728,7 @@ final notifications = <AppNotification>[
     title: 'Leave a Review',
     body: 'How was your Desert Safari & Bedouin Dinner? Leave a review.',
     relativeTime: '2d ago',
+    route: Routes.myBookings,
   ),
   AppNotification(
     id: 'n4',
@@ -657,6 +736,7 @@ final notifications = <AppNotification>[
     title: 'Limited Deal',
     body: 'Hurghada Spa & Wellness Day is now on Deal pricing.',
     relativeTime: '3d ago',
+    route: Routes.plans,
     unread: false,
   ),
   AppNotification(
@@ -673,6 +753,7 @@ final notifications = <AppNotification>[
     title: 'Refund Update',
     body: 'Your refund request has been approved.',
     relativeTime: '6d ago',
+    route: Routes.subscription,
     unread: false,
   ),
 ];
@@ -681,3 +762,27 @@ final paymentMethods = <PaymentMethod>[
   const PaymentMethod(id: 'pm1', brand: 'Visa', last4: '4242'),
   const PaymentMethod(id: 'pm2', brand: 'Mastercard', last4: '1881'),
 ];
+
+// ---------------------------------------------------------------------------
+// v2 globals (favorites, searches) + review star-distribution helper.
+// Mutable, in-memory only — reset on every fresh launch (no persistence).
+// ---------------------------------------------------------------------------
+
+/// Experience ids the traveler has hearted. Pre-seeded with one so the
+/// Favorites list isn't empty on first open.
+final Set<String> favoriteIds = {'e6'};
+
+/// Most-recent Explore search terms (newest first, capped at 5 by the UI).
+final List<String> recentSearches = ['Snorkeling', 'Desert'];
+
+/// Curated trending searches shown on the empty Explore state.
+const List<String> trendingSearches = ['Diving', 'Giftun Island', 'Spa', 'Boat Tours'];
+
+/// Counts of reviews at each star level, returned as [5★, 4★, 3★, 2★, 1★].
+List<int> starDistribution(List<Review> reviews) {
+  final counts = List<int>.filled(5, 0);
+  for (final r in reviews) {
+    if (r.rating >= 1 && r.rating <= 5) counts[5 - r.rating]++;
+  }
+  return counts;
+}

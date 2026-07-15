@@ -32,6 +32,7 @@ class BookingStep3Screen extends StatelessWidget {
     final booking = Booking(
       id: 'b${bookings.length + 1}',
       experienceTitle: experience.title,
+      vendorName: experience.vendorName,
       icon: experience.icon,
       date: data.date!,
       time: data.timeSlot!,
