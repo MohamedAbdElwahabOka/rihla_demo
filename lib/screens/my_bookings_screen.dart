@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
+import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
 
@@ -41,6 +42,12 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
     }
   }
 
+  Future<void> _openWriteReview(Booking booking) async {
+    await Navigator.of(context).pushNamed(Routes.writeReview, arguments: booking);
+    // Refresh so a just-submitted review hides the CTA (reviewLeft is now true).
+    if (mounted) setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -55,6 +62,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
           ...bookings.reversed.map((b) => _BookingCard(
                 booking: b,
                 onCancel: () => _confirmCancel(b),
+                onReview: () => _openWriteReview(b),
               )),
         ],
       ),
@@ -70,7 +78,8 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
 class _BookingCard extends StatelessWidget {
   final Booking booking;
   final VoidCallback onCancel;
-  const _BookingCard({required this.booking, required this.onCancel});
+  final VoidCallback onReview;
+  const _BookingCard({required this.booking, required this.onCancel, required this.onReview});
 
   (Color, String) _statusVisual(AppLocalizations l10n) {
     switch (booking.status) {
@@ -120,6 +129,13 @@ class _BookingCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(onPressed: onCancel, child: Text(l10n.cancelBooking)),
+              ),
+            ],
+            if (booking.status == BookingStatus.completed && !booking.reviewLeft) ...[
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(onPressed: onReview, child: Text(l10n.writeReview)),
               ),
             ],
           ],

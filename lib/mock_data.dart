@@ -705,6 +705,22 @@ final bookings = <Booking>[
     ticketNumber: '1102-9384',
     status: BookingStatus.cancelled,
   ),
+  Booking(
+    id: 'b4',
+    experienceTitle: 'Red Sea Wreck Diving',
+    vendorName: 'Blue Depth Divers',
+    icon: Icons.water,
+    date: DateTime(2026, 5, 30),
+    time: '07:00',
+    adults: 1,
+    children: 0,
+    discountPct: 15,
+    originalPriceEur: 90,
+    finalPriceEur: 77,
+    refCode: 'RHL-2026-05512',
+    ticketNumber: '3377-1290',
+    status: BookingStatus.completed,
+  ),
 ];
 
 final notifications = <AppNotification>[
