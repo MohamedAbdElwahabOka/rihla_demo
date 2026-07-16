@@ -428,5 +428,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reviewSubmitted => 'Bewertung gesendet. Vielen Dank!';
 
   @override
+  String get signInRequiredTitle => 'Zum Fortfahren anmelden';
+
+  @override
+  String get signInRequiredBody =>
+      'Erstellen Sie ein Konto oder melden Sie sich an, um diese Funktion zu nutzen.';
+
+  @override
+  String get notNow => 'Nicht jetzt';
+
+  @override
+  String get guestModeTitle => 'Sie surfen als Gast';
+
+  @override
+  String get guestModeBody =>
+      'Melden Sie sich an, um Erlebnisse zu buchen, Favoriten zu speichern und Ihre Reisen zu verwalten.';
+
+  @override
   String get splashLocation => 'Hurghada, Rotes Meer';
 }

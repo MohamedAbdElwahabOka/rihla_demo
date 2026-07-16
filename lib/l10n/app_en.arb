@@ -212,5 +212,10 @@
   "yourReview": "Your Review",
   "reviewHint": "Share details of your experience to help other travelers.",
   "reviewSubmitted": "Review submitted. Thank you!",
+  "signInRequiredTitle": "Sign in to continue",
+  "signInRequiredBody": "Create an account or sign in to use this feature.",
+  "notNow": "Not now",
+  "guestModeTitle": "You're browsing as a guest",
+  "guestModeBody": "Sign in to book experiences, save favorites, and manage your trips.",
   "splashLocation": "Hurghada, Red Sea"
 }

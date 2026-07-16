@@ -130,5 +130,10 @@
   "yourReview": "Ihre Rezension",
   "reviewHint": "Teilen Sie Details Ihres Erlebnisses, um anderen Reisenden zu helfen.",
   "reviewSubmitted": "Bewertung gesendet. Vielen Dank!",
+  "signInRequiredTitle": "Zum Fortfahren anmelden",
+  "signInRequiredBody": "Erstellen Sie ein Konto oder melden Sie sich an, um diese Funktion zu nutzen.",
+  "notNow": "Nicht jetzt",
+  "guestModeTitle": "Sie surfen als Gast",
+  "guestModeBody": "Melden Sie sich an, um Erlebnisse zu buchen, Favoriten zu speichern und Ihre Reisen zu verwalten.",
   "splashLocation": "Hurghada, Rotes Meer"
 }

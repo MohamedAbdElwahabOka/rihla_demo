@@ -344,6 +344,20 @@ const _guestProfile = UserProfile(
 /// registered profile built from the name entered at registration.
 UserProfile currentUser = _guestProfile;
 
+/// Whether the current session is authenticated. `false` = guest: a guest may
+/// browse experiences/restaurants freely but every account action (favorites,
+/// booking, subscribing, reviews, profile edits) is gated behind sign-in.
+/// Set true on OTP success; reset by [signOutToGuest].
+bool isLoggedIn = false;
+bool get isGuest => !isLoggedIn;
+
+/// Drops the session back to an unauthenticated guest (used by Sign Out).
+void signOutToGuest() {
+  currentUser = _guestProfile;
+  userSubscription = null;
+  isLoggedIn = false;
+}
+
 // Non-const so per-experience [Experience.reviewsList] stays growable: the
 // Write Review screen appends new reviews at runtime.
 final experiences = <Experience>[
