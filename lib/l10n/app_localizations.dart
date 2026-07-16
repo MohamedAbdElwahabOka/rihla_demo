@@ -850,6 +850,36 @@ abstract class AppLocalizations {
   /// **'Russia'**
   String get countryRussia;
 
+  /// No description provided for @writeReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a Review'**
+  String get writeReview;
+
+  /// No description provided for @yourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rating'**
+  String get yourRating;
+
+  /// No description provided for @yourReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Review'**
+  String get yourReview;
+
+  /// No description provided for @reviewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share details of your experience to help other travelers.'**
+  String get reviewHint;
+
+  /// No description provided for @reviewSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Review submitted. Thank you!'**
+  String get reviewSubmitted;
+
   /// No description provided for @splashLocation.
   ///
   /// In en, this message translates to:

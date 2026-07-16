@@ -409,5 +409,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get countryRussia => 'Russia';
 
   @override
+  String get writeReview => 'Write a Review';
+
+  @override
+  String get yourRating => 'Your Rating';
+
+  @override
+  String get yourReview => 'Your Review';
+
+  @override
+  String get reviewHint =>
+      'Share details of your experience to help other travelers.';
+
+  @override
+  String get reviewSubmitted => 'Review submitted. Thank you!';
+
+  @override
   String get splashLocation => 'Hurghada, Red Sea';
 }

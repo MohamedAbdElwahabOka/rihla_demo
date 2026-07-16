@@ -207,5 +207,10 @@
   "countryEgypt": "Egypt",
   "countryGermany": "Germany",
   "countryRussia": "Russia",
+  "writeReview": "Write a Review",
+  "yourRating": "Your Rating",
+  "yourReview": "Your Review",
+  "reviewHint": "Share details of your experience to help other travelers.",
+  "reviewSubmitted": "Review submitted. Thank you!",
   "splashLocation": "Hurghada, Red Sea"
 }

@@ -414,5 +414,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get countryRussia => 'Россия';
 
   @override
+  String get writeReview => 'Написать отзыв';
+
+  @override
+  String get yourRating => 'Ваша оценка';
+
+  @override
+  String get yourReview => 'Ваш отзыв';
+
+  @override
+  String get reviewHint =>
+      'Поделитесь подробностями вашего опыта, чтобы помочь другим путешественникам.';
+
+  @override
+  String get reviewSubmitted => 'Отзыв отправлен. Спасибо!';
+
+  @override
   String get splashLocation => 'Хургада, Красное море';
 }

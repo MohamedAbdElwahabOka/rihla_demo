@@ -412,5 +412,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get countryRussia => 'Russland';
 
   @override
+  String get writeReview => 'Bewertung schreiben';
+
+  @override
+  String get yourRating => 'Ihre Bewertung';
+
+  @override
+  String get yourReview => 'Ihre Rezension';
+
+  @override
+  String get reviewHint =>
+      'Teilen Sie Details Ihres Erlebnisses, um anderen Reisenden zu helfen.';
+
+  @override
+  String get reviewSubmitted => 'Bewertung gesendet. Vielen Dank!';
+
+  @override
   String get splashLocation => 'Hurghada, Rotes Meer';
 }

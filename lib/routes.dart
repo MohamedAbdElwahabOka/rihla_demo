@@ -14,6 +14,7 @@ import 'screens/booking_step3_screen.dart';
 import 'screens/detail_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/ticket_screen.dart';
+import 'screens/write_review_screen.dart';
 
 /// Named route constants. Screens not yet built in the current phase point
 /// at [MainShell] as a placeholder and are rewired as later phases land.
@@ -33,6 +34,7 @@ class Routes {
   static const payments = '/payments';
   static const myBookings = '/mybookings';
   static const refund = '/refund';
+  static const writeReview = '/write-review';
 }
 
 final appRoutes = <String, WidgetBuilder>{
@@ -51,4 +53,5 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.auth: (_) => const AuthScreen(),
   Routes.otp: (_) => const OtpScreen(),
   Routes.notifications: (_) => const NotificationsScreen(),
+  Routes.writeReview: (_) => const WriteReviewScreen(),
 };

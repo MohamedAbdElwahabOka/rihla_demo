@@ -125,5 +125,10 @@
   "countryEgypt": "Египет",
   "countryGermany": "Германия",
   "countryRussia": "Россия",
+  "writeReview": "Написать отзыв",
+  "yourRating": "Ваша оценка",
+  "yourReview": "Ваш отзыв",
+  "reviewHint": "Поделитесь подробностями вашего опыта, чтобы помочь другим путешественникам.",
+  "reviewSubmitted": "Отзыв отправлен. Спасибо!",
   "splashLocation": "Хургада, Красное море"
 }

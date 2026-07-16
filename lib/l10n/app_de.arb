@@ -125,5 +125,10 @@
   "countryEgypt": "Ägypten",
   "countryGermany": "Deutschland",
   "countryRussia": "Russland",
+  "writeReview": "Bewertung schreiben",
+  "yourRating": "Ihre Bewertung",
+  "yourReview": "Ihre Rezension",
+  "reviewHint": "Teilen Sie Details Ihres Erlebnisses, um anderen Reisenden zu helfen.",
+  "reviewSubmitted": "Bewertung gesendet. Vielen Dank!",
   "splashLocation": "Hurghada, Rotes Meer"
 }

@@ -344,7 +344,9 @@ const _guestProfile = UserProfile(
 /// registered profile built from the name entered at registration.
 UserProfile currentUser = _guestProfile;
 
-const experiences = <Experience>[
+// Non-const so per-experience [Experience.reviewsList] stays growable: the
+// Write Review screen appends new reviews at runtime.
+final experiences = <Experience>[
   Experience(
     id: 'e1',
     title: 'Giftun Island Snorkeling',
