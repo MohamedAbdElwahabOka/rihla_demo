@@ -5,6 +5,7 @@ import '../routes.dart';
 import '../theme.dart';
 import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
+import '../widgets/sign_in_prompt.dart';
 
 /// S1 — Home (FR-010-024). Hosted as the Home tab body in [MainShell].
 class HomeScreen extends StatefulWidget {
@@ -18,13 +19,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final Set<String> _favoriteIds = {};
 
-  void _toggleFavorite(String id) => setState(() {
-        if (_favoriteIds.contains(id)) {
-          _favoriteIds.remove(id);
-        } else {
-          _favoriteIds.add(id);
-        }
-      });
+  void _toggleFavorite(String id) {
+    if (isGuest) {
+      promptSignIn(context);
+      return;
+    }
+    setState(() {
+      if (_favoriteIds.contains(id)) {
+        _favoriteIds.remove(id);
+      } else {
+        _favoriteIds.add(id);
+      }
+    });
+  }
 
   String _greeting(AppLocalizations l10n) {
     final hour = DateTime.now().hour;

@@ -62,6 +62,7 @@ class _OtpScreenState extends State<OtpScreen> {
     if (matchesRegistered) {
       currentUser = registeredUserProfile;
       userSubscription = registeredUserSubscription;
+      isLoggedIn = true;
       Navigator.of(context).pushNamedAndRemoveUntil(Routes.shell, (route) => false);
     } else if (request.isRegister) {
       currentUser = UserProfile(
@@ -73,6 +74,7 @@ class _OtpScreenState extends State<OtpScreen> {
         reviewsWritten: 0,
       );
       userSubscription = null;
+      isLoggedIn = true;
       Navigator.of(context).pushNamedAndRemoveUntil(Routes.shell, (route) => false);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.numberNotRegistered)));

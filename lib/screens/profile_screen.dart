@@ -42,13 +42,61 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
     if (confirmed == true && context.mounted) {
+      signOutToGuest();
       Navigator.of(context).pushNamedAndRemoveUntil(Routes.splash, (route) => false);
     }
+  }
+
+  Widget _buildGuestView(BuildContext context, AppLocalizations l10n) {
+    return SafeArea(
+      child: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          const SizedBox(height: 24),
+          Center(
+            child: Column(
+              children: [
+                Container(
+                  width: 88,
+                  height: 88,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(colors: [RihlaColors.seaBlue, RihlaColors.gold]),
+                  ),
+                  child: const Icon(Icons.person_outline, color: Colors.white, size: 44),
+                ),
+                const SizedBox(height: 16),
+                Text(l10n.guestModeTitle, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 8),
+                Text(l10n.guestModeBody, textAlign: TextAlign.center, style: const TextStyle(color: Colors.grey)),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: false),
+                    child: Text(l10n.signIn),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(height: 40),
+          Text(l10n.settings, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey)),
+          ListTile(
+            leading: const Icon(Icons.language),
+            title: Text(l10n.language),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _pickLanguage(context),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    if (isGuest) return _buildGuestView(context, l10n);
     final sub = userSubscription;
     final daysLeft = sub?.expiryDate.difference(DateTime.now()).inDays;
 

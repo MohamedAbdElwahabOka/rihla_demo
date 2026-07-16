@@ -425,5 +425,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewSubmitted => 'Review submitted. Thank you!';
 
   @override
+  String get signInRequiredTitle => 'Sign in to continue';
+
+  @override
+  String get signInRequiredBody =>
+      'Create an account or sign in to use this feature.';
+
+  @override
+  String get notNow => 'Not now';
+
+  @override
+  String get guestModeTitle => 'You\'re browsing as a guest';
+
+  @override
+  String get guestModeBody =>
+      'Sign in to book experiences, save favorites, and manage your trips.';
+
+  @override
   String get splashLocation => 'Hurghada, Red Sea';
 }

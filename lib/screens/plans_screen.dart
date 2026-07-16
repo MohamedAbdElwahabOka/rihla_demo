@@ -3,12 +3,17 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/sign_in_prompt.dart';
 
 /// S6c — Subscription Plans (SS4.8).
 class PlansScreen extends StatelessWidget {
   const PlansScreen({super.key});
 
   Future<void> _purchase(BuildContext context, SubscriptionPlan plan) async {
+    if (isGuest) {
+      promptSignIn(context);
+      return;
+    }
     final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,

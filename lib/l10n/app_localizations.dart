@@ -880,6 +880,36 @@ abstract class AppLocalizations {
   /// **'Review submitted. Thank you!'**
   String get reviewSubmitted;
 
+  /// No description provided for @signInRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to continue'**
+  String get signInRequiredTitle;
+
+  /// No description provided for @signInRequiredBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account or sign in to use this feature.'**
+  String get signInRequiredBody;
+
+  /// No description provided for @notNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get notNow;
+
+  /// No description provided for @guestModeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re browsing as a guest'**
+  String get guestModeTitle;
+
+  /// No description provided for @guestModeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to book experiences, save favorites, and manage your trips.'**
+  String get guestModeBody;
+
   /// No description provided for @splashLocation.
   ///
   /// In en, this message translates to:

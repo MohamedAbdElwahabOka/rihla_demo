@@ -5,6 +5,7 @@ import '../routes.dart';
 import '../theme.dart';
 import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
+import '../widgets/sign_in_prompt.dart';
 
 /// S2 — Experience Detail (FR-027-037). Reads the [Experience] passed via
 /// route arguments from a Home/Explore card tap.
@@ -23,6 +24,10 @@ class _DetailScreenState extends State<DetailScreen> {
   /// FR-037/BR-006: booking requires an active subscription. Without one,
   /// redirect to Subscription Plans instead of the booking flow.
   void _onBookPressed(BuildContext context, AppLocalizations l10n, Experience experience) {
+    if (isGuest) {
+      promptSignIn(context);
+      return;
+    }
     final sub = userSubscription;
     if (sub == null || !sub.active) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.subscriptionRequired)));
@@ -72,7 +77,13 @@ class _DetailScreenState extends State<DetailScreen> {
                         backgroundColor: Colors.white,
                         child: IconButton(
                           icon: Icon(_isFavorite ? Icons.favorite : Icons.favorite_border, color: Colors.redAccent),
-                          onPressed: () => setState(() => _isFavorite = !_isFavorite),
+                          onPressed: () {
+                            if (isGuest) {
+                              promptSignIn(context);
+                              return;
+                            }
+                            setState(() => _isFavorite = !_isFavorite);
+                          },
                         ),
                       ),
                       const SizedBox(width: 8),

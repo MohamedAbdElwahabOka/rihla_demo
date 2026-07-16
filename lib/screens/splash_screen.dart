@@ -36,7 +36,9 @@ class SplashScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   FilledButton(
-                    onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: true),
+                    // Auto-enter guest: browse the app without logging in.
+                    // Account actions are gated behind sign-in individually.
+                    onPressed: () => Navigator.of(context).pushReplacementNamed(Routes.shell),
                     child: Text(l10n.getStarted),
                   ),
                   const SizedBox(height: 12),

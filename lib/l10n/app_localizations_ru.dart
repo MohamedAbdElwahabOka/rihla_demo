@@ -430,5 +430,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reviewSubmitted => 'Отзыв отправлен. Спасибо!';
 
   @override
+  String get signInRequiredTitle => 'Войдите, чтобы продолжить';
+
+  @override
+  String get signInRequiredBody =>
+      'Создайте аккаунт или войдите, чтобы использовать эту функцию.';
+
+  @override
+  String get notNow => 'Не сейчас';
+
+  @override
+  String get guestModeTitle => 'Вы просматриваете как гость';
+
+  @override
+  String get guestModeBody =>
+      'Войдите, чтобы бронировать впечатления, сохранять избранное и управлять поездками.';
+
+  @override
   String get splashLocation => 'Хургада, Красное море';
 }
