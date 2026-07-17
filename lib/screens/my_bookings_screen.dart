@@ -54,6 +54,16 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+
+    // Guests have no bookings — they can't book until signed in. Gate the
+    // whole screen behind a sign-in prompt rather than showing the demo
+    // account's bookings.
+    if (isGuest) {
+      final guest = const SafeArea(child: _GuestBookings());
+      if (!widget.standalone) return guest;
+      return Scaffold(appBar: RihlaAppBar(title: Text(l10n.myBookings)), body: guest);
+    }
+
     final items = bookings.reversed.toList();
     final content = SafeArea(
       child: items.isEmpty
@@ -89,6 +99,59 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
     return Scaffold(
       appBar: RihlaAppBar(title: Text(l10n.myBookings)),
       body: content,
+    );
+  }
+}
+
+class _GuestBookings extends StatelessWidget {
+  const _GuestBookings();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return FadeInUp(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(RihlaSpace.xl),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 92,
+                height: 92,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RihlaColors.seaGradient,
+                  boxShadow: [
+                    BoxShadow(color: RihlaColors.seaBlue.withValues(alpha: 0.35), blurRadius: 20, offset: const Offset(0, 8)),
+                  ],
+                ),
+                child: const Icon(Icons.confirmation_number_rounded, color: Colors.white, size: 44),
+              ),
+              const SizedBox(height: RihlaSpace.lg),
+              Text(
+                l10n.guestModeTitle,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.4, color: RihlaColors.ink),
+              ),
+              const SizedBox(height: RihlaSpace.sm),
+              Text(
+                l10n.guestModeBody,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: RihlaColors.inkMuted, height: 1.5),
+              ),
+              const SizedBox(height: RihlaSpace.xl),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: false),
+                  child: Text(l10n.signIn),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
