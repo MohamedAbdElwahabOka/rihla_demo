@@ -6,6 +6,7 @@ import '../theme.dart';
 import '../utils/format.dart';
 import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
+import '../widgets/rihla_badge.dart';
 
 enum _SortOption { relevance, topRated, priceLowHigh, priceHighLow, newest }
 
@@ -170,7 +171,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(l10n.resultsCount(totalCount), style: const TextStyle(color: Colors.grey, fontSize: 13)),
+              child: Text(l10n.resultsCount(totalCount), style: const TextStyle(color: RihlaColors.inkMuted, fontSize: 13, fontWeight: FontWeight.w600)),
             ),
           ),
           const SizedBox(height: 8),
@@ -180,9 +181,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.search_off, size: 48, color: Colors.grey),
-                        const SizedBox(height: 12),
-                        Text(l10n.noResults, style: const TextStyle(color: Colors.grey)),
+                        Container(
+                          width: 88,
+                          height: 88,
+                          decoration: const BoxDecoration(color: RihlaColors.seaTint, shape: BoxShape.circle),
+                          child: const Icon(Icons.travel_explore_rounded, size: 42, color: RihlaColors.seaBlue),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(l10n.noResults, style: const TextStyle(color: RihlaColors.inkMuted, fontWeight: FontWeight.w600)),
                       ],
                     ),
                   )
@@ -228,8 +234,8 @@ class _ResultCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        const Icon(Icons.star, size: 14, color: RihlaColors.gold),
-                        Text(' ${experience.rating} (${experience.reviewCount}) · ${experience.duration}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                        const Icon(Icons.star_rounded, size: 15, color: RihlaColors.gold),
+                        Text(' ${experience.rating} (${experience.reviewCount}) · ${experience.duration}', style: const TextStyle(fontSize: 12, color: RihlaColors.inkMuted)),
                       ],
                     ),
                     const SizedBox(height: 6),
@@ -253,7 +259,10 @@ class _RestaurantResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
-      child: Padding(
+      child: InkWell(
+        onTap: () => Navigator.of(context).pushNamed(Routes.restaurantDetail, arguments: restaurant),
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
           children: [
@@ -270,25 +279,21 @@ class _RestaurantResultCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(Icons.star, size: 14, color: RihlaColors.gold),
-                      Text(' ${restaurant.rating} (${restaurant.reviewCount}) · ${restaurant.priceRange}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                      const Icon(Icons.star_rounded, size: 15, color: RihlaColors.gold),
+                      Text(' ${restaurant.rating} (${restaurant.reviewCount}) · ${restaurant.priceRange}', style: const TextStyle(fontSize: 12, color: RihlaColors.inkMuted)),
                     ],
                   ),
                   const SizedBox(height: 6),
                   Wrap(
-                    spacing: 4,
-                    children: restaurant.badges
-                        .map((b) => Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                              decoration: BoxDecoration(color: RihlaColors.seaBlue.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(4)),
-                              child: Text(b, style: const TextStyle(fontSize: 9, color: RihlaColors.seaBlueDark, fontWeight: FontWeight.w600)),
-                            ))
-                        .toList(),
+                    spacing: 5,
+                    runSpacing: 5,
+                    children: restaurant.badges.map((b) => RihlaBadge.soft(b)).toList(),
                   ),
                 ],
               ),
             ),
           ],
+        ),
         ),
       ),
     );

@@ -94,6 +94,7 @@ class Restaurant {
   final IconData icon;
   final List<String> images;
   final String priceRange; // €, €€, €€€
+  final List<Review> reviewsList;
 
   const Restaurant({
     required this.id,
@@ -105,6 +106,7 @@ class Restaurant {
     required this.icon,
     required this.images,
     required this.priceRange,
+    this.reviewsList = const [],
   });
 
   /// First bundled photo, or '' when this restaurant has no photos yet.
@@ -557,7 +559,13 @@ final experiences = <Experience>[
     priceOriginal: 55,
     priceDiscounted: 40,
     icon: Icons.spa,
-    images: [], // no assets/spa/ folder yet — falls back to gradient placeholder
+    images: [
+      'assets/spa/spa (1).jpg',
+      'assets/spa/spa (2).jpg',
+      'assets/spa/spa (3).jpg',
+      'assets/spa/spa (4).jpg',
+      'assets/spa/spa (5).jpg',
+    ],
     vendorName: 'Oasis Spa Retreat',
     badge: 'DEAL',
     included: ['Salt scrub', 'Massage (60 min)', 'Pool & lounge access', 'Herbal tea'],
@@ -589,6 +597,12 @@ const restaurants = <Restaurant>[
       'assets/restaurant/restaurant (2).jpg',
     ],
     priceRange: '€€',
+    reviewsList: [
+      Review('Sofia M.', '🇮🇹', 5, 'The freshest grilled calamari I have had in years. Right on the marina.', '28/06/2026',
+          vendorReply: 'Grazie Sofia! Fresh from the Red Sea every morning.'),
+      Review('Hans B.', '🇩🇪', 4, 'Great seafood platter, a little busy on weekends but worth the wait.', '12/06/2026', isSubscriber: true),
+      Review('Amira H.', '🇪🇬', 5, 'Beautiful sunset view and the staff were so welcoming.', '30/05/2026'),
+    ],
   ),
   Restaurant(
     id: 'r2',
@@ -603,6 +617,10 @@ const restaurants = <Restaurant>[
       'assets/restaurant/restaurant (4).jpg',
     ],
     priceRange: '€€€',
+    reviewsList: [
+      Review('Daniel R.', '🇬🇧', 5, 'Premium cuts cooked to perfection. The lounge atmosphere is superb.', '05/07/2026'),
+      Review('Yulia S.', '🇷🇺', 4, 'Lovely evening, generous portions. Cocktails were excellent.', '21/06/2026', isSubscriber: true),
+    ],
   ),
   Restaurant(
     id: 'r3',
@@ -617,6 +635,12 @@ const restaurants = <Restaurant>[
       'assets/restaurant/restaurant (3).jpg',
     ],
     priceRange: '€',
+    reviewsList: [
+      Review('Marie L.', '🇫🇷', 5, 'So many creative vegetarian dishes. The falafel bowl was divine!', '09/07/2026',
+          vendorReply: 'Merci Marie! Everything is farm-to-table and fresh daily.'),
+      Review('Tom W.', '🇬🇧', 4, 'Healthy, tasty and affordable. My go-to spot for lunch.', '25/06/2026'),
+      Review('Nadia F.', '🇪🇬', 5, 'Finally a place with real vegetarian variety. Loved it.', '14/06/2026', isSubscriber: true),
+    ],
   ),
 ];
 

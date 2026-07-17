@@ -8,11 +8,15 @@ class PriceTag extends StatelessWidget {
   final num discounted;
   final double discountedFontSize;
 
+  /// Renders in light colors for placement over photography / glass panels.
+  final bool light;
+
   const PriceTag({
     super.key,
     required this.original,
     required this.discounted,
     this.discountedFontSize = 16,
+    this.light = false,
   });
 
   @override
@@ -22,14 +26,17 @@ class PriceTag extends StatelessWidget {
       children: [
         Text(
           formatEur(original),
-          style: const TextStyle(decoration: TextDecoration.lineThrough, color: Colors.grey),
+          style: TextStyle(
+            decoration: TextDecoration.lineThrough,
+            color: light ? Colors.white70 : Colors.grey,
+          ),
         ),
         const SizedBox(width: 6),
         Text(
           formatEur(discounted),
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: RihlaColors.seaBlueDark,
+            color: light ? Colors.white : RihlaColors.seaBlueDark,
             fontSize: discountedFontSize,
           ),
         ),

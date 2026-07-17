@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
+import '../theme.dart';
+import '../widgets/rihla_app_bar.dart';
+import '../widgets/fade_in.dart';
 
 /// S10 — Refund Request (FR-086).
 class RefundScreen extends StatefulWidget {
@@ -39,43 +42,57 @@ class _RefundScreenState extends State<RefundScreen> {
     };
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.refundRequest)),
+      appBar: RihlaAppBar(title: Text(l10n.refundRequest)),
       body: SafeArea(
         child: Form(
           key: _formKey,
           child: ListView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(RihlaSpace.lg),
             children: [
-              TextFormField(
-                readOnly: true,
-                initialValue: '${currentUser.firstName} ${currentUser.lastName}',
-                decoration: InputDecoration(labelText: l10n.fullName),
+              FadeInUp(
+                child: TextFormField(
+                  readOnly: true,
+                  initialValue: '${currentUser.firstName} ${currentUser.lastName}',
+                  decoration: InputDecoration(labelText: l10n.fullName),
+                ),
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                readOnly: true,
-                initialValue: '${currentUser.countryCode} ${currentUser.phone}',
-                decoration: InputDecoration(labelText: l10n.primaryPhone),
+              const SizedBox(height: RihlaSpace.lg),
+              FadeInUp(
+                delay: const Duration(milliseconds: 60),
+                child: TextFormField(
+                  readOnly: true,
+                  initialValue: '${currentUser.countryCode} ${currentUser.phone}',
+                  decoration: InputDecoration(labelText: l10n.primaryPhone),
+                ),
               ),
-              const SizedBox(height: 16),
-              DropdownButtonFormField<String>(
-                initialValue: _reason,
-                decoration: InputDecoration(labelText: l10n.refundReasonLabel),
-                items: reasons.entries.map((e) => DropdownMenuItem(value: e.key, child: Text(e.value))).toList(),
-                onChanged: (v) => setState(() => _reason = v),
-                validator: (v) => v == null ? l10n.fieldRequired : null,
+              const SizedBox(height: RihlaSpace.lg),
+              FadeInUp(
+                delay: const Duration(milliseconds: 120),
+                child: DropdownButtonFormField<String>(
+                  initialValue: _reason,
+                  decoration: InputDecoration(labelText: l10n.refundReasonLabel),
+                  items: reasons.entries.map((e) => DropdownMenuItem(value: e.key, child: Text(e.value))).toList(),
+                  onChanged: (v) => setState(() => _reason = v),
+                  validator: (v) => v == null ? l10n.fieldRequired : null,
+                ),
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _explanationController,
-                maxLines: 4,
-                decoration: InputDecoration(labelText: l10n.explanation, alignLabelWithHint: true),
-                validator: (v) => (v == null || v.trim().isEmpty) ? l10n.fieldRequired : null,
+              const SizedBox(height: RihlaSpace.lg),
+              FadeInUp(
+                delay: const Duration(milliseconds: 180),
+                child: TextFormField(
+                  controller: _explanationController,
+                  maxLines: 4,
+                  decoration: InputDecoration(labelText: l10n.explanation, alignLabelWithHint: true),
+                  validator: (v) => (v == null || v.trim().isEmpty) ? l10n.fieldRequired : null,
+                ),
               ),
-              const SizedBox(height: 24),
-              FilledButton(
-                onPressed: () => _submit(l10n),
-                child: Text(l10n.submit),
+              const SizedBox(height: RihlaSpace.xl),
+              FadeInUp(
+                delay: const Duration(milliseconds: 240),
+                child: FilledButton(
+                  onPressed: () => _submit(l10n),
+                  child: Text(l10n.submit),
+                ),
               ),
             ],
           ),

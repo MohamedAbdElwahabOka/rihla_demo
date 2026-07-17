@@ -5,6 +5,7 @@ import '../routes.dart';
 import '../theme.dart';
 import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
+import '../widgets/rihla_badge.dart';
 import '../widgets/sign_in_prompt.dart';
 
 /// S2 — Experience Detail (FR-027-037). Reads the [Experience] passed via
@@ -101,11 +102,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   Positioned(
                     bottom: 12,
                     left: 12,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(color: RihlaColors.gold, borderRadius: BorderRadius.circular(8)),
-                      child: Text(experience.badge!, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
-                    ),
+                    child: RihlaBadge.sunset(experience.badge!, icon: Icons.local_fire_department_rounded),
                   ),
               ],
             ),
@@ -139,14 +136,15 @@ class _DetailScreenState extends State<DetailScreen> {
             padding: const EdgeInsets.all(16),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                Text(experience.category, style: const TextStyle(color: RihlaColors.seaBlue, fontWeight: FontWeight.w600)),
-                const SizedBox(height: 4),
-                Text(experience.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                Text(experience.category.toUpperCase(), style: const TextStyle(color: RihlaColors.seaBlue, fontWeight: FontWeight.w800, fontSize: 12, letterSpacing: 0.8)),
                 const SizedBox(height: 6),
+                Text(experience.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.6, height: 1.15)),
+                const SizedBox(height: 8),
                 Row(
                   children: [
-                    const Icon(Icons.star, size: 18, color: RihlaColors.gold),
-                    Text(' $avgRating (${experience.reviewCount} ${l10n.reviews.toLowerCase()})', style: const TextStyle(color: Colors.grey)),
+                    const Icon(Icons.star_rounded, size: 18, color: RihlaColors.gold),
+                    Text(' $avgRating', style: const TextStyle(fontWeight: FontWeight.w700, color: RihlaColors.ink)),
+                    Text('  ·  ${experience.reviewCount} ${l10n.reviews.toLowerCase()}', style: const TextStyle(color: RihlaColors.inkMuted)),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -162,7 +160,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ],
                 ),
                 const Divider(height: 32),
-                Text(l10n.about, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                Text(l10n.about, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
                 const SizedBox(height: 8),
                 Text(
                   experience.about,
@@ -175,12 +173,12 @@ class _DetailScreenState extends State<DetailScreen> {
                   child: Text(_aboutExpanded ? l10n.readLess : l10n.readMore),
                 ),
                 const Divider(height: 32),
-                Text(l10n.included, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                Text(l10n.included, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
                 const SizedBox(height: 8),
                 ...experience.included.map((i) => _ChecklistRow(text: i, included: true)),
                 ...experience.excluded.map((i) => _ChecklistRow(text: i, included: false)),
                 const Divider(height: 32),
-                Text(l10n.itinerary, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                Text(l10n.itinerary, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
                 const SizedBox(height: 8),
                 ...experience.itinerary.asMap().entries.map((entry) => _ItineraryRow(
                       index: entry.key + 1,
@@ -190,7 +188,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 const Divider(height: 32),
                 Row(
                   children: [
-                    Text(l10n.reviews, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                    Text(l10n.reviews, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
                     const Spacer(),
                     const Icon(Icons.star, size: 18, color: RihlaColors.gold),
                     Text(' $avgRating', style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -204,25 +202,28 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.08), blurRadius: 8, offset: const Offset(0, -2))],
-          ),
-          child: Row(
-            children: [
-              PriceTag(original: experience.priceOriginal, discounted: experience.priceDiscounted, discountedFontSize: 20),
-              const Spacer(),
-              SizedBox(
-                width: 140,
-                child: FilledButton(
-                  onPressed: () => _onBookPressed(context, l10n, experience),
-                  child: Text(l10n.book),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: RihlaColors.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
+          boxShadow: [BoxShadow(color: RihlaColors.seaBlueDark.withValues(alpha: 0.12), blurRadius: 20, offset: const Offset(0, -4))],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 14, 16, 14),
+            child: Row(
+              children: [
+                PriceTag(original: experience.priceOriginal, discounted: experience.priceDiscounted, discountedFontSize: 22),
+                const Spacer(),
+                SizedBox(
+                  width: 150,
+                  child: FilledButton(
+                    onPressed: () => _onBookPressed(context, l10n, experience),
+                    child: Text(l10n.book),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -238,14 +239,14 @@ class _InfoPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(color: RihlaColors.bg, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade300)),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(color: RihlaColors.seaTint, borderRadius: BorderRadius.circular(RihlaSpace.radiusPill)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 15, color: RihlaColors.seaBlueDark),
-          const SizedBox(width: 4),
-          Text(label, style: const TextStyle(fontSize: 12)),
+          Icon(icon, size: 15, color: RihlaColors.seaBlue),
+          const SizedBox(width: 6),
+          Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: RihlaColors.seaBlueDark)),
         ],
       ),
     );
@@ -328,10 +329,11 @@ class _ReviewCard extends StatelessWidget {
               Text(review.reviewerName, style: const TextStyle(fontWeight: FontWeight.w600)),
               if (review.isSubscriber) ...[
                 const SizedBox(width: 6),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(color: RihlaColors.gold.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(4)),
-                  child: Text(l10n.subscriberBadge, style: const TextStyle(fontSize: 10, color: RihlaColors.seaBlueDark)),
+                RihlaBadge(
+                  label: l10n.subscriberBadge,
+                  icon: Icons.workspace_premium_rounded,
+                  background: RihlaColors.goldTint,
+                  foreground: RihlaColors.seaBlueDark,
                 ),
               ],
               const Spacer(),

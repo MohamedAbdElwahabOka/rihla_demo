@@ -4,6 +4,9 @@ import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/rihla_app_bar.dart';
+import '../widgets/rihla_badge.dart';
+import '../widgets/fade_in.dart';
 
 /// S6e — My Bookings History (FR-072). Hosted as the Bookings tab body
 /// (no own Scaffold -- relies on MainShell's) and also reachable
@@ -51,26 +54,55 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final items = bookings.reversed.toList();
     final content = SafeArea(
-      child: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          if (!widget.standalone) ...[
-            Text(l10n.myBookings, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 12),
-          ],
-          ...bookings.reversed.map((b) => _BookingCard(
-                booking: b,
-                onCancel: () => _confirmCancel(b),
-                onReview: () => _openWriteReview(b),
-              )),
-        ],
-      ),
+      child: items.isEmpty
+          ? _EmptyBookings()
+          : ListView(
+              padding: const EdgeInsets.all(RihlaSpace.lg),
+              children: [
+                if (!widget.standalone) ...[
+                  Text(
+                    l10n.myBookings,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.4,
+                      color: RihlaColors.ink,
+                    ),
+                  ),
+                  const SizedBox(height: RihlaSpace.lg),
+                ],
+                for (var i = 0; i < items.length; i++)
+                  FadeInUp(
+                    delay: Duration(milliseconds: i * 60),
+                    child: _BookingCard(
+                      booking: items[i],
+                      onCancel: () => _confirmCancel(items[i]),
+                      onReview: () => _openWriteReview(items[i]),
+                    ),
+                  ),
+              ],
+            ),
     );
     if (!widget.standalone) return content;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.myBookings)),
+      appBar: RihlaAppBar(title: Text(l10n.myBookings)),
       body: content,
+    );
+  }
+}
+
+class _EmptyBookings extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 88,
+        height: 88,
+        decoration: const BoxDecoration(color: RihlaColors.seaTint, shape: BoxShape.circle),
+        child: const Icon(Icons.confirmation_number_rounded, size: 42, color: RihlaColors.seaBlue),
+      ),
     );
   }
 }
@@ -81,58 +113,97 @@ class _BookingCard extends StatelessWidget {
   final VoidCallback onReview;
   const _BookingCard({required this.booking, required this.onCancel, required this.onReview});
 
-  (Color, String) _statusVisual(AppLocalizations l10n) {
+  Widget _statusBadge(AppLocalizations l10n) {
     switch (booking.status) {
       case BookingStatus.confirmed:
-        return (Colors.green, l10n.statusConfirmed);
+        return RihlaBadge(
+          label: l10n.statusConfirmed,
+          icon: Icons.check_circle_rounded,
+          background: const Color(0xFFE3F5EC),
+          foreground: const Color(0xFF1F8A5B),
+        );
       case BookingStatus.completed:
-        return (RihlaColors.seaBlue, l10n.statusCompleted);
+        return RihlaBadge(
+          label: l10n.statusCompleted,
+          icon: Icons.verified_rounded,
+          background: RihlaColors.goldTint,
+          foreground: const Color(0xFF9A6B12),
+        );
       case BookingStatus.cancelled:
-        return (Colors.grey, l10n.statusCancelled);
+        return RihlaBadge(
+          label: l10n.statusCancelled,
+          icon: Icons.cancel_rounded,
+          background: const Color(0xFFFCE7E3),
+          foreground: const Color(0xFFC94A38),
+        );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final (statusColor, statusLabel) = _statusVisual(l10n);
 
     return Card(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: RihlaSpace.md),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(RihlaSpace.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(booking.icon, color: RihlaColors.seaBlue),
-                const SizedBox(width: 8),
-                Expanded(child: Text(booking.experienceTitle, style: const TextStyle(fontWeight: FontWeight.bold))),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(color: statusColor.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(6)),
-                  child: Text(statusLabel, style: TextStyle(color: statusColor, fontWeight: FontWeight.bold, fontSize: 11)),
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: RihlaColors.seaTint,
+                    borderRadius: BorderRadius.circular(RihlaSpace.radiusSm),
+                  ),
+                  child: Icon(booking.icon, color: RihlaColors.seaBlue),
                 ),
+                const SizedBox(width: RihlaSpace.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        booking.experienceTitle,
+                        style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16, color: RihlaColors.ink),
+                      ),
+                      const SizedBox(height: RihlaSpace.xs),
+                      Text(
+                        '${formatDate(booking.date)} · ${booking.time}',
+                        style: const TextStyle(color: RihlaColors.inkMuted, fontSize: 13),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: RihlaSpace.sm),
+                _statusBadge(l10n),
               ],
             ),
-            const SizedBox(height: 8),
-            Text('${formatDate(booking.date)} · ${booking.time}', style: const TextStyle(color: Colors.grey, fontSize: 13)),
             if (booking.discountPct > 0) ...[
-              const SizedBox(height: 4),
-              Text(l10n.discountApplied(booking.discountPct), style: const TextStyle(color: Colors.grey, fontSize: 12)),
+              const SizedBox(height: RihlaSpace.sm),
+              Text(
+                l10n.discountApplied(booking.discountPct),
+                style: const TextStyle(color: RihlaColors.coral, fontSize: 12, fontWeight: FontWeight.w600),
+              ),
             ],
-            const SizedBox(height: 8),
-            Text(formatEur(booking.finalPriceEur), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const SizedBox(height: RihlaSpace.md),
+            Text(
+              formatEur(booking.finalPriceEur),
+              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 18, color: RihlaColors.ink, letterSpacing: -0.4),
+            ),
             if (booking.status == BookingStatus.confirmed) ...[
-              const SizedBox(height: 8),
+              const SizedBox(height: RihlaSpace.xs),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(onPressed: onCancel, child: Text(l10n.cancelBooking)),
               ),
             ],
             if (booking.status == BookingStatus.completed && !booking.reviewLeft) ...[
-              const SizedBox(height: 8),
+              const SizedBox(height: RihlaSpace.xs),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(onPressed: onReview, child: Text(l10n.writeReview)),

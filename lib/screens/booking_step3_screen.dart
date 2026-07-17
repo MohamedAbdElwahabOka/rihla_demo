@@ -6,6 +6,7 @@ import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/rihla_app_bar.dart';
 
 final _rng = Random();
 
@@ -69,59 +70,117 @@ class BookingStep3Screen extends StatelessWidget {
     final creditType = (remainingCredit != null && remainingCredit > 0) ? experience.category : null;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.orderSummary)),
+      appBar: RihlaAppBar(title: Text(l10n.orderSummary)),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(RihlaSpace.lg),
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(experience.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    const SizedBox(height: 4),
-                    Text('${formatDate(data.date!)} · ${data.timeSlot}', style: const TextStyle(color: Colors.grey)),
-                    const Divider(height: 24),
-                    _SummaryRow(label: '${l10n.adults} × ${data.adults}', value: formatEur(adultPrice * data.adults)),
-                    if (data.children > 0)
-                      _SummaryRow(label: '${l10n.children} × ${data.children}', value: formatEur(childPrice * data.children)),
-                    const Divider(height: 24),
-                    _SummaryRow(label: l10n.total, value: formatEur(finalTotal), bold: true),
-                  ],
-                ),
-              ),
-            ),
-            if (creditType != null) ...[
-              const SizedBox(height: 16),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(color: RihlaColors.gold.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(10)),
-                child: Text(
-                  l10n.creditNote(creditType, remainingCredit! - 1),
-                  style: const TextStyle(color: RihlaColors.seaBlueDark),
-                ),
-              ),
-            ],
-            const SizedBox(height: 16),
+            const _BookingStepper(current: 2),
+            const SizedBox(height: RihlaSpace.xl),
             Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(10)),
-              child: Row(
+              decoration: BoxDecoration(
+                color: RihlaColors.surface,
+                borderRadius: BorderRadius.circular(RihlaSpace.radiusLg),
+                boxShadow: RihlaShadows.soft,
+              ),
+              padding: const EdgeInsets.all(RihlaSpace.lg),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.info_outline, size: 18, color: Colors.grey),
-                  const SizedBox(width: 8),
-                  Expanded(child: Text(l10n.payVendorNotice, style: const TextStyle(fontSize: 12, color: Colors.grey))),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 46,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          color: RihlaColors.seaTint,
+                          borderRadius: BorderRadius.circular(RihlaSpace.radiusSm),
+                        ),
+                        child: Icon(experience.icon, color: RihlaColors.seaBlue, size: 24),
+                      ),
+                      const SizedBox(width: RihlaSpace.md),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              experience.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 16,
+                                letterSpacing: -0.3,
+                                color: RihlaColors.ink,
+                              ),
+                            ),
+                            const SizedBox(height: RihlaSpace.xs),
+                            Text(
+                              '${formatDate(data.date!)} · ${data.timeSlot}',
+                              style: const TextStyle(color: RihlaColors.inkMuted),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(height: RihlaSpace.xl + RihlaSpace.sm),
+                  _SummaryRow(label: '${l10n.adults} × ${data.adults}', value: formatEur(adultPrice * data.adults)),
+                  if (data.children > 0)
+                    _SummaryRow(label: '${l10n.children} × ${data.children}', value: formatEur(childPrice * data.children)),
+                  const Divider(height: RihlaSpace.xl + RihlaSpace.sm),
+                  _SummaryRow(label: l10n.total, value: formatEur(finalTotal), bold: true),
                 ],
               ),
             ),
-            const SizedBox(height: 24),
-            FilledButton(
-              onPressed: () => _confirm(context, data, creditType),
-              child: Text(l10n.confirmBooking),
+            if (creditType != null) ...[
+              const SizedBox(height: RihlaSpace.lg),
+              Container(
+                padding: const EdgeInsets.all(RihlaSpace.md),
+                decoration: BoxDecoration(
+                  color: RihlaColors.goldTint,
+                  borderRadius: BorderRadius.circular(RihlaSpace.radius),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.redeem_rounded, size: 18, color: RihlaColors.gold),
+                    const SizedBox(width: RihlaSpace.sm),
+                    Expanded(
+                      child: Text(
+                        l10n.creditNote(creditType, remainingCredit! - 1),
+                        style: const TextStyle(color: RihlaColors.seaBlueDark, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            const SizedBox(height: RihlaSpace.lg),
+            Container(
+              padding: const EdgeInsets.all(RihlaSpace.md),
+              decoration: BoxDecoration(
+                color: RihlaColors.seaTint,
+                borderRadius: BorderRadius.circular(RihlaSpace.radius),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline_rounded, size: 18, color: RihlaColors.seaBlue),
+                  const SizedBox(width: RihlaSpace.sm),
+                  Expanded(
+                    child: Text(
+                      l10n.payVendorNotice,
+                      style: const TextStyle(fontSize: 12, color: RihlaColors.inkMuted),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: _StickyActionBar(
+        child: FilledButton(
+          onPressed: () => _confirm(context, data, creditType),
+          child: Text(l10n.confirmBooking),
         ),
       ),
     );
@@ -136,12 +195,86 @@ class _SummaryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal, fontSize: bold ? 16 : 14);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: RihlaSpace.xs),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(label, style: style), Text(value, style: style)],
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: bold ? 16 : 14,
+              fontWeight: bold ? FontWeight.w800 : FontWeight.w400,
+              color: bold ? RihlaColors.ink : RihlaColors.inkMuted,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: bold ? 16 : 14,
+              fontWeight: bold ? FontWeight.w800 : FontWeight.w600,
+              letterSpacing: bold ? -0.3 : 0,
+              color: bold ? RihlaColors.seaBlueDark : RihlaColors.ink,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Segmented progress bar for the 3-step booking flow. Filled sea-blue for
+/// completed and current steps; hairline for upcoming ones.
+class _BookingStepper extends StatelessWidget {
+  final int current;
+  const _BookingStepper({required this.current});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: List.generate(3, (i) {
+        final done = i <= current;
+        return Expanded(
+          child: Container(
+            margin: EdgeInsets.only(right: i < 2 ? RihlaSpace.sm : 0.0),
+            height: 6,
+            decoration: BoxDecoration(
+              color: done ? RihlaColors.seaBlue : RihlaColors.hairline,
+              borderRadius: BorderRadius.circular(RihlaSpace.radiusPill),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
+
+/// Sticky bottom action bar: a rounded surface lifted off the content with an
+/// upward soft shadow, hosting the primary CTA.
+class _StickyActionBar extends StatelessWidget {
+  final Widget child;
+  const _StickyActionBar({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: RihlaColors.surface,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x14023E58),
+            blurRadius: 20,
+            offset: Offset(0, -6),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(RihlaSpace.lg, RihlaSpace.md, RihlaSpace.lg, RihlaSpace.md),
+          child: child,
+        ),
       ),
     );
   }

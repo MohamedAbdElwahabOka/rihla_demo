@@ -19,18 +19,28 @@ Future<void> promptSignIn(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Icon(Icons.lock_outline, size: 40, color: RihlaColors.seaBlue),
-            const SizedBox(height: 12),
+            Center(
+              child: Container(
+                width: 64,
+                height: 64,
+                decoration: const BoxDecoration(
+                  gradient: RihlaColors.seaGradient,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.lock_rounded, size: 30, color: Colors.white),
+              ),
+            ),
+            const SizedBox(height: 16),
             Text(
               l10n.signInRequiredTitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800, letterSpacing: -0.4, color: RihlaColors.ink),
             ),
             const SizedBox(height: 8),
             Text(
               l10n.signInRequiredBody,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(color: RihlaColors.inkMuted, height: 1.5),
             ),
             const SizedBox(height: 20),
             FilledButton(

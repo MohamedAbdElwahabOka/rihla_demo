@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'l10n/app_localizations.dart';
 import 'main.dart';
+import 'theme.dart';
 import 'screens/explore_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/my_bookings_screen.dart';
@@ -45,11 +46,45 @@ class _MainShellState extends State<MainShell> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.appName),
+        titleSpacing: 20,
+        flexibleSpace: const DecoratedBox(
+          decoration: BoxDecoration(gradient: RihlaColors.seaGradient),
+        ),
+        title: Row(
+          children: [
+            Container(
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.18),
+                borderRadius: BorderRadius.circular(9),
+              ),
+              child: const Icon(Icons.sailing, size: 18, color: Colors.white),
+            ),
+            const SizedBox(width: 10),
+            Text(l10n.appName),
+          ],
+        ),
         actions: [
-          TextButton(
-            onPressed: () => _cycleLocale(context),
-            child: Text(locale, style: const TextStyle(color: Colors.white)),
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: TextButton(
+              onPressed: () => _cycleLocale(context),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white.withValues(alpha: 0.18),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.language, size: 15, color: Colors.white),
+                  const SizedBox(width: 5),
+                  Text(locale, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13)),
+                ],
+              ),
+            ),
           ),
         ],
       ),

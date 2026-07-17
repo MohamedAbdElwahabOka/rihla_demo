@@ -3,6 +3,8 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/fade_in.dart';
+import '../widgets/rihla_app_bar.dart';
 
 /// Write a review for a Completed booking. Receives the [Booking] via route
 /// arguments; on submit it flags the booking as reviewed and appends a
@@ -52,49 +54,117 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
     final l10n = AppLocalizations.of(context)!;
     final booking = ModalRoute.of(context)!.settings.arguments as Booking;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.writeReview)),
+      appBar: RihlaAppBar(title: Text(l10n.writeReview)),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(RihlaSpace.lg),
           children: [
-            Text(
-              booking.experienceTitle,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(l10n.yourRating, style: const TextStyle(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 8),
-            Row(
-              children: List.generate(
-                5,
-                (i) => IconButton(
-                  onPressed: () => setState(() => _rating = i + 1),
-                  icon: Icon(
-                    i < _rating ? Icons.star : Icons.star_border,
-                    color: RihlaColors.gold,
-                    size: 36,
-                  ),
+            FadeInUp(
+              child: Text(
+                booking.experienceTitle,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.4,
+                  color: RihlaColors.ink,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _text,
-              maxLines: 4,
-              decoration: InputDecoration(
-                labelText: l10n.yourReview,
-                hintText: l10n.reviewHint,
-                border: const OutlineInputBorder(),
+            const SizedBox(height: RihlaSpace.xl),
+            FadeInUp(
+              delay: const Duration(milliseconds: 60),
+              child: _Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.yourRating.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.8,
+                        color: RihlaColors.inkFaint,
+                      ),
+                    ),
+                    const SizedBox(height: RihlaSpace.md),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: List.generate(
+                        5,
+                        (i) => IconButton(
+                          onPressed: () => setState(() => _rating = i + 1),
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+                          icon: Icon(
+                            i < _rating ? Icons.star_rounded : Icons.star_border_rounded,
+                            color: RihlaColors.gold,
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 24),
-            FilledButton(
-              onPressed: () => _submit(booking, l10n),
-              child: Text(l10n.submit),
+            const SizedBox(height: RihlaSpace.lg),
+            FadeInUp(
+              delay: const Duration(milliseconds: 120),
+              child: _Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.yourReview.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.8,
+                        color: RihlaColors.inkFaint,
+                      ),
+                    ),
+                    const SizedBox(height: RihlaSpace.md),
+                    TextField(
+                      controller: _text,
+                      maxLines: 4,
+                      decoration: InputDecoration(
+                        hintText: l10n.reviewHint,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: RihlaSpace.xl),
+            FadeInUp(
+              delay: const Duration(milliseconds: 180),
+              child: FilledButton(
+                onPressed: () => _submit(booking, l10n),
+                child: Text(l10n.submit),
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _Card extends StatelessWidget {
+  final Widget child;
+  const _Card({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(RihlaSpace.lg),
+      decoration: BoxDecoration(
+        color: RihlaColors.surface,
+        borderRadius: BorderRadius.circular(RihlaSpace.radiusLg),
+        boxShadow: RihlaShadows.soft,
+      ),
+      child: child,
     );
   }
 }

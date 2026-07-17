@@ -12,6 +12,7 @@ import 'screens/subscription_screen.dart';
 import 'screens/booking_step2_screen.dart';
 import 'screens/booking_step3_screen.dart';
 import 'screens/detail_screen.dart';
+import 'screens/restaurant_detail_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/ticket_screen.dart';
 import 'screens/write_review_screen.dart';
@@ -22,6 +23,7 @@ class Routes {
   static const splash = '/';
   static const shell = '/shell';
   static const detail = '/detail';
+  static const restaurantDetail = '/restaurant-detail';
   static const booking1 = '/booking1';
   static const booking2 = '/booking2';
   static const booking3 = '/booking3';
@@ -41,6 +43,7 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.shell: (_) => const MainShell(),
   Routes.splash: (_) => const SplashScreen(),
   Routes.detail: (_) => const DetailScreen(),
+  Routes.restaurantDetail: (_) => const RestaurantDetailScreen(),
   Routes.booking1: (_) => const BookingStep1Screen(),
   Routes.booking2: (_) => const BookingStep2Screen(),
   Routes.booking3: (_) => const BookingStep3Screen(),

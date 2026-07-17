@@ -3,6 +3,8 @@ import '../booking_data.dart';
 import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../routes.dart';
+import '../theme.dart';
+import '../widgets/rihla_app_bar.dart';
 
 /// S3b — Booking Step 2: Contact details (FR-044-046).
 class BookingStep2Screen extends StatefulWidget {
@@ -67,55 +69,137 @@ class _BookingStep2ScreenState extends State<BookingStep2Screen> {
     final data = ModalRoute.of(context)!.settings.arguments as BookingData;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.contactDetails)),
+      appBar: RihlaAppBar(title: Text(l10n.contactDetails)),
       body: SafeArea(
         child: Form(
           key: _formKey,
           child: ListView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(RihlaSpace.lg),
             children: [
-              TextFormField(
-                controller: _fullName,
-                decoration: InputDecoration(labelText: l10n.fullName),
-                validator: (v) => (v == null || v.trim().isEmpty) ? l10n.fieldRequired : null,
+              const _BookingStepper(current: 1),
+              const SizedBox(height: RihlaSpace.xl),
+              Text(
+                l10n.contactDetails,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.4,
+                  color: RihlaColors.ink,
+                ),
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _primaryPhone,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(labelText: l10n.primaryPhone),
-                validator: (v) => (v == null || v.trim().isEmpty) ? l10n.fieldRequired : null,
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _backupPhone,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(labelText: l10n.backupPhone),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _hotel,
-                decoration: InputDecoration(labelText: l10n.hotel),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _specialRequests,
-                maxLines: 3,
-                decoration: InputDecoration(labelText: l10n.specialRequests, alignLabelWithHint: true),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _email,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(labelText: l10n.email),
-              ),
-              const SizedBox(height: 24),
-              FilledButton(
-                onPressed: () => _continue(data),
-                child: Text(l10n.continueLabel),
+              const SizedBox(height: RihlaSpace.md),
+              Container(
+                decoration: BoxDecoration(
+                  color: RihlaColors.surface,
+                  borderRadius: BorderRadius.circular(RihlaSpace.radiusLg),
+                  boxShadow: RihlaShadows.soft,
+                ),
+                padding: const EdgeInsets.all(RihlaSpace.lg),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _fullName,
+                      decoration: InputDecoration(labelText: l10n.fullName),
+                      validator: (v) => (v == null || v.trim().isEmpty) ? l10n.fieldRequired : null,
+                    ),
+                    const SizedBox(height: RihlaSpace.lg),
+                    TextFormField(
+                      controller: _primaryPhone,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(labelText: l10n.primaryPhone),
+                      validator: (v) => (v == null || v.trim().isEmpty) ? l10n.fieldRequired : null,
+                    ),
+                    const SizedBox(height: RihlaSpace.lg),
+                    TextFormField(
+                      controller: _backupPhone,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(labelText: l10n.backupPhone),
+                    ),
+                    const SizedBox(height: RihlaSpace.lg),
+                    TextFormField(
+                      controller: _hotel,
+                      decoration: InputDecoration(labelText: l10n.hotel),
+                    ),
+                    const SizedBox(height: RihlaSpace.lg),
+                    TextFormField(
+                      controller: _specialRequests,
+                      maxLines: 3,
+                      decoration: InputDecoration(labelText: l10n.specialRequests, alignLabelWithHint: true),
+                    ),
+                    const SizedBox(height: RihlaSpace.lg),
+                    TextFormField(
+                      controller: _email,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(labelText: l10n.email),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: _StickyActionBar(
+        child: FilledButton(
+          onPressed: () => _continue(data),
+          child: Text(l10n.continueLabel),
+        ),
+      ),
+    );
+  }
+}
+
+/// Segmented progress bar for the 3-step booking flow. Filled sea-blue for
+/// completed and current steps; hairline for upcoming ones.
+class _BookingStepper extends StatelessWidget {
+  final int current;
+  const _BookingStepper({required this.current});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: List.generate(3, (i) {
+        final done = i <= current;
+        return Expanded(
+          child: Container(
+            margin: EdgeInsets.only(right: i < 2 ? RihlaSpace.sm : 0.0),
+            height: 6,
+            decoration: BoxDecoration(
+              color: done ? RihlaColors.seaBlue : RihlaColors.hairline,
+              borderRadius: BorderRadius.circular(RihlaSpace.radiusPill),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
+
+/// Sticky bottom action bar: a rounded surface lifted off the content with an
+/// upward soft shadow, hosting the primary CTA.
+class _StickyActionBar extends StatelessWidget {
+  final Widget child;
+  const _StickyActionBar({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: RihlaColors.surface,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x14023E58),
+            blurRadius: 20,
+            offset: Offset(0, -6),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(RihlaSpace.lg, RihlaSpace.md, RihlaSpace.lg, RihlaSpace.md),
+          child: child,
         ),
       ),
     );
