@@ -400,6 +400,12 @@ abstract class AppLocalizations {
   /// **'This field is required'**
   String get fieldRequired;
 
+  /// No description provided for @invalidPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get invalidPhoneNumber;
+
   /// No description provided for @orderSummary.
   ///
   /// In en, this message translates to:
@@ -766,17 +772,17 @@ abstract class AppLocalizations {
   /// **'Processing payment...'**
   String get processingPayment;
 
-  /// No description provided for @register.
+  /// No description provided for @enterPhoneTitle.
   ///
   /// In en, this message translates to:
-  /// **'Register'**
-  String get register;
+  /// **'Enter Your Phone Number'**
+  String get enterPhoneTitle;
 
-  /// No description provided for @login.
+  /// No description provided for @enterPhoneBody.
   ///
   /// In en, this message translates to:
-  /// **'Login'**
-  String get login;
+  /// **'We\'ll text you a verification code to continue.'**
+  String get enterPhoneBody;
 
   /// No description provided for @sendCode.
   ///
@@ -784,11 +790,47 @@ abstract class AppLocalizations {
   /// **'Send Code'**
   String get sendCode;
 
+  /// No description provided for @sendingCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get sendingCode;
+
+  /// No description provided for @codeSentTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Code sent to {phone}'**
+  String codeSentTo(String phone);
+
+  /// No description provided for @authPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll only use this number to send your booking updates.'**
+  String get authPrivacyNote;
+
   /// No description provided for @phoneNumber.
   ///
   /// In en, this message translates to:
   /// **'Phone Number'**
   String get phoneNumber;
+
+  /// No description provided for @completeProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Your Profile'**
+  String get completeProfileTitle;
+
+  /// No description provided for @completeProfileBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Just your name so we know who\'s booking.'**
+  String get completeProfileBody;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccount;
 
   /// No description provided for @otpTitle.
   ///
@@ -826,12 +868,6 @@ abstract class AppLocalizations {
   /// **'Resend Code'**
   String get resendCode;
 
-  /// No description provided for @numberNotRegistered.
-  ///
-  /// In en, this message translates to:
-  /// **'This number isn\'t registered. Please register first.'**
-  String get numberNotRegistered;
-
   /// No description provided for @countryEgypt.
   ///
   /// In en, this message translates to:
@@ -849,6 +885,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Russia'**
   String get countryRussia;
+
+  /// No description provided for @countryUk.
+  ///
+  /// In en, this message translates to:
+  /// **'United Kingdom'**
+  String get countryUk;
+
+  /// No description provided for @countryFrance.
+  ///
+  /// In en, this message translates to:
+  /// **'France'**
+  String get countryFrance;
+
+  /// No description provided for @countryItaly.
+  ///
+  /// In en, this message translates to:
+  /// **'Italy'**
+  String get countryItaly;
+
+  /// No description provided for @countrySpain.
+  ///
+  /// In en, this message translates to:
+  /// **'Spain'**
+  String get countrySpain;
 
   /// No description provided for @writeReview.
   ///

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'main_shell.dart';
 import 'screens/auth_screen.dart';
 import 'screens/booking_step1_screen.dart';
+import 'screens/complete_profile_screen.dart';
 import 'screens/my_bookings_screen.dart';
 import 'screens/notifications_screen.dart';
 import 'screens/otp_screen.dart';
@@ -30,6 +31,7 @@ class Routes {
   static const ticket = '/ticket';
   static const auth = '/auth';
   static const otp = '/otp';
+  static const completeProfile = '/complete-profile';
   static const notifications = '/notifications';
   static const subscription = '/subscription';
   static const plans = '/plans';
@@ -55,6 +57,7 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.refund: (_) => const RefundScreen(),
   Routes.auth: (_) => const AuthScreen(),
   Routes.otp: (_) => const OtpScreen(),
+  Routes.completeProfile: (_) => const CompleteProfileScreen(),
   Routes.notifications: (_) => const NotificationsScreen(),
   Routes.writeReview: (_) => const WriteReviewScreen(),
 };

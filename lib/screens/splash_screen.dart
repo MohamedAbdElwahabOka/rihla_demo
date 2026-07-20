@@ -101,7 +101,7 @@ class SplashScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 12),
                         OutlinedButton(
-                          onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: false),
+                          onPressed: () => Navigator.of(context).pushNamed(Routes.auth),
                           child: Text(l10n.signIn),
                         ),
                       ],

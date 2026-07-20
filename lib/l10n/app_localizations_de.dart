@@ -165,6 +165,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get fieldRequired => 'Dieses Feld ist erforderlich';
 
   @override
+  String get invalidPhoneNumber => 'Bitte eine gültige Telefonnummer eingeben';
+
+  @override
   String get orderSummary => 'Bestellübersicht';
 
   @override
@@ -365,16 +368,39 @@ class AppLocalizationsDe extends AppLocalizations {
   String get processingPayment => 'Zahlung wird verarbeitet...';
 
   @override
-  String get register => 'Registrieren';
+  String get enterPhoneTitle => 'Telefonnummer eingeben';
 
   @override
-  String get login => 'Anmelden';
+  String get enterPhoneBody =>
+      'Wir senden Ihnen einen Bestätigungscode per SMS.';
 
   @override
   String get sendCode => 'Code senden';
 
   @override
+  String get sendingCode => 'Wird gesendet…';
+
+  @override
+  String codeSentTo(String phone) {
+    return 'Code gesendet an $phone';
+  }
+
+  @override
+  String get authPrivacyNote =>
+      'Wir verwenden diese Nummer nur, um Sie über Ihre Buchungen zu informieren.';
+
+  @override
   String get phoneNumber => 'Telefonnummer';
+
+  @override
+  String get completeProfileTitle => 'Profil vervollständigen';
+
+  @override
+  String get completeProfileBody =>
+      'Nur Ihr Name, damit wir wissen, wer bucht.';
+
+  @override
+  String get createAccount => 'Konto erstellen';
 
   @override
   String get otpTitle => 'Bestätigungscode eingeben';
@@ -399,10 +425,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resendCode => 'Code erneut senden';
 
   @override
-  String get numberNotRegistered =>
-      'Diese Nummer ist nicht registriert. Bitte zuerst registrieren.';
-
-  @override
   String get countryEgypt => 'Ägypten';
 
   @override
@@ -410,6 +432,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get countryRussia => 'Russland';
+
+  @override
+  String get countryUk => 'Vereinigtes Königreich';
+
+  @override
+  String get countryFrance => 'Frankreich';
+
+  @override
+  String get countryItaly => 'Italien';
+
+  @override
+  String get countrySpain => 'Spanien';
 
   @override
   String get writeReview => 'Bewertung schreiben';

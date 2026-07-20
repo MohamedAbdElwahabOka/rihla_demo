@@ -144,7 +144,7 @@ class _GuestBookings extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: FilledButton(
-                  onPressed: () => Navigator.of(context).pushNamed(Routes.auth, arguments: false),
+                  onPressed: () => Navigator.of(context).pushNamed(Routes.auth),
                   child: Text(l10n.signIn),
                 ),
               ),

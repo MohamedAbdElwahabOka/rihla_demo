@@ -61,27 +61,21 @@ class _OtpScreenState extends State<OtpScreen> {
     // Compare digits only -- users type phone numbers without the exact
     // spacing the demo constant happens to use (e.g. via a numeric keypad
     // with no convenient space key).
-    final matchesRegistered = request.phone.replaceAll(RegExp(r'\s'), '') == registeredPhoneNumber.replaceAll(RegExp(r'\s'), '');
+    final matchesRegistered = request.countryCode == registeredPhoneCountryCode &&
+        request.phone.replaceAll(RegExp(r'\s'), '') == registeredPhoneNumber.replaceAll(RegExp(r'\s'), '');
     if (matchesRegistered) {
       currentUser = registeredUserProfile;
       userSubscription = registeredUserSubscription;
       isLoggedIn = true;
       Navigator.of(context).pushNamedAndRemoveUntil(Routes.shell, (route) => false);
-    } else if (request.isRegister) {
-      currentUser = UserProfile(
-        firstName: request.fullName,
-        lastName: '',
-        countryCode: request.countryCode,
-        phone: request.phone,
-        totalTrips: 0,
-        reviewsWritten: 0,
-      );
-      userSubscription = null;
-      isLoggedIn = true;
-      Navigator.of(context).pushNamedAndRemoveUntil(Routes.shell, (route) => false);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.numberNotRegistered)));
-      Navigator.of(context).pop();
+      // Unrecognized number: there's no separate "register" flow anymore —
+      // any number that isn't already an account continues into Complete
+      // Profile, which collects the name and finishes account creation.
+      Navigator.of(context).pushReplacementNamed(
+        Routes.completeProfile,
+        arguments: request,
+      );
     }
   }
 

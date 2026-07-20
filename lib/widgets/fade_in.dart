@@ -31,7 +31,11 @@ class _FadeInUpState extends State<FadeInUp> with SingleTickerProviderStateMixin
   void initState() {
     super.initState();
     Future<void>.delayed(widget.delay, () {
-      if (mounted) _controller.forward();
+      if (!mounted) return;
+      // Respect the system's "remove animations" setting: never start the
+      // choreography (not just hide it) so no ticker keeps running.
+      if (MediaQuery.of(context).disableAnimations) return;
+      _controller.forward();
     });
   }
 
@@ -43,6 +47,10 @@ class _FadeInUpState extends State<FadeInUp> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    // Respect the system's "remove animations" setting: skip the slide/fade
+    // choreography entirely and show the content in place.
+    if (MediaQuery.of(context).disableAnimations) return widget.child;
+
     return AnimatedBuilder(
       animation: _curve,
       builder: (context, child) => Opacity(

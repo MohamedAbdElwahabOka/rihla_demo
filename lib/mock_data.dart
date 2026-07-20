@@ -307,9 +307,11 @@ const timeSlots = <TimeSlot>[
 // ---------------------------------------------------------------------------
 
 /// Country code + phone that logs in as the existing subscriber persona
-/// (Ahmed Youssef, active "Red Sea Explorer" subscription).
+/// (Mohammed, active "Red Sea Explorer" subscription). Enter as
+/// `01064425532` with Egypt (+20) selected — the leading trunk `0` is
+/// dropped, same convention as the phone field elsewhere in the app.
 const registeredPhoneCountryCode = '+20';
-const registeredPhoneNumber = '100 123 4567';
+const registeredPhoneNumber = '106 442 5532';
 
 /// A phone number that has never registered — used to demo the
 /// registration flow and the FR-037 "subscription required to book" gate.
@@ -322,11 +324,11 @@ const newPhoneNumber = '100 999 0000';
 const demoExpiredOtp = '000000';
 
 const registeredUserProfile = UserProfile(
-  firstName: 'Ahmed',
-  lastName: 'Youssef',
+  firstName: 'Mohammed',
+  lastName: '',
   countryCode: registeredPhoneCountryCode,
   phone: registeredPhoneNumber,
-  email: 'ahmed.youssef@example.com',
+  email: 'mohammed@example.com',
   totalTrips: 4,
   reviewsWritten: 2,
 );

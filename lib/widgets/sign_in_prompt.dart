@@ -46,7 +46,7 @@ Future<void> promptSignIn(BuildContext context) {
             FilledButton(
               onPressed: () {
                 Navigator.of(sheetContext).pop();
-                Navigator.of(context).pushNamed(Routes.auth, arguments: false);
+                Navigator.of(context).pushNamed(Routes.auth);
               },
               child: Text(l10n.signIn),
             ),

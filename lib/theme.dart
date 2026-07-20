@@ -26,6 +26,12 @@ class RihlaColors {
   static const inkFaint = Color(0xFF93A7B0); // tertiary / hints
   static const hairline = Color(0xFFE4ECF1); // borders / dividers
 
+  // --- On-brand ---
+  /// Text/icon color for content placed on top of a brand-colored surface
+  /// (sea/sunset gradients, filled buttons, photography) — named so those
+  /// call sites resolve through a token instead of a raw `Colors.white`.
+  static const onBrand = Colors.white;
+
   // --- Gradients ---
   /// Hero / branding wash — deep sea to bright lagoon.
   static const seaGradient = LinearGradient(

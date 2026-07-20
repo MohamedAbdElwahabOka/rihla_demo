@@ -165,6 +165,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fieldRequired => 'This field is required';
 
   @override
+  String get invalidPhoneNumber => 'Enter a valid phone number';
+
+  @override
   String get orderSummary => 'Order Summary';
 
   @override
@@ -364,16 +367,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get processingPayment => 'Processing payment...';
 
   @override
-  String get register => 'Register';
+  String get enterPhoneTitle => 'Enter Your Phone Number';
 
   @override
-  String get login => 'Login';
+  String get enterPhoneBody =>
+      'We\'ll text you a verification code to continue.';
 
   @override
   String get sendCode => 'Send Code';
 
   @override
+  String get sendingCode => 'Sending…';
+
+  @override
+  String codeSentTo(String phone) {
+    return 'Code sent to $phone';
+  }
+
+  @override
+  String get authPrivacyNote =>
+      'We\'ll only use this number to send your booking updates.';
+
+  @override
   String get phoneNumber => 'Phone Number';
+
+  @override
+  String get completeProfileTitle => 'Complete Your Profile';
+
+  @override
+  String get completeProfileBody => 'Just your name so we know who\'s booking.';
+
+  @override
+  String get createAccount => 'Create Account';
 
   @override
   String get otpTitle => 'Enter verification code';
@@ -396,10 +421,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendCode => 'Resend Code';
 
   @override
-  String get numberNotRegistered =>
-      'This number isn\'t registered. Please register first.';
-
-  @override
   String get countryEgypt => 'Egypt';
 
   @override
@@ -407,6 +428,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get countryRussia => 'Russia';
+
+  @override
+  String get countryUk => 'United Kingdom';
+
+  @override
+  String get countryFrance => 'France';
+
+  @override
+  String get countryItaly => 'Italy';
+
+  @override
+  String get countrySpain => 'Spain';
 
   @override
   String get writeReview => 'Write a Review';
