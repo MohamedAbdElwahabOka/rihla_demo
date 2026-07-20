@@ -27,7 +27,7 @@ Future<void> promptSignIn(BuildContext context) {
                   gradient: RihlaColors.seaGradient,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.lock_rounded, size: 30, color: Colors.white),
+                child: const Icon(Icons.lock_rounded, size: 30, color: RihlaColors.onBrand),
               ),
             ),
             const SizedBox(height: 16),

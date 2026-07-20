@@ -18,13 +18,13 @@ class RihlaBadge extends StatelessWidget {
     this.icon,
     this.gradient,
     this.background,
-    this.foreground = Colors.white,
+    this.foreground = RihlaColors.onBrand,
   });
 
   const RihlaBadge.sunset(this.label, {super.key, this.icon})
       : gradient = RihlaColors.sunsetGradient,
         background = null,
-        foreground = Colors.white;
+        foreground = RihlaColors.onBrand;
 
   const RihlaBadge.soft(this.label, {super.key, this.icon})
       : gradient = null,

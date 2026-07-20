@@ -43,11 +43,11 @@ class SplashScreen extends StatelessWidget {
                               width: 108,
                               height: 108,
                               decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.16),
+                                color: RihlaColors.onBrand.withValues(alpha: 0.16),
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white.withValues(alpha: 0.35), width: 1.5),
+                                border: Border.all(color: RihlaColors.onBrand.withValues(alpha: 0.35), width: 1.5),
                               ),
-                              child: const Icon(Icons.sailing, size: 54, color: Colors.white),
+                              child: const Icon(Icons.sailing, size: 54, color: RihlaColors.onBrand),
                             ),
                             const SizedBox(height: 24),
                             Text(
@@ -56,7 +56,7 @@ class SplashScreen extends StatelessWidget {
                                 fontSize: 44,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: -1,
-                                color: Colors.white,
+                                color: RihlaColors.onBrand,
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -68,7 +68,7 @@ class SplashScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 15,
                                   height: 1.5,
-                                  color: Colors.white.withValues(alpha: 0.85),
+                                  color: RihlaColors.onBrand.withValues(alpha: 0.85),
                                 ),
                               ),
                             ),

@@ -258,16 +258,10 @@ class _StickyActionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: RihlaColors.surface,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x14023E58),
-            blurRadius: 20,
-            offset: Offset(0, -6),
-          ),
-        ],
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
+        boxShadow: RihlaShadows.stickyBar,
       ),
       child: SafeArea(
         top: false,

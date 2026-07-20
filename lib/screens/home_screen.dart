@@ -146,7 +146,7 @@ class _Header extends StatelessWidget {
               children: [
                 Text(
                   '$greeting, ${currentUser.firstName}',
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, letterSpacing: -0.5, color: RihlaColors.ink),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 8),
                 Container(

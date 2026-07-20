@@ -56,10 +56,10 @@ class _MainShellState extends State<MainShell> {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.18),
+                color: RihlaColors.onBrand.withValues(alpha: 0.18),
                 borderRadius: BorderRadius.circular(9),
               ),
-              child: const Icon(Icons.sailing, size: 18, color: Colors.white),
+              child: const Icon(Icons.sailing, size: 18, color: RihlaColors.onBrand),
             ),
             const SizedBox(width: 10),
             Text(l10n.appName),
@@ -71,17 +71,17 @@ class _MainShellState extends State<MainShell> {
             child: TextButton(
               onPressed: () => _cycleLocale(context),
               style: TextButton.styleFrom(
-                backgroundColor: Colors.white.withValues(alpha: 0.18),
-                foregroundColor: Colors.white,
+                backgroundColor: RihlaColors.onBrand.withValues(alpha: 0.18),
+                foregroundColor: RihlaColors.onBrand,
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.language, size: 15, color: Colors.white),
+                  const Icon(Icons.language, size: 15, color: RihlaColors.onBrand),
                   const SizedBox(width: 5),
-                  Text(locale, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13)),
+                  Text(locale, style: const TextStyle(color: RihlaColors.onBrand, fontWeight: FontWeight.w700, fontSize: 13)),
                 ],
               ),
             ),

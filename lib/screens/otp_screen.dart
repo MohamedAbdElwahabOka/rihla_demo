@@ -156,7 +156,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(Icons.lock_rounded,
-                        size: 30, color: Colors.white),
+                        size: 30, color: RihlaColors.onBrand),
                   ),
                 ),
                 const SizedBox(height: RihlaSpace.lg),

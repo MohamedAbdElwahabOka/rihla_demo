@@ -32,6 +32,24 @@ class RihlaColors {
   /// call sites resolve through a token instead of a raw `Colors.white`.
   static const onBrand = Colors.white;
 
+  /// Secondary text/labels on a brand-colored surface (subtitles, captions,
+  /// stat labels). Consolidates what had drifted into separate `white70` /
+  /// `white60` literals at different call sites into one shared opacity.
+  static const onBrandMuted = Color(0xB3FFFFFF);
+
+  /// Dividers and faint fills on a brand-colored surface.
+  static const onBrandFaint = Color(0x3DFFFFFF);
+
+  // --- Status (booking-state badges: confirmed / completed / cancelled) ---
+  static const statusSuccess = Color(0xFF1F8A5B);
+  static const statusSuccessTint = Color(0xFFE3F5EC);
+
+  /// Foreground for the "completed" badge; pairs with the existing
+  /// [goldTint] background rather than a duplicate tint token.
+  static const statusPending = Color(0xFF9A6B12);
+  static const statusCancelled = Color(0xFFC94A38);
+  static const statusCancelledTint = Color(0xFFFCE7E3);
+
   // --- Gradients ---
   /// Hero / branding wash — deep sea to bright lagoon.
   static const seaGradient = LinearGradient(
@@ -77,6 +95,16 @@ class RihlaShadows {
           color: RihlaColors.seaBlueDark.withValues(alpha: 0.16),
           blurRadius: 24,
           offset: const Offset(0, 12),
+        ),
+      ];
+
+  /// Upward-cast shadow for a bottom-anchored sticky action bar (the 3-step
+  /// booking flow's confirm/continue bar).
+  static List<BoxShadow> get stickyBar => [
+        BoxShadow(
+          color: RihlaColors.seaBlueDark.withValues(alpha: 0.08),
+          blurRadius: 20,
+          offset: const Offset(0, -6),
         ),
       ];
 }

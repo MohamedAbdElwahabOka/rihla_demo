@@ -62,12 +62,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
             FadeInUp(
               child: Text(
                 booking.experienceTitle,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -0.4,
-                  color: RihlaColors.ink,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             const SizedBox(height: RihlaSpace.xl),

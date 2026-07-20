@@ -77,7 +77,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       CircleAvatar(
                         backgroundColor: Colors.white,
                         child: IconButton(
-                          icon: Icon(_isFavorite ? Icons.favorite : Icons.favorite_border, color: Colors.redAccent),
+                          icon: Icon(_isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded, color: RihlaColors.coral),
                           onPressed: () {
                             if (isGuest) {
                               promptSignIn(context);
@@ -138,7 +138,7 @@ class _DetailScreenState extends State<DetailScreen> {
               delegate: SliverChildListDelegate([
                 Text(experience.category.toUpperCase(), style: const TextStyle(color: RihlaColors.seaBlue, fontWeight: FontWeight.w800, fontSize: 12, letterSpacing: 0.8)),
                 const SizedBox(height: 6),
-                Text(experience.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.6, height: 1.15)),
+                Text(experience.title, style: Theme.of(context).textTheme.headlineMedium?.copyWith(height: 1.15)),
                 const SizedBox(height: 8),
                 Row(
                   children: [
@@ -160,7 +160,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ],
                 ),
                 const Divider(height: 32),
-                Text(l10n.about, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
+                Text(l10n.about, style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 Text(
                   experience.about,
@@ -173,12 +173,12 @@ class _DetailScreenState extends State<DetailScreen> {
                   child: Text(_aboutExpanded ? l10n.readLess : l10n.readMore),
                 ),
                 const Divider(height: 32),
-                Text(l10n.included, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
+                Text(l10n.included, style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 ...experience.included.map((i) => _ChecklistRow(text: i, included: true)),
                 ...experience.excluded.map((i) => _ChecklistRow(text: i, included: false)),
                 const Divider(height: 32),
-                Text(l10n.itinerary, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
+                Text(l10n.itinerary, style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 ...experience.itinerary.asMap().entries.map((entry) => _ItineraryRow(
                       index: entry.key + 1,
@@ -188,7 +188,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 const Divider(height: 32),
                 Row(
                   children: [
-                    Text(l10n.reviews, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink)),
+                    Text(l10n.reviews, style: Theme.of(context).textTheme.titleMedium),
                     const Spacer(),
                     const Icon(Icons.star, size: 18, color: RihlaColors.gold),
                     Text(' $avgRating', style: const TextStyle(fontWeight: FontWeight.bold)),

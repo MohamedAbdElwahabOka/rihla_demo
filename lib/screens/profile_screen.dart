@@ -62,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
           BoxShadow(color: RihlaColors.seaBlue.withValues(alpha: 0.35), blurRadius: 20, offset: const Offset(0, 8)),
         ],
       ),
-      child: Icon(icon, color: Colors.white, size: 46),
+      child: Icon(icon, color: RihlaColors.onBrand, size: 46),
     );
   }
 
@@ -78,7 +78,7 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   _avatar(Icons.person_outline),
                   const SizedBox(height: 18),
-                  Text(l10n.guestModeTitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.4)),
+                  Text(l10n.guestModeTitle, style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 8),
                   Text(l10n.guestModeBody, textAlign: TextAlign.center, style: const TextStyle(color: RihlaColors.inkMuted, height: 1.5)),
                   const SizedBox(height: 20),
@@ -122,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   _avatar(Icons.person),
                   const SizedBox(height: 14),
-                  Text('${currentUser.firstName} ${currentUser.lastName}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.4)),
+                  Text('${currentUser.firstName} ${currentUser.lastName}', style: Theme.of(context).textTheme.titleLarge),
                   if (sub != null && sub.active) ...[
                     const SizedBox(height: 8),
                     RihlaBadge(

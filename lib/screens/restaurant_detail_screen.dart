@@ -81,7 +81,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                       const SizedBox(height: 4),
                       Text(
                         restaurant.name,
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 26, letterSpacing: -0.6, height: 1.1),
+                        style: Theme.of(context).textTheme.headlineMedium
+                            ?.copyWith(color: RihlaColors.onBrand, height: 1.1),
                       ),
                     ],
                   ),

@@ -43,12 +43,7 @@ class _BookingStep1ScreenState extends State<BookingStep1Screen> {
             const SizedBox(height: RihlaSpace.xl),
             Text(
               l10n.chooseDateTime,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
-                letterSpacing: -0.4,
-                color: RihlaColors.ink,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: RihlaSpace.md),
             Container(
@@ -84,7 +79,7 @@ class _BookingStep1ScreenState extends State<BookingStep1Screen> {
                 calendarStyle: const CalendarStyle(
                   todayDecoration: BoxDecoration(color: RihlaColors.gold, shape: BoxShape.circle),
                   selectedDecoration: BoxDecoration(color: RihlaColors.seaBlue, shape: BoxShape.circle),
-                  selectedTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+                  selectedTextStyle: TextStyle(color: RihlaColors.onBrand, fontWeight: FontWeight.w700),
                   defaultTextStyle: TextStyle(color: RihlaColors.ink),
                   weekendTextStyle: TextStyle(color: RihlaColors.inkMuted),
                   disabledTextStyle: TextStyle(color: RihlaColors.inkFaint),
@@ -304,16 +299,10 @@ class _StickyActionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: RihlaColors.surface,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x14023E58),
-            blurRadius: 20,
-            offset: Offset(0, -6),
-          ),
-        ],
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(RihlaSpace.radiusLg)),
+        boxShadow: RihlaShadows.stickyBar,
       ),
       child: SafeArea(
         top: false,

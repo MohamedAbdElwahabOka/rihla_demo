@@ -32,7 +32,7 @@ class TicketScreen extends StatelessWidget {
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.elasticOut,
                 builder: (context, scale, child) => Transform.scale(scale: scale, child: child),
-                child: const Icon(Icons.check_circle_rounded, color: Color(0xFF1F8A5B), size: 72),
+                child: const Icon(Icons.check_circle_rounded, color: RihlaColors.statusSuccess, size: 72),
               ),
             ),
             const SizedBox(height: RihlaSpace.md),
@@ -103,10 +103,10 @@ class _TicketCard extends StatelessWidget {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.18),
+                    color: RihlaColors.onBrand.withValues(alpha: 0.18),
                     borderRadius: BorderRadius.circular(RihlaSpace.radiusSm),
                   ),
-                  child: Icon(booking.icon, color: Colors.white),
+                  child: Icon(booking.icon, color: RihlaColors.onBrand),
                 ),
                 const SizedBox(width: RihlaSpace.md),
                 Expanded(
@@ -116,7 +116,7 @@ class _TicketCard extends StatelessWidget {
                       Text(
                         l10n.referenceLabel.toUpperCase(),
                         style: const TextStyle(
-                          color: Colors.white70,
+                          color: RihlaColors.onBrandMuted,
                           fontSize: 11,
                           fontWeight: FontWeight.w800,
                           letterSpacing: 0.8,
@@ -125,7 +125,7 @@ class _TicketCard extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         booking.experienceTitle,
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17, letterSpacing: -0.3),
+                        style: const TextStyle(color: RihlaColors.onBrand, fontWeight: FontWeight.w800, fontSize: 17, letterSpacing: -0.3),
                       ),
                     ],
                   ),

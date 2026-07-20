@@ -82,7 +82,7 @@ class SubscriptionScreen extends StatelessWidget {
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
                               letterSpacing: -0.4,
-                              color: Colors.white,
+                              color: RihlaColors.onBrand,
                             ),
                           ),
                         ),
@@ -91,14 +91,14 @@ class SubscriptionScreen extends StatelessWidget {
                             ? RihlaBadge.sunset(l10n.active, icon: Icons.check_circle_rounded)
                             : RihlaBadge(
                                 label: l10n.statusCancelled,
-                                background: Colors.white24,
+                                background: RihlaColors.onBrandFaint,
                                 icon: Icons.cancel_rounded,
                               ),
                       ],
                     ),
                     const SizedBox(height: RihlaSpace.sm),
-                    Text(plan.description, style: const TextStyle(color: Colors.white70, height: 1.4)),
-                    Container(height: 1, margin: const EdgeInsets.symmetric(vertical: RihlaSpace.lg), color: Colors.white24),
+                    Text(plan.description, style: const TextStyle(color: RihlaColors.onBrandMuted, height: 1.4)),
+                    Container(height: 1, margin: const EdgeInsets.symmetric(vertical: RihlaSpace.lg), color: RihlaColors.onBrandFaint),
                     _HeroInfoRow(label: l10n.purchaseDate, value: formatDate(sub.purchaseDate)),
                     const SizedBox(height: RihlaSpace.md),
                     _HeroInfoRow(label: l10n.expiryDate, value: formatDate(sub.expiryDate)),
@@ -177,8 +177,8 @@ class _HeroInfoRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-        Text(value, style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.white)),
+        Text(label, style: const TextStyle(color: RihlaColors.onBrandMuted, fontSize: 13)),
+        Text(value, style: const TextStyle(fontWeight: FontWeight.w700, color: RihlaColors.onBrand)),
       ],
     );
   }

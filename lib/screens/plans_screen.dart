@@ -95,13 +95,13 @@ class _PlanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    final titleColor = featured ? Colors.white : RihlaColors.ink;
-    final priceColor = featured ? Colors.white : RihlaColors.seaBlueDark;
-    final descColor = featured ? Colors.white70 : RihlaColors.inkMuted;
-    final faintColor = featured ? Colors.white60 : RihlaColors.inkFaint;
-    final dividerColor = featured ? Colors.white24 : RihlaColors.hairline;
+    final titleColor = featured ? RihlaColors.onBrand : RihlaColors.ink;
+    final priceColor = featured ? RihlaColors.onBrand : RihlaColors.seaBlueDark;
+    final descColor = featured ? RihlaColors.onBrandMuted : RihlaColors.inkMuted;
+    final faintColor = featured ? RihlaColors.onBrandMuted : RihlaColors.inkFaint;
+    final dividerColor = featured ? RihlaColors.onBrandFaint : RihlaColors.hairline;
     final checkColor = featured ? RihlaColors.gold : RihlaColors.seaBlue;
-    final featureColor = featured ? Colors.white : RihlaColors.ink;
+    final featureColor = featured ? RihlaColors.onBrand : RihlaColors.ink;
 
     return Container(
       margin: const EdgeInsets.only(bottom: RihlaSpace.lg),
@@ -128,12 +128,10 @@ class _PlanCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           plan.name,
-                          style: TextStyle(
-                            fontSize: 19,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: -0.4,
-                            color: titleColor,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(color: titleColor),
                         ),
                       ),
                       if (featured)
@@ -144,7 +142,7 @@ class _PlanCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(RihlaSpace.radiusPill),
                             boxShadow: RihlaShadows.soft,
                           ),
-                          child: const Icon(Icons.star_rounded, size: 16, color: Colors.white),
+                          child: const Icon(Icons.star_rounded, size: 16, color: RihlaColors.onBrand),
                         ),
                     ],
                   ),
@@ -188,7 +186,7 @@ class _PlanCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: featured ? Colors.white : RihlaColors.seaTint,
+                      color: featured ? RihlaColors.surface : RihlaColors.seaTint,
                       borderRadius: BorderRadius.circular(RihlaSpace.radius),
                     ),
                     child: Icon(Icons.arrow_forward_rounded, size: 20, color: featured ? RihlaColors.seaBlueDark : RihlaColors.seaBlue),

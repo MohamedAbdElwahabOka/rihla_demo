@@ -74,12 +74,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                 if (!widget.standalone) ...[
                   Text(
                     l10n.myBookings,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.4,
-                      color: RihlaColors.ink,
-                    ),
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(height: RihlaSpace.lg),
                 ],
@@ -126,7 +121,7 @@ class _GuestBookings extends StatelessWidget {
                     BoxShadow(color: RihlaColors.seaBlue.withValues(alpha: 0.35), blurRadius: 20, offset: const Offset(0, 8)),
                   ],
                 ),
-                child: const Icon(Icons.confirmation_number_rounded, color: Colors.white, size: 44),
+                child: const Icon(Icons.confirmation_number_rounded, color: RihlaColors.onBrand, size: 44),
               ),
               const SizedBox(height: RihlaSpace.lg),
               Text(
@@ -182,22 +177,22 @@ class _BookingCard extends StatelessWidget {
         return RihlaBadge(
           label: l10n.statusConfirmed,
           icon: Icons.check_circle_rounded,
-          background: const Color(0xFFE3F5EC),
-          foreground: const Color(0xFF1F8A5B),
+          background: RihlaColors.statusSuccessTint,
+          foreground: RihlaColors.statusSuccess,
         );
       case BookingStatus.completed:
         return RihlaBadge(
           label: l10n.statusCompleted,
           icon: Icons.verified_rounded,
           background: RihlaColors.goldTint,
-          foreground: const Color(0xFF9A6B12),
+          foreground: RihlaColors.statusPending,
         );
       case BookingStatus.cancelled:
         return RihlaBadge(
           label: l10n.statusCancelled,
           icon: Icons.cancel_rounded,
-          background: const Color(0xFFFCE7E3),
-          foreground: const Color(0xFFC94A38),
+          background: RihlaColors.statusCancelledTint,
+          foreground: RihlaColors.statusCancelled,
         );
     }
   }
