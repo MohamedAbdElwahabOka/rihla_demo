@@ -3,6 +3,7 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
+import '../widgets/animated_favorite_icon.dart';
 import '../widgets/fade_in.dart';
 import '../widgets/glass_panel.dart';
 import '../widgets/local_image.dart';
@@ -308,7 +309,10 @@ class _FeaturedCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category),
+          Hero(
+            tag: 'exp-${experience.id}',
+            child: LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category),
+          ),
           const DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -363,7 +367,10 @@ class _PopularCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category),
+          Hero(
+            tag: 'exp-${experience.id}',
+            child: LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category),
+          ),
           const DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -381,7 +388,7 @@ class _PopularCard extends StatelessWidget {
               child: CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.white,
-                child: Icon(isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded, size: 17, color: RihlaColors.coral),
+                child: AnimatedFavoriteIcon(isFavorite: isFavorite, size: 17, color: RihlaColors.coral),
               ),
             ),
           ),
@@ -427,7 +434,10 @@ class _RestaurantCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          LocalImage(path: restaurant.primaryImage, icon: restaurant.icon, label: restaurant.cuisine),
+          Hero(
+            tag: 'rest-${restaurant.id}',
+            child: LocalImage(path: restaurant.primaryImage, icon: restaurant.icon, label: restaurant.cuisine),
+          ),
           const DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(

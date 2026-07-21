@@ -6,6 +6,7 @@ import '../theme.dart';
 import '../utils/format.dart';
 import '../widgets/rihla_app_bar.dart';
 import '../widgets/fade_in.dart';
+import '../widgets/price_tag.dart';
 
 /// S4 — Ticket Detail (FR-051-054).
 class TicketScreen extends StatelessWidget {
@@ -27,13 +28,18 @@ class TicketScreen extends StatelessWidget {
           padding: const EdgeInsets.all(RihlaSpace.lg),
           children: [
             Center(
-              child: TweenAnimationBuilder<double>(
-                tween: Tween(begin: 0, end: 1),
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.elasticOut,
-                builder: (context, scale, child) => Transform.scale(scale: scale, child: child),
-                child: const Icon(Icons.check_circle_rounded, color: RihlaColors.statusSuccess, size: 72),
-              ),
+              child: MediaQuery.of(context).disableAnimations
+                  ? const Icon(Icons.check_circle_rounded, color: RihlaColors.statusSuccess, size: 72)
+                  : TweenAnimationBuilder<double>(
+                      tween: Tween(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeOutExpo,
+                      builder: (context, t, child) => Opacity(
+                        opacity: t,
+                        child: Transform.scale(scale: 0.6 + (0.4 * t), child: child),
+                      ),
+                      child: const Icon(Icons.check_circle_rounded, color: RihlaColors.statusSuccess, size: 72),
+                    ),
             ),
             const SizedBox(height: RihlaSpace.md),
             Center(
@@ -145,6 +151,34 @@ class _TicketCard extends StatelessWidget {
                 const SizedBox(height: RihlaSpace.md),
                 _TicketRow(icon: Icons.confirmation_number_outlined, label: l10n.referenceLabel, value: booking.refCode),
                 _TicketRow(icon: Icons.qr_code_2_rounded, label: l10n.ticketNumberLabel, value: booking.ticketNumber),
+                const Divider(height: RihlaSpace.xl),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(l10n.total, style: Theme.of(context).textTheme.bodyMedium),
+                    if (booking.discountPct > 0)
+                      PriceTag(
+                        original: booking.originalPriceEur,
+                        discounted: booking.finalPriceEur,
+                        discountedFontSize: 18,
+                      )
+                    else
+                      Text(
+                        formatEur(booking.finalPriceEur),
+                        style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 18, color: RihlaColors.ink),
+                      ),
+                  ],
+                ),
+                if (booking.discountPct > 0) ...[
+                  const SizedBox(height: 2),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      l10n.discountApplied(booking.discountPct),
+                      style: const TextStyle(fontSize: 12, color: RihlaColors.statusSuccess, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
                 const SizedBox(height: RihlaSpace.md),
                 Container(
                   width: double.infinity,

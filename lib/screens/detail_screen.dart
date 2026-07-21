@@ -3,6 +3,7 @@ import '../l10n/app_localizations.dart';
 import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
+import '../widgets/animated_favorite_icon.dart';
 import '../widgets/local_image.dart';
 import '../widgets/price_tag.dart';
 import '../widgets/rihla_badge.dart';
@@ -55,11 +56,14 @@ class _DetailScreenState extends State<DetailScreen> {
           SliverToBoxAdapter(
             child: Stack(
               children: [
-                LocalImage(
-                  path: photos.isEmpty ? '' : photos[heroIndex],
-                  icon: experience.icon,
-                  label: l10n.photoIndicator(heroIndex + 1, photoCount),
-                  height: 320,
+                Hero(
+                  tag: 'exp-${experience.id}',
+                  child: LocalImage(
+                    path: photos.isEmpty ? '' : photos[heroIndex],
+                    icon: experience.icon,
+                    label: l10n.photoIndicator(heroIndex + 1, photoCount),
+                    height: 320,
+                  ),
                 ),
                 Positioned(
                   top: 40,
@@ -77,7 +81,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       CircleAvatar(
                         backgroundColor: Colors.white,
                         child: IconButton(
-                          icon: Icon(_isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded, color: RihlaColors.coral),
+                          icon: AnimatedFavoriteIcon(isFavorite: _isFavorite, color: RihlaColors.coral),
                           onPressed: () {
                             if (isGuest) {
                               promptSignIn(context);

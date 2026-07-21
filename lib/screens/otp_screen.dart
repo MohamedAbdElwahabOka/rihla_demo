@@ -98,7 +98,9 @@ class _OtpScreenState extends State<OtpScreen> {
         final active =
             _controllers[i].text.isNotEmpty || _focusNodes[i].hasFocus;
         return AnimatedContainer(
-          duration: const Duration(milliseconds: 160),
+          duration: MediaQuery.of(context).disableAnimations
+              ? Duration.zero
+              : const Duration(milliseconds: 160),
           width: 46,
           height: 56,
           alignment: Alignment.center,

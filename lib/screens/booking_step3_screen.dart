@@ -6,6 +6,7 @@ import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/price_tag.dart';
 import '../widgets/rihla_app_bar.dart';
 
 final _rng = Random();
@@ -65,6 +66,10 @@ class BookingStep3Screen extends StatelessWidget {
     final adultPrice = experience.priceDiscounted;
     final childPrice = (experience.priceDiscounted * 0.5).round();
     final finalTotal = adultPrice * data.adults + childPrice * data.children;
+    final originalSubtotal = experience.priceOriginal * (data.adults + data.children);
+    final discountPct = experience.priceOriginal > experience.priceDiscounted
+        ? ((experience.priceOriginal - experience.priceDiscounted) / experience.priceOriginal * 100).round()
+        : 0;
 
     final remainingCredit = userSubscription?.creditsRemaining[experience.category];
     final creditType = (remainingCredit != null && remainingCredit > 0) ? experience.category : null;
@@ -128,7 +133,38 @@ class BookingStep3Screen extends StatelessWidget {
                   if (data.children > 0)
                     _SummaryRow(label: '${l10n.children} × ${data.children}', value: formatEur(childPrice * data.children)),
                   const Divider(height: RihlaSpace.xl + RihlaSpace.sm),
-                  _SummaryRow(label: l10n.total, value: formatEur(finalTotal), bold: true),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: RihlaSpace.xs),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          l10n.total,
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: RihlaColors.ink),
+                        ),
+                        if (discountPct > 0)
+                          PriceTag(original: originalSubtotal, discounted: finalTotal, discountedFontSize: 16)
+                        else
+                          Text(
+                            formatEur(finalTotal),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -0.3,
+                              color: RihlaColors.seaBlueDark,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  if (discountPct > 0)
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        l10n.discountApplied(discountPct),
+                        style: const TextStyle(fontSize: 12, color: RihlaColors.statusSuccess, fontWeight: FontWeight.w600),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -190,8 +226,7 @@ class BookingStep3Screen extends StatelessWidget {
 class _SummaryRow extends StatelessWidget {
   final String label;
   final String value;
-  final bool bold;
-  const _SummaryRow({required this.label, required this.value, this.bold = false});
+  const _SummaryRow({required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -202,20 +237,11 @@ class _SummaryRow extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(
-              fontSize: bold ? 16 : 14,
-              fontWeight: bold ? FontWeight.w800 : FontWeight.w400,
-              color: bold ? RihlaColors.ink : RihlaColors.inkMuted,
-            ),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: RihlaColors.inkMuted),
           ),
           Text(
             value,
-            style: TextStyle(
-              fontSize: bold ? 16 : 14,
-              fontWeight: bold ? FontWeight.w800 : FontWeight.w600,
-              letterSpacing: bold ? -0.3 : 0,
-              color: bold ? RihlaColors.seaBlueDark : RihlaColors.ink,
-            ),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: RihlaColors.ink),
           ),
         ],
       ),

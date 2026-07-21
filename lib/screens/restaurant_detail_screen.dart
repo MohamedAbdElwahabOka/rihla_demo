@@ -33,11 +33,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           SliverToBoxAdapter(
             child: Stack(
               children: [
-                LocalImage(
-                  path: photos.isEmpty ? '' : photos[heroIndex],
-                  icon: restaurant.icon,
-                  label: restaurant.cuisine,
-                  height: 300,
+                Hero(
+                  tag: 'rest-${restaurant.id}',
+                  child: LocalImage(
+                    path: photos.isEmpty ? '' : photos[heroIndex],
+                    icon: restaurant.icon,
+                    label: restaurant.cuisine,
+                    height: 300,
+                  ),
                 ),
                 // Bottom scrim so the floating title stays legible.
                 const Positioned.fill(
