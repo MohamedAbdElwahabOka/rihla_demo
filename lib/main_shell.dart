@@ -40,7 +40,7 @@ class _MainShellState extends State<MainShell> {
     final tabs = [
       HomeScreen(onSearchTap: () => setState(() => _tab = 1)),
       ExploreScreen(),
-      MyBookingsScreen(),
+      MyBookingsScreen(onExploreTap: () => setState(() => _tab = 1)),
       ProfileScreen(),
     ];
 

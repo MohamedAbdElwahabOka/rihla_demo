@@ -261,6 +261,28 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myBookings => 'Мои бронирования';
 
   @override
+  String get bookingsUpcoming => 'Предстоящие';
+
+  @override
+  String get bookingDetails => 'Детали брони';
+
+  @override
+  String get noBookingsTitle => 'Пока нет броней';
+
+  @override
+  String get noBookingsBody =>
+      'Как только вы забронируете впечатление, оно появится здесь.';
+
+  @override
+  String get exploreExperiences => 'Смотреть впечатления';
+
+  @override
+  String get rateExperience => 'Оцените впечатление';
+
+  @override
+  String get segmentEmpty => 'Здесь пока пусто';
+
+  @override
   String get mySubscription => 'Моя подписка';
 
   @override

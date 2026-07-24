@@ -580,6 +580,48 @@ abstract class AppLocalizations {
   /// **'My Bookings'**
   String get myBookings;
 
+  /// No description provided for @bookingsUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get bookingsUpcoming;
+
+  /// No description provided for @bookingDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Details'**
+  String get bookingDetails;
+
+  /// No description provided for @noBookingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No bookings yet'**
+  String get noBookingsTitle;
+
+  /// No description provided for @noBookingsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When you book an experience, it\'ll show up here.'**
+  String get noBookingsBody;
+
+  /// No description provided for @exploreExperiences.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore experiences'**
+  String get exploreExperiences;
+
+  /// No description provided for @rateExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate your experience'**
+  String get rateExperience;
+
+  /// No description provided for @segmentEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet'**
+  String get segmentEmpty;
+
   /// No description provided for @mySubscription.
   ///
   /// In en, this message translates to:

@@ -261,6 +261,28 @@ class AppLocalizationsDe extends AppLocalizations {
   String get myBookings => 'Meine Buchungen';
 
   @override
+  String get bookingsUpcoming => 'Anstehend';
+
+  @override
+  String get bookingDetails => 'Buchungsdetails';
+
+  @override
+  String get noBookingsTitle => 'Noch keine Buchungen';
+
+  @override
+  String get noBookingsBody =>
+      'Sobald du ein Erlebnis buchst, erscheint es hier.';
+
+  @override
+  String get exploreExperiences => 'Erlebnisse entdecken';
+
+  @override
+  String get rateExperience => 'Bewerte dein Erlebnis';
+
+  @override
+  String get segmentEmpty => 'Noch nichts hier';
+
+  @override
   String get mySubscription => 'Mein Abonnement';
 
   @override
