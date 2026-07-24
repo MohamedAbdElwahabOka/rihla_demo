@@ -910,6 +910,72 @@ abstract class AppLocalizations {
   /// **'Resend Code'**
   String get resendCode;
 
+  /// No description provided for @stepPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get stepPhone;
+
+  /// No description provided for @stepCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get stepCode;
+
+  /// No description provided for @phoneHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your number?'**
+  String get phoneHeadline;
+
+  /// No description provided for @phoneSubline.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll text you a code to verify it\'s you.'**
+  String get phoneSubline;
+
+  /// No description provided for @selectCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Select country'**
+  String get selectCountry;
+
+  /// No description provided for @searchCountryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search country'**
+  String get searchCountryHint;
+
+  /// No description provided for @otpSentTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent to {number}'**
+  String otpSentTo(String number);
+
+  /// No description provided for @otpRequestsLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} requests left today'**
+  String otpRequestsLeft(int count);
+
+  /// No description provided for @otpDailyLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily limit reached'**
+  String get otpDailyLimit;
+
+  /// No description provided for @resendIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend available in {time}'**
+  String resendIn(String time);
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
   /// No description provided for @countryEgypt.
   ///
   /// In en, this message translates to:

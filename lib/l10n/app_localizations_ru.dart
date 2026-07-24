@@ -449,6 +449,45 @@ class AppLocalizationsRu extends AppLocalizations {
   String get resendCode => 'Отправить код повторно';
 
   @override
+  String get stepPhone => 'Телефон';
+
+  @override
+  String get stepCode => 'Код';
+
+  @override
+  String get phoneHeadline => 'Ваш номер телефона?';
+
+  @override
+  String get phoneSubline => 'Мы отправим код для подтверждения.';
+
+  @override
+  String get selectCountry => 'Выберите страну';
+
+  @override
+  String get searchCountryHint => 'Поиск страны';
+
+  @override
+  String otpSentTo(String number) {
+    return 'Отправлено на $number';
+  }
+
+  @override
+  String otpRequestsLeft(int count) {
+    return 'Осталось запросов сегодня: $count';
+  }
+
+  @override
+  String get otpDailyLimit => 'Дневной лимит достигнут';
+
+  @override
+  String resendIn(String time) {
+    return 'Повторная отправка через $time';
+  }
+
+  @override
+  String get tryAgain => 'Попробовать снова';
+
+  @override
   String get countryEgypt => 'Египет';
 
   @override

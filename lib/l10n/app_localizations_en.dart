@@ -444,6 +444,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendCode => 'Resend Code';
 
   @override
+  String get stepPhone => 'Phone';
+
+  @override
+  String get stepCode => 'Code';
+
+  @override
+  String get phoneHeadline => 'What\'s your number?';
+
+  @override
+  String get phoneSubline => 'We\'ll text you a code to verify it\'s you.';
+
+  @override
+  String get selectCountry => 'Select country';
+
+  @override
+  String get searchCountryHint => 'Search country';
+
+  @override
+  String otpSentTo(String number) {
+    return 'Sent to $number';
+  }
+
+  @override
+  String otpRequestsLeft(int count) {
+    return '$count requests left today';
+  }
+
+  @override
+  String get otpDailyLimit => 'Daily limit reached';
+
+  @override
+  String resendIn(String time) {
+    return 'Resend available in $time';
+  }
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
   String get countryEgypt => 'Egypt';
 
   @override

@@ -448,6 +448,45 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resendCode => 'Code erneut senden';
 
   @override
+  String get stepPhone => 'Telefon';
+
+  @override
+  String get stepCode => 'Code';
+
+  @override
+  String get phoneHeadline => 'Wie ist deine Nummer?';
+
+  @override
+  String get phoneSubline => 'Wir senden dir einen Code zur Bestätigung.';
+
+  @override
+  String get selectCountry => 'Land auswählen';
+
+  @override
+  String get searchCountryHint => 'Land suchen';
+
+  @override
+  String otpSentTo(String number) {
+    return 'Gesendet an $number';
+  }
+
+  @override
+  String otpRequestsLeft(int count) {
+    return 'Noch $count Anfragen heute';
+  }
+
+  @override
+  String get otpDailyLimit => 'Tageslimit erreicht';
+
+  @override
+  String resendIn(String time) {
+    return 'Erneut senden in $time';
+  }
+
+  @override
+  String get tryAgain => 'Erneut versuchen';
+
+  @override
   String get countryEgypt => 'Ägypten';
 
   @override

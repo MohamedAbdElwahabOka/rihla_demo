@@ -231,6 +231,38 @@
   "otpRemaining": "You have {count} OTP requests remaining today",
   "otpLimitReached": "Daily OTP limit reached. Try again tomorrow.",
   "resendCode": "Resend Code",
+  "stepPhone": "Phone",
+  "stepCode": "Code",
+  "phoneHeadline": "What's your number?",
+  "phoneSubline": "We'll text you a code to verify it's you.",
+  "selectCountry": "Select country",
+  "searchCountryHint": "Search country",
+  "otpSentTo": "Sent to {number}",
+  "@otpSentTo": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "otpRequestsLeft": "{count} requests left today",
+  "@otpRequestsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "otpDailyLimit": "Daily limit reached",
+  "resendIn": "Resend available in {time}",
+  "@resendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tryAgain": "Try again",
   "countryEgypt": "Egypt",
   "countryGermany": "Germany",
   "countryRussia": "Russia",
