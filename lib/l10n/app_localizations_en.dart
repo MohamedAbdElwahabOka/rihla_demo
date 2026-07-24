@@ -83,6 +83,29 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get filters => 'Filters';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get clearAll => 'Clear all';
+
+  @override
+  String get clearFilters => 'Clear filters';
+
+  @override
+  String get priceRangeLabel => 'Price Range';
+
+  @override
+  String get noResultsHelp => 'Try adjusting your filters or search term';
+
+  @override
+  String showResultsCount(int count) {
+    return 'Show $count results';
+  }
+
+  @override
   String get about => 'About';
 
   @override

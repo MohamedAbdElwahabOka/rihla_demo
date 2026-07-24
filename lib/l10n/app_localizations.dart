@@ -244,6 +244,48 @@ abstract class AppLocalizations {
   /// **'{count} experiences in Hurghada.'**
   String resultsCount(int count);
 
+  /// No description provided for @filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filters;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
+  /// No description provided for @clearAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get clearAll;
+
+  /// No description provided for @clearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get clearFilters;
+
+  /// No description provided for @priceRangeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get priceRangeLabel;
+
+  /// No description provided for @noResultsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your filters or search term'**
+  String get noResultsHelp;
+
+  /// No description provided for @showResultsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Show {count} results'**
+  String showResultsCount(int count);
+
   /// No description provided for @about.
   ///
   /// In en, this message translates to:

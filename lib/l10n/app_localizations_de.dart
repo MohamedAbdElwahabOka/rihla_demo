@@ -83,6 +83,29 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get filters => 'Filter';
+
+  @override
+  String get reset => 'Zurücksetzen';
+
+  @override
+  String get clearAll => 'Alle löschen';
+
+  @override
+  String get clearFilters => 'Filter löschen';
+
+  @override
+  String get priceRangeLabel => 'Preisspanne';
+
+  @override
+  String get noResultsHelp => 'Passe deine Filter oder deinen Suchbegriff an';
+
+  @override
+  String showResultsCount(int count) {
+    return '$count Ergebnisse anzeigen';
+  }
+
+  @override
   String get about => 'Über';
 
   @override

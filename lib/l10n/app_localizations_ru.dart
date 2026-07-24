@@ -83,6 +83,29 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get filters => 'Фильтры';
+
+  @override
+  String get reset => 'Сбросить';
+
+  @override
+  String get clearAll => 'Очистить всё';
+
+  @override
+  String get clearFilters => 'Очистить фильтры';
+
+  @override
+  String get priceRangeLabel => 'Диапазон цен';
+
+  @override
+  String get noResultsHelp => 'Измените фильтры или поисковый запрос';
+
+  @override
+  String showResultsCount(int count) {
+    return 'Показать результаты: $count';
+  }
+
+  @override
   String get about => 'О туре';
 
   @override

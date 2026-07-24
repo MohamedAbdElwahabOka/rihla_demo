@@ -31,6 +31,20 @@
       }
     }
   },
+  "filters": "Filters",
+  "reset": "Reset",
+  "clearAll": "Clear all",
+  "clearFilters": "Clear filters",
+  "priceRangeLabel": "Price Range",
+  "noResultsHelp": "Try adjusting your filters or search term",
+  "showResultsCount": "Show {count} results",
+  "@showResultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "about": "About",
   "included": "What's Included",
   "itinerary": "Itinerary",
