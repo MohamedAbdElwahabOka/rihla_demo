@@ -196,6 +196,30 @@ abstract class AppLocalizations {
   /// **'Search experiences...'**
   String get searchHint;
 
+  /// No description provided for @heroTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'The Red Sea is calling.'**
+  String get heroTagline;
+
+  /// No description provided for @seeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get seeAll;
+
+  /// No description provided for @recommendedForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended for you'**
+  String get recommendedForYou;
+
+  /// No description provided for @tapToSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to search'**
+  String get tapToSearch;
+
   /// No description provided for @sortBy.
   ///
   /// In en, this message translates to:

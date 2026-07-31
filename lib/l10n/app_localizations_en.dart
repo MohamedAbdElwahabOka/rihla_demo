@@ -57,6 +57,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchHint => 'Search experiences...';
 
   @override
+  String get heroTagline => 'The Red Sea is calling.';
+
+  @override
+  String get seeAll => 'See all';
+
+  @override
+  String get recommendedForYou => 'Recommended for you';
+
+  @override
+  String get tapToSearch => 'Tap to search';
+
+  @override
   String get sortBy => 'Sort by';
 
   @override

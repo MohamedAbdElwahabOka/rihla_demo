@@ -57,6 +57,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get searchHint => 'Erlebnisse suchen...';
 
   @override
+  String get heroTagline => 'Das Rote Meer ruft.';
+
+  @override
+  String get seeAll => 'Alle ansehen';
+
+  @override
+  String get recommendedForYou => 'Für dich empfohlen';
+
+  @override
+  String get tapToSearch => 'Zum Suchen tippen';
+
+  @override
   String get sortBy => 'Sortieren nach';
 
   @override

@@ -57,6 +57,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get searchHint => 'Поиск впечатлений...';
 
   @override
+  String get heroTagline => 'Красное море зовёт.';
+
+  @override
+  String get seeAll => 'Показать все';
+
+  @override
+  String get recommendedForYou => 'Рекомендуем вам';
+
+  @override
+  String get tapToSearch => 'Нажмите для поиска';
+
+  @override
   String get sortBy => 'Сортировать по';
 
   @override
