@@ -9,12 +9,15 @@ import 'screens/otp_screen.dart';
 import 'screens/payments_screen.dart';
 import 'screens/plans_screen.dart';
 import 'screens/refund_screen.dart';
+import 'screens/subscribe_result_screen.dart';
+import 'screens/subscribe_review_screen.dart';
 import 'screens/subscription_screen.dart';
 import 'screens/booking_step2_screen.dart';
 import 'screens/booking_step3_screen.dart';
 import 'screens/detail_screen.dart';
 import 'screens/restaurant_detail_screen.dart';
 import 'screens/splash_screen.dart';
+import 'screens/ticket_detail_screen.dart';
 import 'screens/ticket_screen.dart';
 import 'screens/write_review_screen.dart';
 
@@ -29,12 +32,15 @@ class Routes {
   static const booking2 = '/booking2';
   static const booking3 = '/booking3';
   static const ticket = '/ticket';
+  static const ticketDetail = '/ticket-detail';
   static const auth = '/auth';
   static const otp = '/otp';
   static const completeProfile = '/complete-profile';
   static const notifications = '/notifications';
   static const subscription = '/subscription';
   static const plans = '/plans';
+  static const subscribeReview = '/subscribe-review';
+  static const subscribeResult = '/subscribe-result';
   static const payments = '/payments';
   static const myBookings = '/mybookings';
   static const refund = '/refund';
@@ -50,9 +56,12 @@ final appRoutes = <String, WidgetBuilder>{
   Routes.booking2: (_) => const BookingStep2Screen(),
   Routes.booking3: (_) => const BookingStep3Screen(),
   Routes.ticket: (_) => const TicketScreen(),
+  Routes.ticketDetail: (_) => const TicketDetailScreen(),
   Routes.myBookings: (_) => const MyBookingsScreen(standalone: true),
   Routes.subscription: (_) => const SubscriptionScreen(),
   Routes.plans: (_) => const PlansScreen(),
+  Routes.subscribeReview: (_) => const SubscribeReviewScreen(),
+  Routes.subscribeResult: (_) => const SubscribeResultScreen(),
   Routes.payments: (_) => const PaymentsScreen(),
   Routes.refund: (_) => const RefundScreen(),
   Routes.auth: (_) => const AuthScreen(),

@@ -6,6 +6,7 @@ import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/deposit_badge.dart';
 import '../widgets/price_tag.dart';
 import '../widgets/rihla_app_bar.dart';
 
@@ -18,6 +19,10 @@ String _generateTicketNumber() {
   final s = n.toString();
   return '${s.substring(0, 4)}-${s.substring(4, 8)}';
 }
+
+/// Every new booking carries a security deposit against the final price,
+/// not yet collected until closer to the trip date.
+const _depositPct = 20;
 
 /// S3c — Booking Step 3: Confirm (FR-047-050).
 class BookingStep3Screen extends StatelessWidget {
@@ -46,6 +51,11 @@ class BookingStep3Screen extends StatelessWidget {
       refCode: _generateRefCode(),
       ticketNumber: _generateTicketNumber(),
       creditTypeConsumed: creditType,
+      deposit: Deposit(
+        percentage: _depositPct,
+        amountEur: (finalTotal * _depositPct / 100).round(),
+        status: DepositStatus.notYetHeld,
+      ),
     );
     bookings.add(booking);
     if (creditType != null) {
@@ -73,6 +83,7 @@ class BookingStep3Screen extends StatelessWidget {
 
     final remainingCredit = userSubscription?.creditsRemaining[experience.category];
     final creditType = (remainingCredit != null && remainingCredit > 0) ? experience.category : null;
+    final depositAmount = (finalTotal * _depositPct / 100).round();
 
     return Scaffold(
       appBar: RihlaAppBar(title: Text(l10n.orderSummary)),
@@ -165,6 +176,18 @@ class BookingStep3Screen extends StatelessWidget {
                         style: const TextStyle(fontSize: 12, color: RihlaColors.statusSuccess, fontWeight: FontWeight.w600),
                       ),
                     ),
+                  const Divider(height: RihlaSpace.xl + RihlaSpace.sm),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '${l10n.depositLabel} · ${formatEur(depositAmount)} ($_depositPct%)',
+                          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: RihlaColors.inkMuted),
+                        ),
+                      ),
+                      const DepositBadge(status: DepositStatus.notYetHeld),
+                    ],
+                  ),
                 ],
               ),
             ),

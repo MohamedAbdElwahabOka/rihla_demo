@@ -5,7 +5,19 @@ import 'routes.dart';
 // Models (plain Dart — no fromJson; all content authored directly below).
 // ---------------------------------------------------------------------------
 
-enum BookingStatus { confirmed, completed, cancelled }
+enum BookingStatus { confirmed, completed, cancelled, missedNoShow }
+
+/// Security deposit lifecycle: held in escrow ahead of a trip, then either
+/// [released] back to the traveler once the trip completes normally, or
+/// [captured] (forfeited to the vendor) on a no-show or late cancellation.
+enum DepositStatus { notYetHeld, held, released, captured }
+
+class Deposit {
+  final int percentage;
+  final int amountEur;
+  DepositStatus status;
+  Deposit({required this.percentage, required this.amountEur, required this.status});
+}
 
 class ItineraryStop {
   final String time;
@@ -164,6 +176,7 @@ class Booking {
   final String? creditTypeConsumed;
   BookingStatus status;
   bool reviewLeft;
+  final Deposit deposit;
 
   Booking({
     required this.id,
@@ -179,10 +192,17 @@ class Booking {
     required this.finalPriceEur,
     required this.refCode,
     required this.ticketNumber,
+    required this.deposit,
     this.creditTypeConsumed,
     this.status = BookingStatus.confirmed,
     this.reviewLeft = false,
   });
+
+  /// Whether the trip's day has fully elapsed against the real device clock —
+  /// the gate for review-writing (BR: reviews require actual trip-end timing,
+  /// not just a `completed` status flag). Booking carries no explicit
+  /// duration, so end-of-day on [date] is the demo's honest approximation.
+  bool get hasEnded => DateTime.now().isAfter(DateTime(date.year, date.month, date.day, 23, 59));
 }
 
 class AppNotification {
@@ -322,6 +342,12 @@ const newPhoneNumber = '100 999 0000';
 /// design's "any 6-digit code works" simplification); this one code is
 /// special-cased to demonstrate the expired-code error path.
 const demoExpiredOtp = '000000';
+
+/// Demo promo code for subscription purchase — case-insensitive match grants
+/// [demoPromoDiscountPct] off; any other non-empty code shows an invalid
+/// error, mirroring the OTP demo-code simplification above.
+const demoPromoCode = 'RIHLA10';
+const demoPromoDiscountPct = 10;
 
 const registeredUserProfile = UserProfile(
   firstName: 'Mohammed',
@@ -710,6 +736,7 @@ final bookings = <Booking>[
     ticketNumber: '5849-3021',
     creditTypeConsumed: 'Snorkeling',
     status: BookingStatus.confirmed,
+    deposit: Deposit(percentage: 20, amountEur: 21, status: DepositStatus.notYetHeld),
   ),
   Booking(
     id: 'b2',
@@ -728,6 +755,7 @@ final bookings = <Booking>[
     creditTypeConsumed: 'Desert Safari',
     status: BookingStatus.completed,
     reviewLeft: true,
+    deposit: Deposit(percentage: 20, amountEur: 13, status: DepositStatus.released),
   ),
   Booking(
     id: 'b3',
@@ -744,6 +772,7 @@ final bookings = <Booking>[
     refCode: 'RHL-2026-06190',
     ticketNumber: '1102-9384',
     status: BookingStatus.cancelled,
+    deposit: Deposit(percentage: 15, amountEur: 4, status: DepositStatus.notYetHeld),
   ),
   Booking(
     id: 'b4',
@@ -760,6 +789,41 @@ final bookings = <Booking>[
     refCode: 'RHL-2026-05512',
     ticketNumber: '3377-1290',
     status: BookingStatus.completed,
+    deposit: Deposit(percentage: 25, amountEur: 19, status: DepositStatus.released),
+  ),
+  Booking(
+    id: 'b5',
+    experienceTitle: "Dolphin House Boat Trip",
+    vendorName: 'Dolphin Bay Cruises',
+    icon: Icons.sailing,
+    date: DateTime(2026, 6, 3),
+    time: '07:30',
+    adults: 2,
+    children: 0,
+    discountPct: 0,
+    originalPriceEur: 60,
+    finalPriceEur: 60,
+    refCode: 'RHL-2026-04477',
+    ticketNumber: '7761-4420',
+    status: BookingStatus.missedNoShow,
+    deposit: Deposit(percentage: 25, amountEur: 15, status: DepositStatus.captured),
+  ),
+  Booking(
+    id: 'b6',
+    experienceTitle: 'Hurghada Spa & Wellness Day',
+    vendorName: 'Oasis Spa Retreat',
+    icon: Icons.spa,
+    date: DateTime(2026, 9, 2),
+    time: '10:00',
+    adults: 2,
+    children: 0,
+    discountPct: 15,
+    originalPriceEur: 110,
+    finalPriceEur: 93,
+    refCode: 'RHL-2026-09115',
+    ticketNumber: '9042-6631',
+    status: BookingStatus.confirmed,
+    deposit: Deposit(percentage: 20, amountEur: 19, status: DepositStatus.held),
   ),
 ];
 

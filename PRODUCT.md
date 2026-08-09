@@ -20,6 +20,20 @@ Rihla lets travelers discover vetted local experiences and book them without any
 
 The only step between "found an experience" and "vendor confirms it on arrival" is a credit and a ticket number — no price is ever paid inside the app.
 
+## Capabilities and Constraints
+
+- **Favorites.** A shared favorite state must stay consistent across every surface that lists experiences (Home, Explore, Detail) plus a dedicated My Favourites view — this completes a feature that currently exists but is broken, not new scope.
+- **Account management.** Edit Profile (name/phone/photo/email) and Settings (language, sign-out) are separate concerns; only one language switcher should exist across the app.
+- **First-run onboarding.** A one-time language selection gates the first-run experience, shown immediately after first OTP success.
+- **Notifications.** Notifications must deep-link to their relevant in-app destination; travelers can set per-category Push/WhatsApp preferences.
+- **Subscription purchase.** Follows the same multi-step pattern already established for booking: a headcount & price review step, an explicit payment result step (not a snackbar), and promo code entry.
+- **Booking lifecycle.** Bookings carry sub-statuses (Initial / Confirmed / Missed-No-Show) that determine the available action (Cancel vs. Contact Support). A traveler may write a review only after the trip's actual end time, not merely on a status change.
+- **Security deposits.** Every booking carries a deposit with an amount/percentage and a lifecycle status (Not Yet Held / Held / Released / Captured) that must read consistently anywhere a booking or ticket appears.
+- **Ticket detail.** The persistent ticket view must surface the QR code, deposit status, and a CTA matched to the booking's current status.
+- **Vendor reassignment.** A mock flow exists for when a vendor must be reassigned; the traveler responds via Accept or "I have a problem."
+- **Refunds & payments.** Refunds attach to a specific booking or subscription and generate a notification; checkout is blocked when the traveler has no saved card.
+- **Demo constraints (reaffirmed).** No real payment gateway integration, webhook/reconciliation logic, server-enforced rate limits, or admin-side retry logic — these all require a backend this project deliberately doesn't have.
+
 ## Brand Personality
 
 Premium, coastal, trustworthy — already anchored in code as "Red Sea Coastal Premium": deep teal-navy ink, azure-to-lagoon sea gradients, warm gold/coral sunset accents. The tone should feel like a confident boutique travel concierge, not a discount marketplace.

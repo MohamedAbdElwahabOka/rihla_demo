@@ -1149,6 +1149,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hurghada, Red Sea'**
   String get splashLocation;
+
+  /// No description provided for @statusMissedNoShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get statusMissedNoShow;
+
+  /// No description provided for @contactSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Support'**
+  String get contactSupport;
+
+  /// No description provided for @depositLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Deposit'**
+  String get depositLabel;
+
+  /// No description provided for @depositNotYetHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit Not Yet Held'**
+  String get depositNotYetHeld;
+
+  /// No description provided for @depositHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit Held'**
+  String get depositHeld;
+
+  /// No description provided for @depositReleased.
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit Released'**
+  String get depositReleased;
+
+  /// No description provided for @depositCaptured.
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit Captured'**
+  String get depositCaptured;
+
+  /// No description provided for @reviewAndPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Review & Pay'**
+  String get reviewAndPay;
+
+  /// No description provided for @travelers.
+  ///
+  /// In en, this message translates to:
+  /// **'Travelers'**
+  String get travelers;
+
+  /// No description provided for @creditsGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Credits Granted'**
+  String get creditsGranted;
+
+  /// No description provided for @promoCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Promo code'**
+  String get promoCodeHint;
+
+  /// No description provided for @applyPromo.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get applyPromo;
+
+  /// No description provided for @promoInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid promo code'**
+  String get promoInvalid;
+
+  /// No description provided for @promoAppliedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Promo applied: -{pct}%'**
+  String promoAppliedNote(int pct);
+
+  /// No description provided for @confirmAndPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm & Pay'**
+  String get confirmAndPay;
+
+  /// No description provided for @viewMySubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'View My Subscription'**
+  String get viewMySubscription;
+
+  /// No description provided for @forTravelers.
+  ///
+  /// In en, this message translates to:
+  /// **'For {count} travelers'**
+  String forTravelers(int count);
+
+  /// No description provided for @childPriceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Children (ages 1–11) pay 50% of an adult traveler\'s price.'**
+  String get childPriceNote;
+
+  /// No description provided for @forAdultsAndChildren.
+  ///
+  /// In en, this message translates to:
+  /// **'For {adults} adults, {children} children'**
+  String forAdultsAndChildren(int adults, int children);
 }
 
 class _AppLocalizationsDelegate

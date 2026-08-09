@@ -4,16 +4,20 @@ import '../mock_data.dart';
 import '../routes.dart';
 import '../theme.dart';
 import '../utils/format.dart';
+import '../widgets/booking_status_pill.dart';
+import '../widgets/deposit_badge.dart';
 import '../widgets/fade_in.dart';
 import '../widgets/local_image.dart';
+import '../widgets/price_tag.dart';
 import '../widgets/rihla_app_bar.dart';
 
-enum _Segment { upcoming, completed, cancelled }
+enum _Segment { upcoming, completed, cancelled, missed }
 
 BookingStatus _statusOf(_Segment s) => switch (s) {
       _Segment.upcoming => BookingStatus.confirmed,
       _Segment.completed => BookingStatus.completed,
       _Segment.cancelled => BookingStatus.cancelled,
+      _Segment.missed => BookingStatus.missedNoShow,
     };
 
 /// First bundled photo of the experience a booking refers to (matched by
@@ -79,13 +83,15 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
     if (mounted) setState(() {});
   }
 
-  void _openDetail(Booking booking) {
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      builder: (_) => _BookingDetailSheet(booking: booking, thumb: _thumbFor(booking)),
-    );
+  void _contactSupport(Booking booking) {
+    final l10n = AppLocalizations.of(context)!;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.contactSupport)));
+  }
+
+  Future<void> _openDetail(Booking booking) async {
+    await Navigator.of(context).pushNamed(Routes.ticketDetail, arguments: booking);
+    // Refresh so a cancel/review action taken on the detail screen reflects here.
+    if (mounted) setState(() {});
   }
 
   void _onExplore() {
@@ -156,6 +162,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                             onTap: () => _openDetail(segmentItems[i]),
                             onCancel: () => _confirmCancel(segmentItems[i]),
                             onReview: () => _openWriteReview(segmentItems[i]),
+                            onContactSupport: () => _contactSupport(segmentItems[i]),
                           ),
                         ),
                       ),
@@ -185,6 +192,7 @@ class _BookingSegments extends StatelessWidget {
       _Segment.upcoming: l10n.bookingsUpcoming,
       _Segment.completed: l10n.statusCompleted,
       _Segment.cancelled: l10n.statusCancelled,
+      _Segment.missed: l10n.statusMissedNoShow,
     };
     return Container(
       padding: const EdgeInsets.all(4),
@@ -274,6 +282,7 @@ class _BookingCard extends StatefulWidget {
   final VoidCallback onTap;
   final VoidCallback onCancel;
   final VoidCallback onReview;
+  final VoidCallback onContactSupport;
 
   const _BookingCard({
     required this.booking,
@@ -281,6 +290,7 @@ class _BookingCard extends StatefulWidget {
     required this.onTap,
     required this.onCancel,
     required this.onReview,
+    required this.onContactSupport,
   });
 
   @override
@@ -297,8 +307,9 @@ class _BookingCardState extends State<_BookingCard> {
     final cancelled = b.status == BookingStatus.cancelled;
 
     final showCancel = b.status == BookingStatus.confirmed;
-    final showReview = b.status == BookingStatus.completed && !b.reviewLeft;
-    final hasFooter = showCancel || showReview;
+    final showReview = b.status == BookingStatus.completed && !b.reviewLeft && b.hasEnded;
+    final showContactSupport = b.status == BookingStatus.missedNoShow;
+    final hasFooter = showCancel || showReview || showContactSupport;
 
     return GestureDetector(
       onTap: widget.onTap,
@@ -358,7 +369,7 @@ class _BookingCardState extends State<_BookingCard> {
                                 ),
                               ),
                               const SizedBox(width: RihlaSpace.sm),
-                              _StatusPill(status: b.status),
+                              BookingStatusPill(status: b.status),
                             ],
                           ),
                           const SizedBox(height: 6),
@@ -371,19 +382,18 @@ class _BookingCardState extends State<_BookingCard> {
                             ],
                           ),
                           const SizedBox(height: RihlaSpace.sm),
-                          Row(
-                            children: [
-                              Text(formatEur(b.finalPriceEur),
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 17,
-                                    letterSpacing: -0.3,
-                                    color: cancelled ? RihlaColors.inkMuted : RihlaColors.ink,
-                                  )),
-                              const SizedBox(width: RihlaSpace.sm),
-                              if (b.discountPct > 0) _DiscountTag(pct: b.discountPct),
-                            ],
-                          ),
+                          if (b.discountPct > 0)
+                            PriceTag(original: b.originalPriceEur, discounted: b.finalPriceEur, discountedFontSize: 17)
+                          else
+                            Text(formatEur(b.finalPriceEur),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 17,
+                                  letterSpacing: -0.3,
+                                  color: cancelled ? RihlaColors.inkMuted : RihlaColors.ink,
+                                )),
+                          const SizedBox(height: RihlaSpace.sm),
+                          DepositBadge(status: b.deposit.status),
                         ],
                       ),
                     ),
@@ -423,6 +433,18 @@ class _BookingCardState extends State<_BookingCard> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(RihlaSpace.radiusPill)),
                           ),
                         ),
+                      if (showContactSupport)
+                        FilledButton.icon(
+                          onPressed: widget.onContactSupport,
+                          icon: const Icon(Icons.support_agent_rounded, size: 18),
+                          label: Text(l10n.contactSupport),
+                          style: FilledButton.styleFrom(
+                            minimumSize: const Size(0, 42),
+                            backgroundColor: RihlaColors.seaBlue,
+                            padding: const EdgeInsets.symmetric(horizontal: RihlaSpace.lg),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(RihlaSpace.radiusPill)),
+                          ),
+                        ),
                     ],
                   ),
                 ),
@@ -434,188 +456,6 @@ class _BookingCardState extends State<_BookingCard> {
   }
 }
 
-/// Soft rounded status pill (Confirmed / Completed / Cancelled).
-class _StatusPill extends StatelessWidget {
-  final BookingStatus status;
-  const _StatusPill({required this.status});
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final (IconData icon, Color bg, Color fg, String label) = switch (status) {
-      BookingStatus.confirmed => (Icons.check_circle_rounded, RihlaColors.statusSuccessTint, RihlaColors.statusSuccess, l10n.statusConfirmed),
-      BookingStatus.completed => (Icons.verified_rounded, RihlaColors.goldTint, RihlaColors.statusPending, l10n.statusCompleted),
-      BookingStatus.cancelled => (Icons.cancel_rounded, RihlaColors.statusCancelledTint, RihlaColors.statusCancelled, l10n.statusCancelled),
-    };
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
-      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(RihlaSpace.radiusPill)),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 12, color: fg),
-          const SizedBox(width: 4),
-          Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: fg, letterSpacing: 0.2)),
-        ],
-      ),
-    );
-  }
-}
-
-class _DiscountTag extends StatelessWidget {
-  final int pct;
-  const _DiscountTag({required this.pct});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(
-        color: RihlaColors.coral.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(RihlaSpace.radiusPill),
-      ),
-      child: Text('-$pct%', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: RihlaColors.coral)),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Detail sheet
-// ---------------------------------------------------------------------------
-
-class _BookingDetailSheet extends StatelessWidget {
-  final Booking booking;
-  final String thumb;
-  const _BookingDetailSheet({required this.booking, required this.thumb});
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final b = booking;
-
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(RihlaSpace.xl, 4, RihlaSpace.xl, RihlaSpace.xl),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(l10n.bookingDetails,
-                style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800, letterSpacing: -0.4, color: RihlaColors.ink)),
-            const SizedBox(height: RihlaSpace.lg),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(RihlaSpace.radius),
-                  child: SizedBox(width: 72, height: 72, child: LocalImage(path: thumb, icon: b.icon, label: b.experienceTitle)),
-                ),
-                const SizedBox(width: RihlaSpace.md),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(b.experienceTitle,
-                          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: RihlaColors.ink, height: 1.2)),
-                      const SizedBox(height: 4),
-                      Text(b.vendorName, style: const TextStyle(color: RihlaColors.inkMuted, fontSize: 13)),
-                      const SizedBox(height: RihlaSpace.sm),
-                      _StatusPill(status: b.status),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: RihlaSpace.lg),
-            const Divider(height: 1),
-            const SizedBox(height: RihlaSpace.md),
-            _DetailRow(icon: Icons.event_rounded, label: '${formatDate(b.date)} · ${b.time}'),
-            const SizedBox(height: RihlaSpace.sm),
-            _DetailRow(icon: Icons.group_rounded, label: '${b.adults} ${l10n.adults} · ${b.children} ${l10n.children}'),
-            if (b.discountPct > 0) ...[
-              const SizedBox(height: RihlaSpace.sm),
-              _DetailRow(icon: Icons.local_offer_rounded, label: l10n.discountApplied(b.discountPct), color: RihlaColors.coral),
-            ],
-            const SizedBox(height: RihlaSpace.md),
-            Row(
-              children: [
-                Text(l10n.total, style: const TextStyle(color: RihlaColors.inkMuted, fontWeight: FontWeight.w600)),
-                const Spacer(),
-                if (b.discountPct > 0) ...[
-                  Text(formatEur(b.originalPriceEur),
-                      style: const TextStyle(decoration: TextDecoration.lineThrough, color: RihlaColors.inkFaint, fontSize: 14)),
-                  const SizedBox(width: 6),
-                ],
-                Text(formatEur(b.finalPriceEur),
-                    style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 18, color: RihlaColors.ink, letterSpacing: -0.3)),
-              ],
-            ),
-            const SizedBox(height: RihlaSpace.lg),
-            // Ticket block — the credential-style summary.
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(RihlaSpace.lg),
-              decoration: BoxDecoration(
-                gradient: RihlaColors.seaGradient,
-                borderRadius: BorderRadius.circular(RihlaSpace.radiusLg),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(l10n.ticketNumberLabel,
-                      style: const TextStyle(color: RihlaColors.onBrandMuted, fontSize: 12, fontWeight: FontWeight.w600)),
-                  const SizedBox(height: 2),
-                  Text(b.ticketNumber,
-                      style: const TextStyle(color: RihlaColors.onBrand, fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: 1)),
-                  const SizedBox(height: RihlaSpace.md),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(l10n.referenceLabel,
-                                style: const TextStyle(color: RihlaColors.onBrandMuted, fontSize: 12, fontWeight: FontWeight.w600)),
-                            const SizedBox(height: 2),
-                            Text(b.refCode, style: const TextStyle(color: RihlaColors.onBrand, fontSize: 14, fontWeight: FontWeight.w700)),
-                          ],
-                        ),
-                      ),
-                      const Icon(Icons.confirmation_number_rounded, color: RihlaColors.onBrandFaint, size: 40),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: RihlaSpace.md),
-            Text(l10n.paymentDueNotice,
-                style: const TextStyle(fontSize: 12, color: RihlaColors.inkMuted, height: 1.4)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _DetailRow extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color? color;
-  const _DetailRow({required this.icon, required this.label, this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: 17, color: color ?? RihlaColors.inkMuted),
-        const SizedBox(width: RihlaSpace.sm),
-        Expanded(
-          child: Text(label, style: TextStyle(fontSize: 14, color: color ?? RihlaColors.ink, fontWeight: FontWeight.w600)),
-        ),
-      ],
-    );
-  }
-}
 
 // ---------------------------------------------------------------------------
 // Empty / guest states
