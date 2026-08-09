@@ -174,5 +174,48 @@
   "notNow": "Nicht jetzt",
   "guestModeTitle": "Sie surfen als Gast",
   "guestModeBody": "Melden Sie sich an, um Erlebnisse zu buchen, Favoriten zu speichern und Ihre Reisen zu verwalten.",
-  "splashLocation": "Hurghada, Rotes Meer"
+  "splashLocation": "Hurghada, Rotes Meer",
+  "statusMissedNoShow": "Verpasst",
+  "contactSupport": "Support kontaktieren",
+  "depositLabel": "Kaution",
+  "depositNotYetHeld": "Kaution noch nicht hinterlegt",
+  "depositHeld": "Kaution hinterlegt",
+  "depositReleased": "Kaution freigegeben",
+  "depositCaptured": "Kaution einbehalten",
+  "reviewAndPay": "Überprüfen & Zahlen",
+  "travelers": "Reisende",
+  "creditsGranted": "Gewährte Guthaben",
+  "promoCodeHint": "Gutscheincode",
+  "applyPromo": "Anwenden",
+  "promoInvalid": "Ungültiger Gutscheincode",
+  "promoAppliedNote": "Gutschein angewendet: -{pct}%",
+  "@promoAppliedNote": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmAndPay": "Bestätigen & Zahlen",
+  "viewMySubscription": "Mein Abonnement ansehen",
+  "forTravelers": "Für {count} Reisende",
+  "@forTravelers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "childPriceNote": "Kinder (1–11 Jahre) zahlen 50% des Preises eines erwachsenen Reisenden.",
+  "forAdultsAndChildren": "Für {adults} Erwachsene, {children} Kinder",
+  "@forAdultsAndChildren": {
+    "placeholders": {
+      "adults": {
+        "type": "int"
+      },
+      "children": {
+        "type": "int"
+      }
+    }
+  }
 }

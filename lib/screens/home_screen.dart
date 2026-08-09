@@ -203,7 +203,7 @@ class _HomeHero extends StatelessWidget {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
     final reduce = media.disableAnimations;
-    final heroH = (media.size.height * 0.40).clamp(300.0, 380.0);
+    final heroH = (media.size.height * 0.32).clamp(260.0, 320.0);
     const overhang = 30.0;
 
     return SizedBox(
@@ -247,7 +247,9 @@ class _HomeHero extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Greeting / weather glass panel.
+                  // Greeting / weather glass panel — the bell lives in its top
+                  // row so it reads as one grouped block instead of floating
+                  // alone in the empty photo above.
                   Positioned(
                     left: RihlaSpace.lg,
                     right: RihlaSpace.lg,
@@ -260,14 +262,32 @@ class _HomeHero extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            greeting,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: RihlaColors.onBrand, fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.5),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      greeting,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(color: RihlaColors.onBrand, fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.5),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(tagline, style: const TextStyle(color: RihlaColors.onBrandMuted, fontSize: 14, fontWeight: FontWeight.w500)),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: RihlaSpace.md),
+                              _FrostedCircleButton(
+                                icon: Icons.notifications_none_rounded,
+                                badgeCount: unreadCount,
+                                onTap: () => Navigator.of(context).pushNamed(Routes.notifications),
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 2),
-                          Text(tagline, style: const TextStyle(color: RihlaColors.onBrandMuted, fontSize: 14, fontWeight: FontWeight.w500)),
                           const SizedBox(height: RihlaSpace.md),
                           Row(
                             children: [
@@ -285,16 +305,6 @@ class _HomeHero extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                  // Notifications bell — frosted circle over the hero.
-                  Positioned(
-                    top: RihlaSpace.md,
-                    right: RihlaSpace.md,
-                    child: _FrostedCircleButton(
-                      icon: Icons.notifications_none_rounded,
-                      badgeCount: unreadCount,
-                      onTap: () => Navigator.of(context).pushNamed(Routes.notifications),
                     ),
                   ),
                 ],
@@ -651,7 +661,7 @@ class _FeaturedCard extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Hero(
-            tag: 'exp-${experience.id}',
+            tag: 'home-featured-exp-${experience.id}',
             child: LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category),
           ),
           const DecoratedBox(
@@ -705,7 +715,7 @@ class _PopularCard extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Hero(
-            tag: 'exp-${experience.id}',
+            tag: 'home-popular-exp-${experience.id}',
             child: LocalImage(path: experience.primaryImage, icon: experience.icon, label: experience.category),
           ),
           const DecoratedBox(
@@ -850,7 +860,7 @@ class _RestaurantCard extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Hero(
-            tag: 'rest-${restaurant.id}',
+            tag: 'home-rest-${restaurant.id}',
             child: LocalImage(path: restaurant.primaryImage, icon: restaurant.icon, label: restaurant.cuisine),
           ),
           const DecoratedBox(

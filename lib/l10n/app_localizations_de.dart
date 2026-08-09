@@ -576,4 +576,68 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get splashLocation => 'Hurghada, Rotes Meer';
+
+  @override
+  String get statusMissedNoShow => 'Verpasst';
+
+  @override
+  String get contactSupport => 'Support kontaktieren';
+
+  @override
+  String get depositLabel => 'Kaution';
+
+  @override
+  String get depositNotYetHeld => 'Kaution noch nicht hinterlegt';
+
+  @override
+  String get depositHeld => 'Kaution hinterlegt';
+
+  @override
+  String get depositReleased => 'Kaution freigegeben';
+
+  @override
+  String get depositCaptured => 'Kaution einbehalten';
+
+  @override
+  String get reviewAndPay => 'Überprüfen & Zahlen';
+
+  @override
+  String get travelers => 'Reisende';
+
+  @override
+  String get creditsGranted => 'Gewährte Guthaben';
+
+  @override
+  String get promoCodeHint => 'Gutscheincode';
+
+  @override
+  String get applyPromo => 'Anwenden';
+
+  @override
+  String get promoInvalid => 'Ungültiger Gutscheincode';
+
+  @override
+  String promoAppliedNote(int pct) {
+    return 'Gutschein angewendet: -$pct%';
+  }
+
+  @override
+  String get confirmAndPay => 'Bestätigen & Zahlen';
+
+  @override
+  String get viewMySubscription => 'Mein Abonnement ansehen';
+
+  @override
+  String forTravelers(int count) {
+    return 'Für $count Reisende';
+  }
+
+  @override
+  String get childPriceNote =>
+      'Kinder (1–11 Jahre) zahlen 50% des Preises eines erwachsenen Reisenden.';
+
+  @override
+  String forAdultsAndChildren(int adults, int children) {
+    return 'Für $adults Erwachsene, $children Kinder';
+  }
 }

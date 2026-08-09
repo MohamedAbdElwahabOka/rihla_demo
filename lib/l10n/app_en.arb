@@ -291,5 +291,48 @@
   "notNow": "Not now",
   "guestModeTitle": "You're browsing as a guest",
   "guestModeBody": "Sign in to book experiences, save favorites, and manage your trips.",
-  "splashLocation": "Hurghada, Red Sea"
+  "splashLocation": "Hurghada, Red Sea",
+  "statusMissedNoShow": "Missed",
+  "contactSupport": "Contact Support",
+  "depositLabel": "Security Deposit",
+  "depositNotYetHeld": "Deposit Not Yet Held",
+  "depositHeld": "Deposit Held",
+  "depositReleased": "Deposit Released",
+  "depositCaptured": "Deposit Captured",
+  "reviewAndPay": "Review & Pay",
+  "travelers": "Travelers",
+  "creditsGranted": "Credits Granted",
+  "promoCodeHint": "Promo code",
+  "applyPromo": "Apply",
+  "promoInvalid": "Invalid promo code",
+  "promoAppliedNote": "Promo applied: -{pct}%",
+  "@promoAppliedNote": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmAndPay": "Confirm & Pay",
+  "viewMySubscription": "View My Subscription",
+  "forTravelers": "For {count} travelers",
+  "@forTravelers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "childPriceNote": "Children (ages 1–11) pay 50% of an adult traveler's price.",
+  "forAdultsAndChildren": "For {adults} adults, {children} children",
+  "@forAdultsAndChildren": {
+    "placeholders": {
+      "adults": {
+        "type": "int"
+      },
+      "children": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -577,4 +577,68 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get splashLocation => 'Хургада, Красное море';
+
+  @override
+  String get statusMissedNoShow => 'Пропущено';
+
+  @override
+  String get contactSupport => 'Связаться с поддержкой';
+
+  @override
+  String get depositLabel => 'Залог';
+
+  @override
+  String get depositNotYetHeld => 'Залог ещё не удержан';
+
+  @override
+  String get depositHeld => 'Залог удержан';
+
+  @override
+  String get depositReleased => 'Залог возвращён';
+
+  @override
+  String get depositCaptured => 'Залог списан';
+
+  @override
+  String get reviewAndPay => 'Проверка и оплата';
+
+  @override
+  String get travelers => 'Путешественники';
+
+  @override
+  String get creditsGranted => 'Начисленные кредиты';
+
+  @override
+  String get promoCodeHint => 'Промокод';
+
+  @override
+  String get applyPromo => 'Применить';
+
+  @override
+  String get promoInvalid => 'Недействительный промокод';
+
+  @override
+  String promoAppliedNote(int pct) {
+    return 'Промокод применён: -$pct%';
+  }
+
+  @override
+  String get confirmAndPay => 'Подтвердить и оплатить';
+
+  @override
+  String get viewMySubscription => 'Моя подписка';
+
+  @override
+  String forTravelers(int count) {
+    return 'На $count путешественников';
+  }
+
+  @override
+  String get childPriceNote =>
+      'Дети (1–11 лет) оплачиваются в размере 50% от стоимости взрослого путешественника.';
+
+  @override
+  String forAdultsAndChildren(int adults, int children) {
+    return 'На $adults взрослых, $children детей';
+  }
 }

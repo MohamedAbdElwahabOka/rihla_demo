@@ -174,5 +174,48 @@
   "notNow": "Не сейчас",
   "guestModeTitle": "Вы просматриваете как гость",
   "guestModeBody": "Войдите, чтобы бронировать впечатления, сохранять избранное и управлять поездками.",
-  "splashLocation": "Хургада, Красное море"
+  "splashLocation": "Хургада, Красное море",
+  "statusMissedNoShow": "Пропущено",
+  "contactSupport": "Связаться с поддержкой",
+  "depositLabel": "Залог",
+  "depositNotYetHeld": "Залог ещё не удержан",
+  "depositHeld": "Залог удержан",
+  "depositReleased": "Залог возвращён",
+  "depositCaptured": "Залог списан",
+  "reviewAndPay": "Проверка и оплата",
+  "travelers": "Путешественники",
+  "creditsGranted": "Начисленные кредиты",
+  "promoCodeHint": "Промокод",
+  "applyPromo": "Применить",
+  "promoInvalid": "Недействительный промокод",
+  "promoAppliedNote": "Промокод применён: -{pct}%",
+  "@promoAppliedNote": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmAndPay": "Подтвердить и оплатить",
+  "viewMySubscription": "Моя подписка",
+  "forTravelers": "На {count} путешественников",
+  "@forTravelers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "childPriceNote": "Дети (1–11 лет) оплачиваются в размере 50% от стоимости взрослого путешественника.",
+  "forAdultsAndChildren": "На {adults} взрослых, {children} детей",
+  "@forAdultsAndChildren": {
+    "placeholders": {
+      "adults": {
+        "type": "int"
+      },
+      "children": {
+        "type": "int"
+      }
+    }
+  }
 }

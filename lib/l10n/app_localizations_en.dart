@@ -572,4 +572,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get splashLocation => 'Hurghada, Red Sea';
+
+  @override
+  String get statusMissedNoShow => 'Missed';
+
+  @override
+  String get contactSupport => 'Contact Support';
+
+  @override
+  String get depositLabel => 'Security Deposit';
+
+  @override
+  String get depositNotYetHeld => 'Deposit Not Yet Held';
+
+  @override
+  String get depositHeld => 'Deposit Held';
+
+  @override
+  String get depositReleased => 'Deposit Released';
+
+  @override
+  String get depositCaptured => 'Deposit Captured';
+
+  @override
+  String get reviewAndPay => 'Review & Pay';
+
+  @override
+  String get travelers => 'Travelers';
+
+  @override
+  String get creditsGranted => 'Credits Granted';
+
+  @override
+  String get promoCodeHint => 'Promo code';
+
+  @override
+  String get applyPromo => 'Apply';
+
+  @override
+  String get promoInvalid => 'Invalid promo code';
+
+  @override
+  String promoAppliedNote(int pct) {
+    return 'Promo applied: -$pct%';
+  }
+
+  @override
+  String get confirmAndPay => 'Confirm & Pay';
+
+  @override
+  String get viewMySubscription => 'View My Subscription';
+
+  @override
+  String forTravelers(int count) {
+    return 'For $count travelers';
+  }
+
+  @override
+  String get childPriceNote =>
+      'Children (ages 1–11) pay 50% of an adult traveler\'s price.';
+
+  @override
+  String forAdultsAndChildren(int adults, int children) {
+    return 'For $adults adults, $children children';
+  }
 }
