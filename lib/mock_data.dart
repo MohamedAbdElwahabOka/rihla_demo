@@ -96,35 +96,6 @@ class Experience {
   String get primaryImage => images.isEmpty ? '' : images.first;
 }
 
-class Restaurant {
-  final String id;
-  final String name;
-  final String cuisine;
-  final double rating;
-  final int reviewCount;
-  final List<String> badges; // HALAL, VEGETARIAN, OPEN NOW
-  final IconData icon;
-  final List<String> images;
-  final String priceRange; // €, €€, €€€
-  final List<Review> reviewsList;
-
-  const Restaurant({
-    required this.id,
-    required this.name,
-    required this.cuisine,
-    required this.rating,
-    required this.reviewCount,
-    required this.badges,
-    required this.icon,
-    required this.images,
-    required this.priceRange,
-    this.reviewsList = const [],
-  });
-
-  /// First bundled photo, or '' when this restaurant has no photos yet.
-  String get primaryImage => images.isEmpty ? '' : images.first;
-}
-
 class SubscriptionPlan {
   final String id;
   final String name;
@@ -293,7 +264,6 @@ const exploreFilterChips = <String>[
   'Diving',
   'Desert',
   'Snorkel',
-  'Restaurants',
   'Boat Tours',
   'Wellness',
   'Cultural',
@@ -375,7 +345,7 @@ const _guestProfile = UserProfile(
 UserProfile currentUser = _guestProfile;
 
 /// Whether the current session is authenticated. `false` = guest: a guest may
-/// browse experiences/restaurants freely but every account action (favorites,
+/// browse experiences freely but every account action (favorites,
 /// booking, subscribing, reviews, profile edits) is gated behind sign-in.
 /// Set true on OTP success; reset by [signOutToGuest].
 bool isLoggedIn = false;
@@ -607,67 +577,6 @@ final experiences = <Experience>[
     ],
     reviewsList: [
       Review('Anna M.', '🇷🇺', 5, 'Exactly what I needed after a week of diving.', '05/06/2026', isSubscriber: true),
-    ],
-  ),
-];
-
-const restaurants = <Restaurant>[
-  Restaurant(
-    id: 'r1',
-    name: 'Nemo Seafood House',
-    cuisine: 'Seafood',
-    rating: 4.7,
-    reviewCount: 340,
-    badges: ['HALAL', 'OPEN NOW'],
-    icon: Icons.set_meal,
-    images: [
-      'assets/restaurant/restaurant (1).jpg',
-      'assets/restaurant/restaurant (2).jpg',
-    ],
-    priceRange: '€€',
-    reviewsList: [
-      Review('Sofia M.', '🇮🇹', 5, 'The freshest grilled calamari I have had in years. Right on the marina.', '28/06/2026',
-          vendorReply: 'Grazie Sofia! Fresh from the Red Sea every morning.'),
-      Review('Hans B.', '🇩🇪', 4, 'Great seafood platter, a little busy on weekends but worth the wait.', '12/06/2026', isSubscriber: true),
-      Review('Amira H.', '🇪🇬', 5, 'Beautiful sunset view and the staff were so welcoming.', '30/05/2026'),
-    ],
-  ),
-  Restaurant(
-    id: 'r2',
-    name: 'Marina Grill & Lounge',
-    cuisine: 'Grill',
-    rating: 4.5,
-    reviewCount: 210,
-    badges: ['HALAL', 'VEGETARIAN'],
-    icon: Icons.restaurant,
-    images: [
-      'assets/restaurant/restaurant (3).jpg',
-      'assets/restaurant/restaurant (4).jpg',
-    ],
-    priceRange: '€€€',
-    reviewsList: [
-      Review('Daniel R.', '🇬🇧', 5, 'Premium cuts cooked to perfection. The lounge atmosphere is superb.', '05/07/2026'),
-      Review('Yulia S.', '🇷🇺', 4, 'Lovely evening, generous portions. Cocktails were excellent.', '21/06/2026', isSubscriber: true),
-    ],
-  ),
-  Restaurant(
-    id: 'r3',
-    name: 'Green Garden Vegetarian',
-    cuisine: 'Vegetarian',
-    rating: 4.6,
-    reviewCount: 98,
-    badges: ['VEGETARIAN', 'OPEN NOW'],
-    icon: Icons.eco,
-    images: [
-      'assets/restaurant/restaurant (2).jpg',
-      'assets/restaurant/restaurant (3).jpg',
-    ],
-    priceRange: '€',
-    reviewsList: [
-      Review('Marie L.', '🇫🇷', 5, 'So many creative vegetarian dishes. The falafel bowl was divine!', '09/07/2026',
-          vendorReply: 'Merci Marie! Everything is farm-to-table and fresh daily.'),
-      Review('Tom W.', '🇬🇧', 4, 'Healthy, tasty and affordable. My go-to spot for lunch.', '25/06/2026'),
-      Review('Nadia F.', '🇪🇬', 5, 'Finally a place with real vegetarian variety. Loved it.', '14/06/2026', isSubscriber: true),
     ],
   ),
 ];

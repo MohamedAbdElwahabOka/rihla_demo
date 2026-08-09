@@ -155,22 +155,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-        const SizedBox(height: RihlaSpace.sm),
-        FadeInUp(delay: const Duration(milliseconds: 300), child: _SectionHeader(title: l10n.restaurants, onSeeAll: widget.onSearchTap, seeAllLabel: l10n.seeAll)),
-        const SizedBox(height: RihlaSpace.md),
-        FadeInUp(
-          delay: const Duration(milliseconds: 300),
-          child: SizedBox(
-            height: 200,
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: RihlaSpace.lg),
-              scrollDirection: Axis.horizontal,
-              itemCount: restaurants.length,
-              separatorBuilder: (_, _) => const SizedBox(width: 14),
-              itemBuilder: (context, i) => _RestaurantCard(restaurant: restaurants[i]),
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -847,53 +831,3 @@ class _RecommendedCard extends StatelessWidget {
   }
 }
 
-class _RestaurantCard extends StatelessWidget {
-  final Restaurant restaurant;
-  const _RestaurantCard({required this.restaurant});
-
-  @override
-  Widget build(BuildContext context) {
-    return _CardShell(
-      width: 184,
-      onTap: () => Navigator.of(context).pushNamed(Routes.restaurantDetail, arguments: restaurant),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Hero(
-            tag: 'home-rest-${restaurant.id}',
-            child: LocalImage(path: restaurant.primaryImage, icon: restaurant.icon, label: restaurant.cuisine),
-          ),
-          const DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.center, end: Alignment.bottomCenter, colors: [Colors.transparent, Colors.black54]),
-            ),
-          ),
-          if (restaurant.badges.isNotEmpty)
-            Positioned(top: 8, left: 8, child: RihlaBadge.soft(restaurant.badges.first)),
-          Positioned(
-            left: 8,
-            right: 8,
-            bottom: 8,
-            child: GlassPanel(
-              padding: const EdgeInsets.all(9),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(restaurant.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: Colors.white)),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      const Icon(Icons.star_rounded, size: 13, color: RihlaColors.gold),
-                      Text(' ${restaurant.rating} · ${restaurant.cuisine} · ${restaurant.priceRange}', maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: Colors.white70)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

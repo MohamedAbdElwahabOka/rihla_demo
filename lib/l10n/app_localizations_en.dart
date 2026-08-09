@@ -51,9 +51,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get popular => 'Popular';
 
   @override
-  String get restaurants => 'Top Restaurants';
-
-  @override
   String get searchHint => 'Search experiences...';
 
   @override

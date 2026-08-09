@@ -51,9 +51,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get popular => 'Популярное';
 
   @override
-  String get restaurants => 'Лучшие рестораны';
-
-  @override
   String get searchHint => 'Поиск впечатлений...';
 
   @override

@@ -51,9 +51,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get popular => 'Beliebt';
 
   @override
-  String get restaurants => 'Top-Restaurants';
-
-  @override
   String get searchHint => 'Erlebnisse suchen...';
 
   @override

@@ -71,7 +71,6 @@ flutter:
     - assets/diving/
     - assets/safari/
     - assets/snorkeling/
-    - assets/restaurant/
     - assets/spa/
 
   # An image asset can refer to one or more resolution-specific "variants", see

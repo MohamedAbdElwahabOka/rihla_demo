@@ -184,12 +184,6 @@ abstract class AppLocalizations {
   /// **'Popular'**
   String get popular;
 
-  /// No description provided for @restaurants.
-  ///
-  /// In en, this message translates to:
-  /// **'Top Restaurants'**
-  String get restaurants;
-
   /// No description provided for @searchHint.
   ///
   /// In en, this message translates to:
