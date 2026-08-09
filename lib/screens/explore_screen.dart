@@ -13,8 +13,7 @@ import '../widgets/sign_in_prompt.dart';
 enum _SortOption { relevance, topRated, priceLowHigh, priceHighLow, newest }
 
 /// Maps a short Explore filter chip label (FR-059) to the matching
-/// Experience.category value (FR-016). 'Restaurants' has no category match —
-/// it toggles restaurant results in instead, handled separately below.
+/// Experience.category value (FR-016).
 const _chipCategory = <String, String>{
   'Diving': 'Diving',
   'Desert': 'Desert Safari',
@@ -31,7 +30,6 @@ const _chipIcon = <String, IconData>{
   'Diving': Icons.scuba_diving_rounded,
   'Desert': Icons.terrain_rounded,
   'Snorkel': Icons.waves_rounded,
-  'Restaurants': Icons.restaurant_rounded,
   'Boat Tours': Icons.sailing_rounded,
   'Wellness': Icons.spa_rounded,
   'Cultural': Icons.account_balance_rounded,
@@ -148,12 +146,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return results;
   }
 
-  /// Total shown count for a given (sort/price) combination — experiences plus
-  /// restaurants when the Restaurants chip is active. Used live inside the
-  /// filter sheet's "Show N results" button.
-  int _countFor(_SortOption sort, RangeValues price) =>
-      _filteredExperiences(sort: sort, price: price).length +
-      (_selectedChips.contains('Restaurants') ? restaurants.length : 0);
+  /// Total shown count for a given (sort/price) combination. Used live inside
+  /// the filter sheet's "Show N results" button.
+  int _countFor(_SortOption sort, RangeValues price) => _filteredExperiences(sort: sort, price: price).length;
 
   void _clearAll() {
     setState(() {
@@ -302,15 +297,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final results = _filteredExperiences();
-    final showRestaurants = _selectedChips.contains('Restaurants');
-    final totalCount = results.length + (showRestaurants ? restaurants.length : 0);
+    final totalCount = results.length;
 
     // Restaging key: the animation re-runs only when the visible set changes,
     // not on every keystroke that leaves results unchanged.
-    final signature = [
-      ...results.map((e) => e.id),
-      if (showRestaurants) ...restaurants.map((r) => 'r-${r.id}'),
-    ].join(',');
+    final signature = results.map((e) => e.id).join(',');
 
     return SafeArea(
       top: false,
@@ -411,17 +402,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         ),
                       ),
                     ),
-                  if (showRestaurants)
-                    for (var i = 0; i < restaurants.length; i++)
-                      FadeInUp(
-                        key: ValueKey('$signature#r${restaurants[i].id}'),
-                        delay: Duration(milliseconds: ((results.length + i) * 40).clamp(0, 240)),
-                        offset: 12,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 18),
-                          child: _RestaurantCard(restaurant: restaurants[i]),
-                        ),
-                      ),
                 ],
               ),
             ),
@@ -741,8 +721,7 @@ class _PressableCardState extends State<_PressableCard> {
 }
 
 /// The shared card shell: full-width ~16:9 hero image with corner overlays,
-/// then a content block below. Experience and restaurant cards differ only in
-/// their overlays and the meta/trailing slots.
+/// then a content block below.
 class _ResultCardShell extends StatelessWidget {
   final String heroTag;
   final String imagePath;
@@ -885,67 +864,6 @@ class _ExperienceCard extends StatelessWidget {
           const SizedBox(height: RihlaSpace.md),
           PriceTag(original: experience.priceOriginal, discounted: experience.priceDiscounted, discountedFontSize: 17),
         ],
-      ),
-    );
-  }
-}
-
-class _RestaurantCard extends StatelessWidget {
-  final Restaurant restaurant;
-  const _RestaurantCard({required this.restaurant});
-
-  @override
-  Widget build(BuildContext context) {
-    return _ResultCardShell(
-      heroTag: 'rest-${restaurant.id}',
-      imagePath: restaurant.primaryImage,
-      icon: restaurant.icon,
-      imageLabel: restaurant.cuisine,
-      categoryLabel: restaurant.cuisine,
-      onTap: () => Navigator.of(context).pushNamed(Routes.restaurantDetail, arguments: restaurant),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            restaurant.name,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, letterSpacing: -0.3, color: RihlaColors.ink, height: 1.2),
-          ),
-          const SizedBox(height: RihlaSpace.sm),
-          _MetaRow('${restaurant.rating} (${restaurant.reviewCount}) · ${restaurant.priceRange}'),
-          if (restaurant.badges.isNotEmpty) ...[
-            const SizedBox(height: RihlaSpace.md),
-            Wrap(
-              spacing: 6,
-              runSpacing: 6,
-              children: restaurant.badges.map((b) => _OutlineBadge(b)).toList(),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-}
-
-/// Outline-style tag for restaurant attributes — distinct from the filled
-/// category chips so the two never read as the same control.
-class _OutlineBadge extends StatelessWidget {
-  final String label;
-  const _OutlineBadge(this.label);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: RihlaColors.seaTint.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(RihlaSpace.radiusPill),
-        border: Border.all(color: RihlaColors.hairline),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: RihlaColors.seaBlueDark, letterSpacing: 0.2),
       ),
     );
   }
